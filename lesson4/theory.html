@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<title>Урок 4 — Древнекитайский язык по Крюкову</title>
+<style>body {
+            font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+            line-height: 1.8;
+            margin: 50px auto;
+            background-color: #fbf8f0;
+            color: #2c3e50;
+            max-width: 1000px;
+            padding: 0 20px;
+        }
+        h1, h2, h3 {
+            color: #1a4f72;
+            font-weight: normal;
+            letter-spacing: 0.5px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.8em;
+            border-bottom: 2px solid #1a4f72;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 1.5em;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin: 40px 0 20px;
+        }
+        h3 {
+            font-size: 1.2em;
+            color: #2c3e50;
+            border-bottom: none;
+            margin-top: 30px;
+        }
+        .original {
+            background-color: #f0f4f8;
+            padding: 18px 20px;
+            border-left: 6px solid #1a4f72;
+            font-size: 1.08em;
+            line-height: 1.6;
+            border-radius: 0 8px 8px 0;
+        }
+        .text, .grammar, .lexicon, .assignment {
+            margin-bottom: 45px;
+        }
+        .footer {
+            font-size: 0.85em;
+            color: #777;
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px dashed #ccc;
+            line-height: 1.4;
+        }
+        .example {
+            display: block;
+            margin: 8px 0 8px 15px;
+            font-family: "Courier New", monospace;
+            font-size: 0.95em;
+            color: #1a4f72;
+        }
+        ol {
+            line-height: 1.8;
+        }
+
+        /* === Интерактивные подсказки для иероглифов === */
+        .char-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .char-item {
+            position: relative;
+            display: inline-block;
+            background: #f0f4f8;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+            font-size: 1.1em;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+
+        .char-item:hover {
+            background: #e6f2ff;
+        }
+
+        .inline-pinyin {
+            font-size: 0.85em;
+            color: #555;
+            margin-left: 4px;
+            font-style: italic;
+        }
+
+        .char-tooltip {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: max-content;
+            max-width: 260px;
+            background: #1a4f72;
+            color: white;
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            text-align: left;
+            white-space: normal;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(26, 79, 114, 0.3);
+            line-height: 1.5;
+            pointer-events: none;
+        }
+
+        .char-item:hover .char-tooltip {
+            display: block;
+        }
+
+        /* Таблица текста */
+
+
+
+
+        .phrase-item {
+    display: inline-block;
+    margin: 5px;
+    font-size: 1.1em;
+}
+
+.phrase-char {
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.phrase-pinyin {
+    font-style: italic;
+    color: #555;
+    margin: 0 8px;
+}
+
+.phrase-meaning {
+    color: #333;
+}</style>
+<style>
+@font-face {
+  font-family: 'Jiaguwen';
+  src: url('../jiaguwen.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+}
+</style></head>
+<body><style id="2change">
+.oracle-table {
+    border-collapse: collapse;
+    margin: 20px auto;
+    font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+    font-size: 1.3em;
+    table-layout: fixed;
+    width: 95%;
+    max-width: 1200px;
+}
+.oracle-table td {
+    padding: 6px 8px;
+    border: 1px solid #d4d4d4;
+    text-align: center;
+    position: relative;
+    word-break: keep-all;
+    white-space: nowrap;
+}
+.line-num, .col-num {
+    background-color: #f0f4f8;
+    color: #1a4f72;
+    font-weight: bold;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 0.85em;
+    white-space: nowrap;
+}
+</style>
+<script src="./../dictionary.js"></script>
+<h1>УРОК 4</h1>
+<!-- ТАБЛИЦА ТЕКСТ УРОКА -->
+<div class="text">
+<h2>Lesson Text</h2>
+<table class="oracle-table" id="oracleTable"></table>
+</div>
+<div style="text-align: center; margin: 20px 0;">
+<label class="toggle-switch">
+<input id="fontToggle" type="checkbox"/>
+<span class="slider"></span>
+</label>
+<span id="toggleLabel" style="margin-left: 10px; font-family: 'Segoe UI', sans-serif; color: #333;">
+    Обычный вид
+  </span>
+</div>
+<style>
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+  }
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 30px;
+  }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  input:checked + .slider {
+    background-color: #1a5fb4;
+  }
+  input:checked + .slider:before {
+    transform: translateX(30px);
+  }
+</style>
+<style>/* Уменьшаем размер для номеров */
+
+/* Tooltip — без изменений */
+.char-tooltip {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: 300px;
+    background: #1a4f72;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    text-align: left;
+    white-space: normal;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(26, 79, 114, 0.3);
+    line-height: 1.5;
+}
+
+td:hover .char-tooltip {
+    display: block;
+}
+
+.lesson-badge {
+    display: inline-block;
+    background: #e6f2ff;
+    color: #1a4f72;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-left: 5px;
+}</style>
+<script>
+
+
+        const lessonText = [
+            "壬寅卜㱿貞自今至于甲辰子商烖基",
+            "方自今至于甲辰子商弗其烖基方自",
+            "今壬寅至于甲辰子商烖基方自今至",
+            "于丁巳我烖賽王占曰丁巳我毋其烖",
+            "于來甲子烖",
+            "甲子卜中貞求年自上甲求自上甲癸",
+            "亥卜中貞求年自上甲至于多后貞于",
+            "示壬求年",
+            "其自西來雨其自東來雨其自南來雨",
+            "其自北來雨來雨自西自今五日不雨"
+        ];
+
+// Функция для создания таблицы
+function createOracleTable() {
+    const table = document.getElementById('oracleTable');
+    
+    // Создаём строку с номерами колонок
+    const headerRow = document.createElement('tr');
+    
+    // Пустая ячейка для выравнивания с номерами строк
+    const emptyCell = document.createElement('td');
+    emptyCell.className = 'line-num';
+    headerRow.appendChild(emptyCell);
+    
+    // Номера колонок: от 1 до 15
+    for (let i = 1; i <= 15; i++) {
+        const th = document.createElement('td');
+        th.className = 'col-num';
+        th.textContent = i;
+        headerRow.appendChild(th);
+    }
+    table.appendChild(headerRow);
+    
+    // Создаём строки с текстом
+    for (let i = 0; i < lessonText.length; i++) {
+        const row = document.createElement('tr');
+        
+        // Номер строки
+        const lineNumCell = document.createElement('td');
+        lineNumCell.className = 'line-num';
+        lineNumCell.textContent = i + 1;
+        row.appendChild(lineNumCell);
+        
+        // Разбиваем строку на символы
+        const chars = Array.from(lessonText[i]);
+        
+        // Заполняем ячейки для позиций 1–15
+        for (let j = 0; j < 15; j++) {  // Ровно 15 ячеек
+            const td = document.createElement('td');
+            
+            // Если есть символ на этой позиции — ставим его
+            if (j < chars.length && chars[j].trim() !== '') {
+                const char = chars[j];
+                td.textContent = char;
+                
+                if (charData[char]) {
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'char-tooltip';
+                    tooltip.innerHTML = `
+                        <strong>${char}</strong> <em>${charData[char].pinyin}</em><br>
+                        ${charData[char].meaning}<br>
+                        <span class="lesson-badge">Урок ${charData[char].lesson}</span>
+                    `;
+                    td.appendChild(tooltip);
+                }
+            }
+            // Если символа нет — ячейка остаётся пустой (ничего не делаем)
+            row.appendChild(td);
+        }
+        
+        table.appendChild(row);
+    }
+}
+
+// Инициализация таблицы при загрузке страницы
+document.addEventListener('DOMContentLoaded', createOracleTable);
+</script>
+<!-- КОНЕЦ ТАБЛИЦЫ ТЕКСТ УРОКА -->
+<!-- ГРАММАТИЧЕСКИЙ КОММЕНТАРИЙ -->
+<div class="grammar">
+<h2>GRAMMAR COMMENTARY</h2>
+<h3>4.1. Preposition 自 zì</h3>
+<p class="original">
+The second most commonly used preposition in the archaic language is 自 zì (we have already encountered this word in another meaning - "himself", "personally").<br/><br/>
+In a certain sense, 自 zì is a semantic pair with the preposition 于 yú: if one of the meanings of the latter is the final point of movement or other action associated with movement, then 自 zì indicates the starting point of this movement (in space or time):<br/><br/>
+<span class="example">步于商 bù yú shāng</span> "to go to Shang";<br/>
+<span class="example">步自商 bù zì shāng</span> "to depart from "Shang."<br/><br/>
+At the same time, there is a significant difference in the use of the prepositions 于 yú and 自 zì.<br/><br/>
+The preposition 于 yú, under certain conditions (when there is no direct object before the indirect object standing in postposition to the predicate), can be omitted without affecting the meaning.<br/><br/>
+The preposition 自 zì, under the same conditions, cannot be omitted. Therefore, the indirect object answering the question "when?" stands in its usual place (before the subject) without a preposition; A similar complement answering the question "starting from what time?" is used in the same position, necessarily with the preposition 自 zì:<br/><br/>
+<span class="example">今歳我受年 jīn suì wǒ shòu nián</span> "Will we get a harvest this year?"<br/>
+<span class="example">自今歳我受年 zì jīn suì wǒ shòu nián</span> "Will we get a harvest starting from this year?"
+</p>
+<h3>4.2. Prepositional construction 自...至于 zì... zhì yú</h3>
+<p class="original">
+In cases where it is necessary to outline the chronological or spatial framework of a particular action, in archaic Old Chinese, a construction is used that includes both prepositions 自 zì and 于 yú.<br/><br/>
+The first feature of this construction is the use of the notional word 至 zhì "to reach", "to arrive" before 于 yú.<br/><br/>
+Its second feature is that the sentence member formed by this construction usually occupies its usual place - before the subject (an indirect object denoting the time of the action) or after the predicate (an indirect object with the meaning of place).<br/><br/>
+This construction is translated into Russian as the phrases "from... to", "starting with... and ending," etc.<br/><br/>
+<span class="example">自今至于癸亥王求 zì jīn zhì yú guǐ hài wáng qiú</span> "Will Wang pray [for rain], starting from today and ending on Guihai day?"<br/><br/>
+<span class="example">求自上甲至于中丁 qiú zì shāng jiă zhì yú zhōng dīng</span> "Pray [to the ancestors], starting from Upper Jia and ending on Middle Ding?"<br/><br/>
+The preposition 于 yú in this construction can sometimes omit:<br/>
+<span class="example">自今至己酉雨 zì jīn zhì jǐ yǒu yǔ</span> "Will it rain from today until Ji-yu day?"
+</p>
+<h3>4.3. Adverbial modifier of duration</h3>
+<p class="original">
+An indirect object with the meaning of time of an action, expressed by the construction 自... 至于 zì... zhì yú, should be distinguished from an adverbial modifier of duration of an action.<br/><br/>
+The construction analyzed above indicates the time frame within which a particular action can take place, i.e., it answers the question "from what time until what time?" Therefore, the sentence <span class="example">自今至己酉雨 zì jīn zhì jǐ yǒu yǔ</span> does not say that it will rain all the time during the specified time period, but that it may rain at some point within the specified chronological limits.<br/><br/>
+To indicate the duration of an action, in archaic language, an adverbial modifier is used, which occupies a position before the predicate:<br/>
+<span class="example">旬雨 xún yǔ</span> "It will rain for a decade."
+</p>
+</div>
+<h2>СПИСОК СЛОВ УРОКА</h2>
+<div class="char-list"></div>
+<script>
+    // Укажи номер урока здесь
+    const LESSON = parseInt((window.location.pathname.match(/\/lesson(\d+)(?:\/|$)/) || [])[1] || '1');
+
+    // Находим все иероглифы этого урока из charData
+    const lessonChars = Object.entries(charData)
+        .filter(([char, data]) => data.lesson === LESSON)
+        .sort(([charA, dataA], [charB, dataB]) => {
+            // Сортировка по пиньиню (опционально)
+            return dataA.pinyin.localeCompare(dataB.pinyin, 'zh');
+        });
+
+    // Получаем контейнер
+    const charList = document.querySelector('.char-list');
+
+    // Очищаем (на всякий случай)
+    charList.innerHTML = '';
+
+    // Генерируем элементы
+    lessonChars.forEach(([char, data]) => {
+        const item = document.createElement('div');
+        item.className = 'char-item';
+
+        item.innerHTML = `
+            <span>${char}<span class="inline-pinyin">${data.pinyin}</span></span>
+            <div class="char-tooltip">${data.meaning}</div>
+        `;
+
+        charList.appendChild(item);
+    });
+</script>
+<div style="text-align: center; margin: 20px 0; font-family: 'Segoe UI', sans-serif;">
+<strong>Словосочетания</strong><br/><br/>
+<span class="phrase-item">
+<span class="phrase-char">子商</span>
+<span class="phrase-pinyin">zǐ shāng</span>
+<span class="phrase-meaning">«цзы Шан» (см. 4.А)</span>
+</span><br/>
+<span class="phrase-item">
+<span class="phrase-char">基方</span>
+<span class="phrase-pinyin">jī fāng</span>
+<span class="phrase-meaning">«племя Цзи»</span>
+</span><br/>
+<span class="phrase-item">
+<span class="phrase-char">上甲</span>
+<span class="phrase-pinyin">shàng jiă</span>
+<span class="phrase-meaning">«Верхний Цзя»</span>
+</span>
+</div>
+<!-- ЛЕКСИЧЕСКИЙ КОММЕНТАРИЙ -->
+<div class="lexicon">
+<h2>LEXICAL COMMENTARY</h2>
+<h3>4.A. Titles of the Leaders of Subordinate Tribes</h3>
+<p class="original">
+The leaders of tribal associations classified as "lands" and subject to the supreme authority of the Yin Wang received special titles from him—a unique symbol of their status in the Yin coalition system.<br/><br/>
+Three such titles are found in inscriptions: hou 侯 hóu, bo 伯 bó, zi 子 zǐ.<br/><br/>
+As a general rule, the leader's personal name comes after his title (see 1.8): 侯虎 hóu hǔ, etc. Sometimes, however, more complete titles are found, including two proper names (for example, 而伯龜 ér bó guī). In these cases we have an indication of which tribe is headed by a particular leader of such and such a rank (in this case, Gui, the leader of the Er tribe of the rank of bo). Finally, the title can often be omitted: 洗震 xǐ zhèn "Zhen [tribal leader] Xi," etc.
+</p>
+</div>
+<!-- ЗАДАНИЕ ДЛЯ САМОСТОЯТЕЛЬНОЙ РАБОТЫ -->
+<div class="assignment">
+<h2>ASSIGNMENT FOR INDEPENDENT STUDY</h2>
+<ol>
+<li>Rewrite the text as a distribution table.</li>
+<li>Analyze the text grammatically.</li>
+<li>Translate the text into Russian.</li>
+</ol>
+</div>
+<div class="footer">
+Textbook: V. A. Kryukov, Shuyin — Archaic Old Chinese Language.<br/>
+Recovered using OCR while preserving the author's style.<br/>
+All characters are from Lessons 1–4 or from cyclic signs.
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const toggle = document.getElementById('fontToggle');
+  const label = document.getElementById('toggleLabel');
+  const styleSheet = document.getElementById('2change');
+
+  const normalCSS = `
+    .oracle-table {
+      border-collapse: collapse;
+      margin: 20px auto;
+      font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+      font-size: 1.3em;
+      table-layout: fixed;
+      width: 95%;
+      max-width: 1200px;
+    }
+    .oracle-table td {
+      padding: 6px 8px;
+      border: 1px solid #d4d4d4;
+      text-align: center;
+      position: relative;
+      word-break: keep-all;
+      white-space: nowrap;
+    }
+    .line-num, .col-num {
+      background-color: #f0f4f8;
+      color: #1a4f72;
+      font-weight: bold;
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      font-size: 0.85em;
+      white-space: nowrap;
+    }
+  `;
+
+  const oracleCSS = `
+    .oracle-table {
+      border-collapse: collapse;
+      margin: 20px auto;
+      font-family: 'Jiaguwen', 'Noto Serif CJK SC', 'KaiTi', serif;
+      font-size: 1.3em;
+      table-layout: fixed;
+      width: 95%;
+      max-width: 1200px;
+    }
+    .oracle-table td {
+      padding: 6px 8px;
+      border: 1px solid #d4d4d4;
+      text-align: center;
+      position: relative;
+      word-break: keep-all;
+      white-space: nowrap;
+    }
+    .line-num, .col-num {
+      background-color: #f0f4f8;
+      color: #1a4f72;
+      font-weight: bold;
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      font-size: 0.85em;
+      white-space: nowrap;
+    }
+  `;
+
+  styleSheet.textContent = normalCSS;
+
+  toggle.addEventListener('change', function () {
+    if (toggle.checked) {
+      styleSheet.textContent = oracleCSS;
+      label.textContent = 'Оракульный вид';
+    } else {
+      styleSheet.textContent = normalCSS;
+      label.textContent = 'Обычный вид';
+    }
+  });
+});
+</script></body>
+<script id="help" src="../help.js"></script>
+</html>

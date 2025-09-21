@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<script src="./../dictionary.js">//dictionary.js содержит переменную charData используемую для подсказок таблицы! НЕ УДАЛЯТЬ! КРИТИЧЕСКИ ВАЖЕН!</script>
+<meta charset="utf-8"/>
+<title>Урок 21 — Древнекитайский язык по Крюкову</title>
+<style>
+        body {
+            font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+            line-height: 1.8;
+            margin: 50px auto;
+            background-color: #fbf8f0;
+            color: #2c3e50;
+            max-width: 1000px;
+            padding: 0 20px;
+        }
+        h1, h2, h3 {
+            color: #1a4f72;
+            font-weight: normal;
+            letter-spacing: 0.5px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.8em;
+            border-bottom: 2px solid #1a4f72;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 1.5em;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin: 40px 0 20px;
+        }
+        h3 {
+            font-size: 1.2em;
+            color: #2c3e50;
+            border-bottom: none;
+            margin-top: 30px;
+        }
+        .original {
+            background-color: #f0f4f8;
+            padding: 18px 20px;
+            border-left: 6px solid #1a4f72;
+            font-size: 1.08em;
+            line-height: 1.6;
+            border-radius: 0 8px 8px 0;
+        }
+        .text, .grammar, .lexicon, .assignment {
+            margin-bottom: 45px;
+        }
+        .footer {
+            font-size: 0.85em;
+            color: #777;
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px dashed #ccc;
+            line-height: 1.4;
+        }
+        .example {
+            display: block;
+            margin: 8px 0 8px 15px;
+            font-family: "Courier New", monospace;
+            font-size: 0.95em;
+            color: #1a4f72;
+        }
+        ol {
+            line-height: 1.8;
+        }
+
+        /* === Интерактивные подсказки для иероглифов === */
+        .char-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .char-item {
+            position: relative;
+            display: inline-block;
+            background: #f0f4f8;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+            font-size: 1.1em;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+
+        .char-item:hover {
+            background: #e6f2ff;
+        }
+
+        .char-item > span {
+            cursor: help;
+        }
+
+        .inline-pinyin {
+            font-size: 0.85em;
+            color: #555;
+            margin-left: 4px;
+            font-style: italic;
+        }
+
+        .char-tooltip {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: max-content;
+            max-width: 260px;
+            background: #1a4f72;
+            color: white;
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            text-align: left;
+            white-space: normal;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(26, 79, 114, 0.3);
+            line-height: 1.5;
+            pointer-events: none;
+        }
+
+        .char-item:hover .char-tooltip {
+            display: block;
+        }
+    </style>
+<style>
+        @font-face {
+            font-family: 'Jiaguwen';
+            src: url('../jiaguwen.ttf') format('truetype');
+            font-style: normal;
+            font-weight: normal;
+            font-display: swap;
+        }
+    </style>
+<style id="2change">
+        .oracle-table {
+            border-collapse: collapse;
+            margin: 20px auto;
+            font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+            font-size: 1.3em;
+            table-layout: fixed;
+            width: 95%;
+            max-width: 1200px;
+        }
+        .oracle-table td {
+            padding: 6px 8px;
+            border: 1px solid #d4d4d4;
+            text-align: center;
+            position: relative;
+            word-break: keep-all;
+            white-space: nowrap;
+        }
+        .line-num, .col-num {
+            background-color: #f0f4f8;
+            color: #1a4f72;
+            font-weight: bold;
+            font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+            font-size: 0.85em;
+            white-space: nowrap;
+        }
+    </style>
+<style>
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 30px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #1a5fb4;
+        }
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+    </style>
+<style>
+        .char-tooltip {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: max-content;
+            max-width: 300px;
+            background: #1a4f72;
+            color: white;
+            padding: 12px 15px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            text-align: left;
+            white-space: normal;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(26, 79, 114, 0.3);
+            line-height: 1.5;
+        }
+        td:hover .char-tooltip {
+            display: block;
+        }
+        .lesson-badge {
+            display: inline-block;
+            background: #e6f2ff;
+            color: #1a4f72;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-left: 5px;
+        }
+
+        /* Стили для правой фигурной скобки, объединяющей строки справа */
+        .math-example {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            font-size: 0.95em;
+        }
+        .math-content {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            margin-right: 12px; /* Отступ между текстом и скобкой */
+        }
+        .math-content .example {
+            margin: 2px 0;
+            white-space: pre; /* Сохраняем пробелы */
+        }
+        .math-brace {
+            font-size: 2em; /* Большая скобка */
+            line-height: 0.7;
+            color: #1a4f72;
+            font-family: monospace;
+            font-weight: bold;
+            margin: 0;
+        }
+        .math-caption {
+            margin-left: 15px;
+            font-style: italic;
+            color: #1a4f72;
+        }
+    </style>
+</head>
+<body>
+<h1>УРОК 21</h1>
+<!-- ТАБЛИЦА ТЕКСТ УРОКА -->
+<div class="text">
+<h2>Lesson Text</h2>
+<table class="oracle-table" id="oracleTable"></table>
+</div>
+<div style="text-align: center; margin: 20px 0;">
+<label class="toggle-switch">
+<input id="fontToggle" type="checkbox"/>
+<span class="slider"></span>
+</label>
+<span id="toggleLabel" style="margin-left: 10px; font-family: 'Segoe UI', sans-serif; color: #333;">
+        Обычный вид
+    </span>
+</div>
+<script>
+    // Данные текста урока 21 (по строкам из PDF)
+const lessonText = [
+    "秦公曰丕顯朕皇祖受命十又二公不",
+    "墜在下嚴恭受天命保業厥秦事蠻夏",
+    "曰余雖小子穆穆秉明德叡敷明刑虔",
+    "敬朕祀以受多福協和萬民夙夕烈烈",
+    "恒恒萬姓是敕咸畜百辟胤士文武鎮",
+    "靜不廷柔變百邦于秦執事作淑和鐘",
+    "晉公曰我皇祖唐公膺受大命左右武",
+    "王薄伐百蠻廣治四方至于大廷莫不",
+    "來王公曰余唯今小子敢帥刑先王秉",
+    "德智變萬邦余咸畜俊士保辥王國"
+];
+    // Функция для создания таблицы
+    function createOracleTable() {
+        const table = document.getElementById('oracleTable');
+        // Создаём строку с номерами колонок
+        const headerRow = document.createElement('tr');
+        const emptyCell = document.createElement('td');
+        emptyCell.className = 'line-num';
+        headerRow.appendChild(emptyCell);
+        for (let i = 1; i <= 15; i++) {
+            const th = document.createElement('td');
+            th.className = 'col-num';
+            th.textContent = i;
+            headerRow.appendChild(th);
+        }
+        table.appendChild(headerRow);
+
+        // Создаём строки с текстом
+        for (let i = 0; i < lessonText.length; i++) {
+            const row = document.createElement('tr');
+            const lineNumCell = document.createElement('td');
+            lineNumCell.className = 'line-num';
+            lineNumCell.textContent = i + 1;
+            row.appendChild(lineNumCell);
+
+            const chars = Array.from(lessonText[i].replace(/\s+/g, ' ')).filter(ch => ch.trim() !== '');
+            for (let j = 0; j < 15; j++) {
+                const td = document.createElement('td');
+                if (j < chars.length) {
+                    const char = chars[j];
+                    td.textContent = char;
+                    if (charData[char]) {
+                        const tooltip = document.createElement('div');
+                        tooltip.className = 'char-tooltip';
+                        tooltip.innerHTML = `
+                            <strong>${char}</strong> <em>${charData[char].pinyin}</em><br>
+                            ${charData[char].meaning}<br>
+                            <span class="lesson-badge">Урок ${charData[char].lesson}</span>
+                        `;
+                        td.appendChild(tooltip);
+                    }
+                }
+                row.appendChild(td);
+            }
+            table.appendChild(row);
+        }
+    }
+
+    // Инициализация таблицы при загрузке страницы
+    document.addEventListener('DOMContentLoaded', createOracleTable);
+</script>
+<!-- КОНЕЦ ТАБЛИЦЫ ТЕКСТ УРОКА -->
+<!-- ГРАММАТИЧЕСКИЙ КОММЕНТАРИЙ -->
+<div class="grammar">
+<h2>GRAMMAR COMMENTARY</h2>
+<h3>21.1. The function word 雖 suī</h3>
+<p class="original">
+In the late pre-classical language, the relationship between the main clause and the subordinate clause is first formalized grammatically. The function word 雖 suī "although" becomes the formal indicator of this relationship. It is placed before the predicate of the subordinate clause: <span class="example">余 雖 小子, ... yú suī xiăo zǐ, ...</span> "Although I am a small child, I..."
+<br/><br/>
+The functional phrase 雖則 suī zé is also used: <span class="example">童子佩觽, 雖則佩觽... tóng zǐ pèi xī, suī zé pèi xī, ...</span> "The boy adorned his belt with a bone needle. Even if he adorned his belt with a bone needle—did he..."*
+<br/><br/>
+<span style="font-size: 0.85em;">* Shijing. Moscow, 1957. P. 78.</span>
+</p>
+<h3>21.2. The Evolution of the Complement with a Time Meaning
+<p class="original">
+In Archaic and Early Preclassical Chinese, the complement denoting the moment of an action, in its prepositionless form, usually precedes the subject, and with a preposition, can be moved to a position before the predicate.
+<br/><br/>
+In Late Preclassical Chinese, the grammatical properties of this complement begin to change. It can now preposition the predicate even in its prepositionless form, which was previously completely impossible: <span class="example">余 今 小子 yú jīn xiăo zǐ</span> "I am now a small child."
+<br/><br/>
+It should be noted, however, that in Late Preclassical Chinese, the process of changing the properties of this sentence part was not yet complete. Therefore, for example, in the Analects (a work dating from the early part of the Early Classical Period), the object denoting time appears in two forms: the old form, which requires a preposition in prepositional relation to the predicate, and the new form, which omits the preposition in the same position.
+<br/><br/>
+Later, this type of object completely loses the ability to take a preposition, although it can still occupy both positions—before the subject and the predicate.
+</p>
+<h3>21.3. Direct Object Inversion</h3>
+<p class="original">
+In the Late Preclassical period, changes are observed in emphatic constructions, which could logically emphasize any part of a sentence. This is related to a change in the meaning of the function word 唯 wéi. While previously it had no significant meaning and served solely to formalize the inversion of a particular part of the sentence, it now gradually acquires the restrictive meaning of "only" or "merely."
+<br/><br/>
+Therefore, for inversion of a direct object in cases where the construction should not have a restrictive meaning, a new function word, 是 shì, is used to formalize the inversion. Unlike 唯 wéi, 是 shì is placed not before, but after the object: <span class="example">善人 是 富 shàn rén shì fù</span> "to enrich good people"; <span class="example">萬 姓 是 敕 wàn xìng shì chì</span> "to command ten thousand clans."
+<br/><br/>
+It should be emphasized that the restrictive meaning of 唯 wéi is only just beginning to take shape in late pre-classical texts, and old emphatic constructions can be found in them.
+</p>
+<h3>21.4. The Definitive Pronoun 莫 mò</h3>
+<p class="original">
+When it is necessary to emphasize that none of the persons or objects denoted by the subject performs the action expressed by the predicate, in Old Chinese of the late preclassical period, the pronoun 莫 mò "nobody" is used.
+<br/><br/>
+Note that with this definer pronoun in a sentence, no negation is required; when combined with negation, 莫 mò takes on the meaning "all": <span class="example">民 莫 不 逸, 我 獨 不 敢 休 mín mò bù yì, wǒ dú bù găn xīu</span> "All people have rest and laughter; "I dare not sigh, alone of all."*.
+<br/><br/>
+The definitive pronoun 莫 mò always follows the subject. The subject can be omitted: <span class="example">我 心 傷 悲, 莫 知 我 哀 wǒ xīn shāng bēi mò zhī wǒ āi</span> "The heart is wounded by sorrow; no one, they say, will know how a soldier suffers."**.
+<br/><br/>
+<span style="font-size: 0.85em;">* Shijing. P. 254.</span><br/>
+<span style="font-size: 0.85em;">** Ibid. P. 209.</span>
+</p>
+<h3>21.5. Features of Objects with the Preposition 以 yǐ</h3>
+<p class="original">
+Prepositions in Old Chinese can be divided into several groups. A distinctive feature of the group of prepositions that includes 以 yǐ (the same group also includes, for example, the preposition 眔 dà; see 18.2) is the following.
+<br/><br/>
+If there is a context, and it is already known which object is being discussed, an indirect object formed by a preposition, in cases where it comes before the predicate, can be omitted and its function is performed by this preposition alone: ​​<span class="example">敬 朕 祀, 以 受 多 福 jìng zhèn sì, yǐ shòu duō fú</span> "treat my sacrifices with respect and with their help receive much happiness."
+</p>
+</h3></div>
+<h2>СПИСОК СЛОВ УРОКА</h2>
+<div class="char-list"></div>
+<script>
+    // Укажи номер урока здесь
+    const LESSON = parseInt((window.location.pathname.match(/\/lesson(\d+)(?:\/|$)/) || [])[1] || '1');
+
+    // Находим все иероглифы этого урока из charData
+    const lessonChars = Object.entries(charData)
+        .filter(([char, data]) => data.lesson === LESSON)
+        .sort(([charA, dataA], [charB, dataB]) => {
+            // Сортировка по пиньиню (опционально)
+            return dataA.pinyin.localeCompare(dataB.pinyin, 'zh');
+        });
+
+    // Получаем контейнер
+    const charList = document.querySelector('.char-list');
+
+    // Очищаем (на всякий случай)
+    charList.innerHTML = '';
+
+    // Генерируем элементы
+    lessonChars.forEach(([char, data]) => {
+        const item = document.createElement('div');
+        item.className = 'char-item';
+
+        item.innerHTML = `
+            <span>${char}<span class="inline-pinyin">${data.pinyin}</span></span>
+            <div class="char-tooltip">${data.meaning}</div>
+        `;
+
+        charList.appendChild(item);
+    });
+</script>
+
+<div class="lexicon">
+<h2>LEXICAL COMMENTARY</h2>
+<h3>21.A. The Twelve Gongs of the Qin Kingdom</h3>
+<p class="original">
+The Qin Kingdom arose much later than all the other major hereditary domains of the Zhuhou. It was formed during the Zhou capital's eastward relocation. Emperor Ping officially granted the Qin tribal leader the title of Gong and tasked him with driving back the nomads, whose attacks had nearly brought down the Zhou dynasty. Initially, Qin was located in the eastern part of modern-day Gansu Province, but then, around the middle of the 5th century BC, it expanded its territory eastward and occupied the lands where the Zhou capital had stood before the relocation.
+<br/><br/>
+The first ruler of Qin was Emperor Xiangong. The author of the bell inscription mentions that this kingdom was ruled by 12 Gongs. Based on this, we can conclude that the bell was cast by the thirteenth ruler of this kingdom, that is, Jing Gong (576–537 BC).
+</p>
+<h3>21.B. Tang Gong of the Jin Kingdom</h3>
+<p class="original">
+The Jin kingdom, unlike Qin, was one of the oldest, established immediately after the Zhou conquest. One of Wu Wang's closest relatives, who assisted him in the campaign against Yin, was granted a fief in Tang (in the territory of modern Shanxi Province). His son changed the name of the kingdom to Jin.
+</p>
+<h3>21.B. Mán and Xià</h3>
+<p class="original">
+At the end of the first half of the first millennium BC. The process of ethnic consolidation among the populations of several ancient Chinese kingdoms located along the middle reaches of the Yellow River intensified. The outward manifestation of this process was the gradual formation of an ethnic identity among the ancient Chinese.
+<br/><br/>
+While previously the Yin and Zhou people divided surrounding tribes into two categories ("friends" and "foes") solely based on political affiliation (recognition of the supreme ruler's authority), now the commonality of origin and cultural unity came to the fore. The ancient Chinese began to refer to themselves as 夏 xià, 諸夏 zhū xià, or 華夏 huá xià, and to refer to foreigners who differed from them in language and culture with terms close in meaning to the ancient Greek word for "barbarian": 蠻 mán, 夷 yí, 戎 róng, 狄 dí.
+<br/><br/>
+In addition, the general term for barbarians 百蠻 băi mán "one hundred categories of barbarians" was also used.
+</p>
+</div>
+<div class="assignment">
+<h2>ASSIGNMENT FOR INDEPENDENT STUDY</h2>
+<ol>
+<li>Rewrite the text and add punctuation.</li>
+<li>Perform a grammatical analysis of the text.</li>
+<li>Translate the text into Russian.</li>
+</ol>
+</div>
+<div class="footer">
+Textbook: V. A. Kryukov - Archaic Old Chinese.<br>
+Restored using OCR, preserving the author's style and adding pinyin.<br>
+All characters are from Lessons 1–21, or from cyclic characters (甲子 – 癸亥).
+</br></br></div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggle = document.getElementById('fontToggle');
+        const label = document.getElementById('toggleLabel');
+        const styleSheet = document.getElementById('2change');
+
+        const normalCSS = `
+            .oracle-table {
+                border-collapse: collapse;
+                margin: 20px auto;
+                font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+                font-size: 1.3em;
+                table-layout: fixed;
+                width: 95%;
+                max-width: 1200px;
+            }
+            .oracle-table td {
+                padding: 6px 8px;
+                border: 1px solid #d4d4d4;
+                text-align: center;
+                position: relative;
+                word-break: keep-all;
+                white-space: nowrap;
+            }
+            .line-num, .col-num {
+                background-color: #f0f4f8;
+                color: #1a4f72;
+                font-weight: bold;
+                font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+                font-size: 0.85em;
+                white-space: nowrap;
+            }
+        `;
+
+        const oracleCSS = `
+            .oracle-table {
+                border-collapse: collapse;
+                margin: 20px auto;
+                font-family: 'Jiaguwen', 'Noto Serif CJK SC', 'KaiTi', serif;
+                font-size: 1.3em;
+                table-layout: fixed;
+                width: 95%;
+                max-width: 1200px;
+            }
+            .oracle-table td {
+                padding: 6px 8px;
+                border: 1px solid #d4d4d4;
+                text-align: center;
+                position: relative;
+                word-break: keep-all;
+                white-space: nowrap;
+            }
+            .line-num, .col-num {
+                background-color: #f0f4f8;
+                color: #1a4f72;
+                font-weight: bold;
+                font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+                font-size: 0.85em;
+                white-space: nowrap;
+            }
+        `;
+
+        styleSheet.textContent = normalCSS;
+
+        toggle.addEventListener('change', function () {
+            if (toggle.checked) {
+                styleSheet.textContent = oracleCSS;
+                label.textContent = 'Оракульный вид';
+            } else {
+                styleSheet.textContent = normalCSS;
+                label.textContent = 'Обычный вид';
+            }
+        });
+    });
+</script>
+</body>
+<script id="help" src="../help.js"></script>
+</html>

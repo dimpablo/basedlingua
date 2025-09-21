@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<script src="./../dictionary.js"></script>
+<meta charset="utf-8"/>
+<title>Урок 12 — Древнекитайский язык по Крюкову</title>
+<style>
+        body {
+            font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+            line-height: 1.8;
+            margin: 50px auto;
+            background-color: #fbf8f0;
+            color: #2c3e50;
+            max-width: 1000px;
+            padding: 0 20px;
+        }
+        h1, h2, h3 {
+            color: #1a4f72;
+            font-weight: normal;
+            letter-spacing: 0.5px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.8em;
+            border-bottom: 2px solid #1a4f72;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 1.5em;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin: 40px 0 20px;
+        }
+        h3 {
+            font-size: 1.2em;
+            color: #2c3e50;
+            border-bottom: none;
+            margin-top: 30px;
+        }
+        .original {
+            background-color: #f0f4f8;
+            padding: 18px 20px;
+            border-left: 6px solid #1a4f72;
+            font-size: 1.08em;
+            line-height: 1.6;
+            border-radius: 0 8px 8px 0;
+        }
+        .text, .grammar, .lexicon, .assignment {
+            margin-bottom: 45px;
+        }
+        .footer {
+            font-size: 0.85em;
+            color: #777;
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px dashed #ccc;
+            line-height: 1.4;
+        }
+        .example {
+            display: block;
+            margin: 8px 0 8px 15px;
+            font-family: "Courier New", monospace;
+            font-size: 0.95em;
+            color: #1a4f72;
+        }
+        ol {
+            line-height: 1.8;
+        }
+
+        /* === Интерактивные подсказки для иероглифов === */
+        .char-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .char-item {
+            position: relative;
+            display: inline-block;
+            background: #f0f4f8;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+            font-size: 1.1em;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+
+        .char-item:hover {
+            background: #e6f2ff;
+        }
+
+        .char-item > span {
+            cursor: help;
+        }
+
+        .inline-pinyin {
+            font-size: 0.85em;
+            color: #555;
+            margin-left: 4px;
+            font-style: italic;
+        }
+
+        .char-tooltip {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: max-content;
+            max-width: 260px;
+            background: #1a4f72;
+            color: white;
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            text-align: left;
+            white-space: normal;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(26, 79, 114, 0.3);
+            line-height: 1.5;
+            pointer-events: none;
+        }
+
+        .char-item:hover .char-tooltip {
+            display: block;
+        }
+    </style>
+<style>
+        @font-face {
+            font-family: 'Jiaguwen';
+            src: url('../jiaguwen.ttf') format('truetype');
+            font-style: normal;
+            font-weight: normal;
+            font-display: swap;
+        }
+    </style>
+<style id="2change">
+        .oracle-table {
+            border-collapse: collapse;
+            margin: 20px auto;
+            font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+            font-size: 1.3em;
+            table-layout: fixed;
+            width: 95%;
+            max-width: 1200px;
+        }
+        .oracle-table td {
+            padding: 6px 8px;
+            border: 1px solid #d4d4d4;
+            text-align: center;
+            position: relative;
+            word-break: keep-all;
+            white-space: nowrap;
+        }
+        .line-num, .col-num {
+            background-color: #f0f4f8;
+            color: #1a4f72;
+            font-weight: bold;
+            font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+            font-size: 0.85em;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+<h1>УРОК 12</h1>
+<!-- ТАБЛИЦА ТЕКСТ УРОКА -->
+<div class="text">
+<h2>Text</h2>
+<table class="oracle-table" id="oracleTable"></table>
+</div>
+<div style="display: flex; justify-content: center; align-items: center; margin: 20px 0;">
+<label class="toggle-switch">
+<input id="fontToggle" type="checkbox"/>
+<span class="slider"></span>
+</label>
+<span id="toggleLabel" style="margin-left: 10px; font-family: 'Segoe UI', sans-serif; color: #333;">
+        Обычный вид
+    </span>
+</div>
+<style>
+    .toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 30px;
+    }
+    .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: .4s;
+        border-radius: 30px;
+    }
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 22px;
+        width: 22px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: .4s;
+        border-radius: 50%;
+    }
+    input:checked + .slider {
+        background-color: #1a5fb4;
+    }
+    input:checked + .slider:before {
+        transform: translateX(30px);
+    }
+</style>
+<style>
+    .char-tooltip {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: max-content;
+        max-width: 300px;
+        background: #1a4f72;
+        color: white;
+        padding: 12px 15px;
+        border-radius: 6px;
+        font-size: 0.9em;
+        text-align: left;
+        white-space: normal;
+        z-index: 100;
+        box-shadow: 0 4px 12px rgba(26, 79, 114, 0.3);
+        line-height: 1.5;
+    }
+    td:hover .char-tooltip {
+        display: block;
+    }
+    .lesson-badge {
+        display: inline-block;
+        background: #e6f2ff;
+        color: #1a4f72;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.8em;
+        margin-left: 5px;
+    }
+</style>
+<script>
+    // Данные текста урока 12 (по строкам из PDF)
+    const lessonText = [
+        "唯王正月辰在庚寅王若曰录伯冬自",     
+        "乃祖考有勳于周邦佑闢四方惠弘天",      
+        "命汝肇不墜余賜汝秬鬯一卣金車录",       
+        "伯冬敢拜手稽首對揚天子丕顯休用",      
+        "作朕皇考釐王寳尊簋余其永萬年寳",       
+        "用子子孫孫其帥型受茲休",               
+        "己未王令仲致歸羌伯貂裘王若曰羌",       
+        "伯朕丕顯祖文武膺受天命乃祖克弼",       
+        "先王翼自他邦有席于大命我亦弗曠",       
+        "享邦賜汝貂裘"                          
+    ];
+
+    // Функция для создания таблицы
+    function createOracleTable() {
+        const table = document.getElementById('oracleTable');
+        // Создаём строку с номерами колонок
+        const headerRow = document.createElement('tr');
+        const emptyCell = document.createElement('td');
+        emptyCell.className = 'line-num';
+        headerRow.appendChild(emptyCell);
+        for (let i = 1; i <= 15; i++) {
+            const th = document.createElement('td');
+            th.className = 'col-num';
+            th.textContent = i;
+            headerRow.appendChild(th);
+        }
+        table.appendChild(headerRow);
+
+        // Создаём строки с текстом
+        for (let i = 0; i < lessonText.length; i++) {
+            const row = document.createElement('tr');
+            const lineNumCell = document.createElement('td');
+            lineNumCell.className = 'line-num';
+            lineNumCell.textContent = i + 1;
+            row.appendChild(lineNumCell);
+
+            const chars = Array.from(lessonText[i]);
+            for (let j = 0; j < 15; j++) {
+                const td = document.createElement('td');
+                if (j < chars.length && chars[j].trim() !== '') {
+                    const char = chars[j];
+                    td.textContent = char;
+                    if (charData[char]) {
+                        const tooltip = document.createElement('div');
+                        tooltip.className = 'char-tooltip';
+                        tooltip.innerHTML = `
+                            <strong>${char}</strong> <em>${charData[char].pinyin}</em><br>
+                            ${charData[char].meaning}<br>
+                            <span class="lesson-badge">Урок ${charData[char].lesson}</span>
+                        `;
+                        td.appendChild(tooltip);
+                    }
+                }
+                row.appendChild(td);
+            }
+            table.appendChild(row);
+        }
+    }
+
+    // Инициализация таблицы при загрузке страницы
+    document.addEventListener('DOMContentLoaded', createOracleTable);
+</script>
+<!-- КОНЕЦ ТАБЛИЦЫ ТЕКСТ УРОКА -->
+<!-- ГРАММАТИЧЕСКИЙ КОММЕНТАРИЙ -->
+<div class="grammar">
+<h2>GRAMMAR COMMENT</h2>
+<h3>12.1. Text Division Techniques (continued)
+<p class="original">
+One of the specific techniques for dividing Zhou inscriptions into sentences is related to the fact that these types of texts often contain rhyming parts. By determining which words rhyme with each other, one can find the boundary between
+the end of one sentence and the beginning of another, since the sentence here coincides with the line of poetry.
+</p>
+<p class="original">
+Of course, it should be taken into account that the modern reading of signs
+is quite different from the ancient one. </p>
+<p class="original">
+In our text, the phrases <span class="example">有勳于周邦 yǒu xūn yú zhōu bāng</span>, <span class="example">佑辟四方 yòu pì sì fāng</span>, <span class="example">惠弘天命 huì hóng tiān mìng</span> rhyme.
+</p>
+<h3>12.2. Modal Predicatives</h3>
+<p class="original">
+In pre-classical Chinese, a group of notional words appears, used exclusively in a predicative function—the so-called <strong>modal predicatives</strong>. Like all other words in the predicative function, they can be negated: <strong>不 bù</strong>, <strong>弗 fú</strong>, and others. However, the specificity of modal predicatives is that they cannot express actions or states on their own and therefore require another predicative after them.
+</p>
+<p class="original">
+The main predicative immediately follows the modal.
+</p>
+<p class="original">
+The total number of modal predicatives in the early preclassical language is small. In authentic texts from the Zhou period, almost only two of them are found: <strong>克 kè</strong> "to be able", "to be able" and <strong>敢 gǎn</strong> "to dare", "to resolve":
+<br/><br/>
+<span class="example">乃祖考克左右先王 nǎi zǔ kǎo kè zuǒ yòu xiān wáng</span> "Your grandfather and father were able to help the late rulers."<br/>
+<span class="example">汝勿敢不善 rǔ wù gǎn bù shàn</span> "Don't dare do badly!"
+</p>
+<p class="original">
+The notional word <strong>欲 yù</strong> "to want" should apparently be distinguished from modal predicatives in the early preclassical language. It can function both predicatively and nominally. On the other hand, <strong>欲 yù</strong> can refer not only to a predicative, but also to an entire embedded clause:
+<br/><br/>
+<span class="example">欲弗作先王忧 yù fú zuò xiān wáng yōu</span> "I want [us] not to cause trouble to the deceased rulers."
+</p>
+<h3>12.3. Aspect-Tense Markers in Predicatives</h3>
+<p class="original">
+A characteristic feature of the archaic Old Chinese language is its complete lack of any
+grammatical means of expressing the aspect and tense of a predicative.
+</p>
+<p class="original">
+Let's recall a typical Yin inscription in this regard: <span class="example">翌甲子其雨, 甲子允雨 yì jiǎ zǐ qí yǔ, jiǎ zǐ yǔn yǔ</span> "Will it rain
+on the next Jia Zi day? On Jia Zi day, it indeed rained
+." </p>
+<p class="original">
+The first sentence refers to an action expected in the future, while the second refers to an already accomplished fact. However, these differences between them are not formally expressed and are determined solely by context.
+</p>
+<p class="original">
+Special function words that serve as aspect-tense markers first appear in the Early Preclassical language. Moreover, the Old Chinese language of this period is characterized by the optionality of aspect-tense markers. They
+only clarify the characteristics of the action expressed by the predicate and, under certain conditions, can be omitted.
+</p>
+<p class="original">
+Aspect-tense markers are placed immediately before the predicate to which they refer. </p>
+<p class="original">
+One of the markers of this gender, characteristic of pre-classical languages, is <strong>肇 zhào</strong>. It indicates that the action or state expressed by the predicate has just begun and is not yet
+completed:
+<br/><br/>
+<span class="example">肇從父征 zhào cóng fù zhēng</span> "Just set out
+on a campaign following my father."<br/>
+<span class="example">今余肇令汝 jīn yú zhào lìng rǔ</span>
+<ol>
+<li>Copy the text and underline the words in it that could rhyme. Determine whether they always appear at the end of a sentence.</li>
+<li>Translate the text into Russian.</li>
+<li>Translate the following sentences into Old Chinese:
+<ol type="1">
+<li>I dare not accept this precious ritual vessel.</li>
+<li>The king will grant you the scarlet loincloth the following day.</li>
+<li>His son has just taken over the management of the forest lands.</li>
+<li>Your grandfather was able to enter his hall.</li>
+</ol>
+</li>
+</ol>
+</p></h3></div>
+<h2>СПИСОК СЛОВ УРОКА</h2>
+<div class="char-list"></div>
+<script>
+    // Укажи номер урока здесь
+    const LESSON = parseInt((window.location.pathname.match(/\/lesson(\d+)(?:\/|$)/) || [])[1] || '1');
+
+    // Находим все иероглифы этого урока из charData
+    const lessonChars = Object.entries(charData)
+        .filter(([char, data]) => data.lesson === LESSON)
+        .sort(([charA, dataA], [charB, dataB]) => {
+            // Сортировка по пиньиню (опционально)
+            return dataA.pinyin.localeCompare(dataB.pinyin, 'zh');
+        });
+
+    // Получаем контейнер
+    const charList = document.querySelector('.char-list');
+
+    // Очищаем (на всякий случай)
+    charList.innerHTML = '';
+
+    // Генерируем элементы
+    lessonChars.forEach(([char, data]) => {
+        const item = document.createElement('div');
+        item.className = 'char-item';
+
+        item.innerHTML = `
+            <span>${char}<span class="inline-pinyin">${data.pinyin}</span></span>
+            <div class="char-tooltip">${data.meaning}</div>
+        `;
+
+        charList.appendChild(item);
+    });
+</script>
+<!-- ЛЕКСИЧЕСКИЙ КОММЕНТАРИЙ -->
+<div class="lexicon">
+<h2>ЛЕКСИЧЕСКИЙ КОММЕНТАРИЙ</h2>
+<h3>12.А. Копирование образцов</h3>
+<p class="original">
+        Одним из важнейших социально-этических представлений эпо-
+        хи Чжоу, которые в несколько трансформированном виде легли в основу возникшего несколькими веками позже конфуцианского
+        учения, было восприятие традиции, следование уже существую-
+        щему образцу. Не активное творчество, а копирование того, что уже сделано предками, — таков основной идеологический лозунг
+        господствующего слоя западночжоуского общества.
+    </p>
+<p class="original">
+        Для правителя таким идеальным образцом была деятельность «прежних ванов». Каждый представитель знати в свою очередь считал высшей добродетелью подражание своим собственным
+        прародителям, «не смея не брать за образец своих усопших пред-ков».
+    </p>
+<h3>12.Б. Термины родства</h3>
+<p class="original">
+        Система терминов родства, зафиксированная в западночжоу-ских надписях, в целом совпадает с иньской. Единственным суще-
+        ственным отличием раннечжоуской системы от иньской является термин <strong>考 kăo</strong>, соответствующий <strong>父 f ù</strong> («отец», «брат отца»), но
+        применяемый только по отношению к умершему родственнику.
+    </p>
+<p class="original">
+        Словосочетание <strong>祖考 zǔ kăo</strong> обычно имеет значение «усопшие
+        предки».
+    </p>
+<p class="original">
+        Напомним, что <strong>祖 zǔ</strong>, как и <strong>孫 sūn</strong>, обозначали не только деда
+        и внука, но и родственников более отдаленных поколений.
+    </p>
+<h3>12.В. Сын Неба <strong>天子 tiān zǐ</strong></h3>
+<p class="original">
+        Чжоуские ваны присвоили себе титул «Сын Неба», подчерки-вающий священное происхождение власти правителя и его исклю-
+        чительное положение среди смертных. Этот титул упоминается в надписях начиная с середины X в. до н. э. Одновременно с этим
+        чжоуские ваны по-прежнему использовали и прежний иньский ти-тул правителя «Я, единственный среди людей»).
+    </p>
+<h3>12.Г. «Металлические колесницы»</h3>
+<p class="original">
+        Чжоуские боевые колесницы по своей конструкции были пол-
+        ностью аналогичны иньским. Они, как и раньше, изготавливались из дерева, но ряд наиболее важных деталей требовал применения
+        металла. Без бронзовых втулок, например, колесница была бы не-долговечной.
+    </p>
+<div style="text-align: center; margin: 20px 0;">
+<img alt="Колесо чжоуской повозки с металлической втулкой" class="original" src="./img/20.jpg" style="border: none; padding: 0; max-width: 100%;"/>
+<p class="footer" style="margin-top: 8px; border-top: none; padding-top: 0;">Колесо чжоуской повозки с металлической втулкой</p>
+</div>
+<p class="original">
+        Поэтому в чжоуских надписях часто упоминается о том, что правитель дарил своим подчиненным отлитые из бронзы детали
+        колесниц, а сами эти боевые повозки нередко называются «метал-лическими».
+    </p>
+</div>
+<!-- ЗАДАНИЕ ДЛЯ САМОСТОЯТЕЛЬНОЙ РАБОТЫ -->
+<div class="assignment">
+<h2>ЗАДАНИЕ ДЛЯ САМОСТОЯТЕЛЬНОЙ РАБОТЫ</h2>
+<ol>
+<li>Спишите текст и подчеркните в нем слова, которые могут рифмо-ваться. Определите, во всех ли случаях они стоят в конце предло-жения.</li>
+<li>Переведите текст на русский язык.</li>
+<li>Переведите на древнекитайский следующие предложения:
+            <ol type="1">
+<li>Я не осмеливаюсь принять этот драгоценный ритуальный сосуд.</li>
+<li>Алую набедренную повязку ван пожалует тебе на следующий день.</li>
+<li>Его сын только что начал управлять лесными угодьями.</li>
+<li>Твой дед смог войти в его зал.</li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="footer">
+Textbook: V. A. Kryukov - Archaic Old Chinese.<br/>
+Restored using OCR, preserving the author's style and adding pinyin.<br/>
+All characters are from the texts of Lessons 1–12, or from cyclic signs (甲子 – 癸亥).
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggle = document.getElementById('fontToggle');
+        const label = document.getElementById('toggleLabel');
+        const styleSheet = document.getElementById('2change');
+
+        const normalCSS = `
+            .oracle-table {
+                border-collapse: collapse;
+                margin: 20px auto;
+                font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+                font-size: 1.3em;
+                table-layout: fixed;
+                width: 95%;
+                max-width: 1200px;
+            }
+            .oracle-table td {
+                padding: 6px 8px;
+                border: 1px solid #d4d4d4;
+                text-align: center;
+                position: relative;
+                word-break: keep-all;
+                white-space: nowrap;
+            }
+            .line-num, .col-num {
+                background-color: #f0f4f8;
+                color: #1a4f72;
+                font-weight: bold;
+                font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+                font-size: 0.85em;
+                white-space: nowrap;
+            }
+        `;
+
+        const oracleCSS = `
+            .oracle-table {
+                border-collapse: collapse;
+                margin: 20px auto;
+                font-family: 'Jiaguwen', 'Noto Serif CJK SC', 'KaiTi', serif;
+                font-size: 1.3em;
+                table-layout: fixed;
+                width: 95%;
+                max-width: 1200px;
+            }
+            .oracle-table td {
+                padding: 6px 8px;
+                border: 1px solid #d4d4d4;
+                text-align: center;
+                position: relative;
+                word-break: keep-all;
+                white-space: nowrap;
+            }
+            .line-num, .col-num {
+                background-color: #f0f4f8;
+                color: #1a4f72;
+                font-weight: bold;
+                font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+                font-size: 0.85em;
+                white-space: nowrap;
+            }
+        `;
+
+        styleSheet.textContent = normalCSS;
+
+        toggle.addEventListener('change', function () {
+            if (toggle.checked) {
+                styleSheet.textContent = oracleCSS;
+                label.textContent = 'Оракульный вид';
+            } else {
+                styleSheet.textContent = normalCSS;
+                label.textContent = 'Обычный вид';
+            }
+        });
+    });
+</script>
+</body>
+<script id="help" src="../help.js"></script>
+</html>

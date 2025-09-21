@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<script src="./../dictionary.js">//dictionary.js содержит переменную charData используемую для подсказок таблицы! НЕ УДАЛЯТЬ! КРИТИЧЕСКИ ВАЖЕН!</script>
+<meta charset="utf-8"/>
+<title>Урок 30 — Древнекитайский язык по Крюкову</title>
+<style>
+        body {
+            font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+            line-height: 1.8;
+            margin: 50px auto;
+            background-color: #fbf8f0;
+            color: #2c3e50;
+            max-width: 1000px;
+            padding: 0 20px;
+        }
+        h1, h2, h3 {
+            color: #1a4f72;
+            font-weight: normal;
+            letter-spacing: 0.5px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.8em;
+            border-bottom: 2px solid #1a4f72;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 1.5em;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin: 40px 0 20px;
+        }
+        h3 {
+            font-size: 1.2em;
+            color: #2c3e50;
+            border-bottom: none;
+            margin-top: 30px;
+        }
+        .original {
+            background-color: #f0f4f8;
+            padding: 18px 20px;
+            border-left: 6px solid #1a4f72;
+            font-size: 1.08em;
+            line-height: 1.6;
+            border-radius: 0 8px 8px 0;
+        }
+        .text, .grammar, .lexicon, .assignment {
+            margin-bottom: 45px;
+        }
+        .footer {
+            font-size: 0.85em;
+            color: #777;
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px dashed #ccc;
+            line-height: 1.4;
+        }
+        .example {
+            display: block;
+            margin: 8px 0 8px 15px;
+            font-family: "Courier New", monospace;
+            font-size: 0.95em;
+            color: #1a4f72;
+        }
+        ol {
+            line-height: 1.8;
+        }
+
+        /* === Интерактивные подсказки для иероглифов === */
+        .char-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .char-item {
+            position: relative;
+            display: inline-block;
+            background: #f0f4f8;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+            font-size: 1.1em;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+
+        .char-item:hover {
+            background: #e6f2ff;
+        }
+
+        .char-item > span {
+            cursor: help;
+        }
+
+        .inline-pinyin {
+            font-size: 0.85em;
+            color: #555;
+            margin-left: 4px;
+            font-style: italic;
+        }
+
+        .char-tooltip {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: max-content;
+            max-width: 260px;
+            background: #1a4f72;
+            color: white;
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            text-align: left;
+            white-space: normal;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(26, 79, 114, 0.3);
+            line-height: 1.5;
+            pointer-events: none;
+        }
+
+        .char-item:hover .char-tooltip {
+            display: block;
+        }
+    </style>
+<style>
+        @font-face {
+            font-family: 'Jiaguwen';
+            src: url('../jiaguwen.ttf') format('truetype');
+            font-style: normal;
+            font-weight: normal;
+            font-display: swap;
+        }
+    </style>
+<style id="2change">
+        .oracle-table {
+            border-collapse: collapse;
+            margin: 20px auto;
+            font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+            font-size: 1.3em;
+            table-layout: fixed;
+            width: 95%;
+            max-width: 1200px;
+        }
+        .oracle-table td {
+            padding: 6px 8px;
+            border: 1px solid #d4d4d4;
+            text-align: center;
+            position: relative;
+            word-break: keep-all;
+            white-space: nowrap;
+        }
+        .line-num, .col-num {
+            background-color: #f0f4f8;
+            color: #1a4f72;
+            font-weight: bold;
+            font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+            font-size: 0.85em;
+            white-space: nowrap;
+        }
+    </style>
+<style>
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 30px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #1a5fb4;
+        }
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+    </style>
+<style>
+        .char-tooltip {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: max-content;
+            max-width: 300px;
+            background: #1a4f72;
+            color: white;
+            padding: 12px 15px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            text-align: left;
+            white-space: normal;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(26, 79, 114, 0.3);
+            line-height: 1.5;
+        }
+        td:hover .char-tooltip {
+            display: block;
+        }
+        .lesson-badge {
+            display: inline-block;
+            background: #e6f2ff;
+            color: #1a4f72;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-left: 5px;
+        }
+
+        /* Стили для правой фигурной скобки, объединяющей строки справа */
+        .math-example {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            font-size: 0.95em;
+        }
+        .math-content {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            margin-right: 12px; /* Отступ между текстом и скобкой */
+        }
+        .math-content .example {
+            margin: 2px 0;
+            white-space: pre; /* Сохраняем пробелы */
+        }
+        .math-brace {
+            font-size: 2em; /* Большая скобка */
+            line-height: 0.7;
+            color: #1a4f72;
+            font-family: monospace;
+            font-weight: bold;
+            margin: 0;
+        }
+        .math-caption {
+            margin-left: 15px;
+            font-style: italic;
+            color: #1a4f72;
+        }
+        .image-container-inline {
+            float: right;
+            margin: 10px 0 10px 15px;
+            text-align: center;
+            max-width: 40%;
+        }
+        .lesson-image-inline {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .image-caption-inline {
+            font-size: 0.85em;
+            color: #555;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+<h1>УРОК 30</h1>
+<!-- ТАБЛИЦА ТЕКСТ УРОКА -->
+<div class="text">
+<h2>Lesson Text</h2>
+<table class="oracle-table" id="oracleTable"></table>
+</div>
+<div style="text-align: center; margin: 20px 0;">
+<label class="toggle-switch">
+<input id="fontToggle" type="checkbox"/>
+<span class="slider"></span>
+</label>
+<span id="toggleLabel" style="margin-left: 10px; font-family: 'Segoe UI', sans-serif; color: #333;">
+    Обычный вид
+  </span>
+</div>
+<style>
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+  }
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 30px;
+  }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  input:checked + .slider {
+    background-color: #1a5fb4;
+  }
+  input:checked + .slider:before {
+    transform: translateX(30px);
+  }
+</style>
+<style>/* Уменьшаем размер для номеров */
+
+/* Tooltip — без изменений */
+.char-tooltip {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: 300px;
+    background: #1a4f72;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    text-align: left;
+    white-space: normal;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(26, 79, 114, 0.3);
+    line-height: 1.5;
+}
+
+td:hover .char-tooltip {
+    display: block;
+}
+
+.lesson-badge {
+    display: inline-block;
+    background: #e6f2ff;
+    color: #1a4f72;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-left: 5px;
+}</style>
+<script>
+
+
+    const lessonText = [
+        "萋兮斐兮|彼譖人者|彼黍離離",
+        "成是貝錦|誰適與謀|彼稷之苗",
+        "彼譖人者|取彼譖人|行邁靡靡",
+        "亦已大甚|投畀豺虎|中心揺揺",
+        "哆兮侈兮|豺虎不食|知我者",
+        "成是南箕|投畀有北|謂我心憂",
+        "彼譖人者|有北不受|不知我者",
+        "誰適與謀|投畀有昊|謂我何求",
+        "緝緝翩翩|謀欲譖人|悠悠蒼天",
+        "謀欲譖人|猗於畝丘|此何人哉",
+        "慎爾言也|寺人孟子|彼黍離離",
+        "謂爾不信|作為此詩|彼稷之穗",
+        "捷捷幡幡|凡百君子|行邁靡靡",
+        "謀欲譖言|敬而聽之|中心如醉",
+        "豈不爾受|____|知我者",
+        "既其女遷|____|謂我心憂",
+        "驕人好好|____|不知我者",
+        "勞人草草|____|謂我何求",
+        "蒼天蒼天|____|悠悠蒼天",
+        "視彼驕人|____|此何人哉"
+    ];
+// Функция для создания таблицы
+function createOracleTable() {
+    const table = document.getElementById('oracleTable');
+    
+    // Создаём строку с номерами колонок
+    const headerRow = document.createElement('tr');
+    
+    // Пустая ячейка для выравнивания с номерами строк
+    const emptyCell = document.createElement('td');
+    emptyCell.className = 'line-num';
+    headerRow.appendChild(emptyCell);
+    
+    // Номера колонок: от 1 до 15
+    for (let i = 1; i <= 14; i++) {
+        const th = document.createElement('td');
+        th.className = 'col-num';
+        th.textContent = i;
+        headerRow.appendChild(th);
+    }
+    table.appendChild(headerRow);
+    
+    // Создаём строки с текстом
+    for (let i = 0; i < lessonText.length; i++) {
+        const row = document.createElement('tr');
+        
+        // Номер строки
+        const lineNumCell = document.createElement('td');
+        lineNumCell.className = 'line-num';
+        lineNumCell.textContent = i + 1;
+        row.appendChild(lineNumCell);
+        
+        // Разбиваем строку на символы
+        const chars = Array.from(lessonText[i]);
+        
+        // Заполняем ячейки для позиций 1–15
+        for (let j = 0; j < 14; j++) {  // Ровно 15 ячеек
+            const td = document.createElement('td');
+            
+            // Если есть символ на этой позиции — ставим его
+            if (j < chars.length && chars[j].trim() !== '') {
+                const char = chars[j];
+                td.textContent = char;
+                
+                if (charData[char]) {
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'char-tooltip';
+                    tooltip.innerHTML = `
+                        <strong>${char}</strong> <em>${charData[char].pinyin}</em><br>
+                        ${charData[char].meaning}<br>
+                        <span class="lesson-badge">Урок ${charData[char].lesson}</span>
+                    `;
+                    td.appendChild(tooltip);
+                }
+            }
+            // Если символа нет — ячейка остаётся пустой (ничего не делаем)
+            row.appendChild(td);
+        }
+        
+        table.appendChild(row);
+    }
+}
+
+// Инициализация таблицы при загрузке страницы
+document.addEventListener('DOMContentLoaded', createOracleTable);
+</script>
+<!-- КОНЕЦ ТАБЛИЦЫ ТЕКСТ УРОКА -->
+<!-- ГРАММАТИЧЕСКИЙ КОММЕНТАРИЙ -->
+<div class="grammar">
+<h2>GRAMMAR COMMENTARY</h2>
+<h3>30.1. The function word 者 zhě</h3>
+<p class="original">
+The function word 者 zhě first appears at the very end of the Late Preclassical Period. It belongs to the same class as 所 suǒ, being a predicative neutralizer.
+<br/><br/>
+However, in its grammatical meaning, as well as in its position relative to the predicative, 者 zhě differs from 所 suǒ.
+<br/><br/>
+者 zhě does not precede the predicative to which it refers, but rather follows it:
+<br/>
+<span class="example">始者不如今 shǐ zhě bù rú jīn</span> "What began cannot be compared to the present time."
+<br/><br/>
+Here 者 zhě neutralizes the predicative meaning of 始 shǐ "to begin."
+<br/><br/>
+<span class="example">桑者閑閑兮 sāng zhě xián xián xī</span> "The mulberry leaf pickers are loitering."
+<br/><br/>
+桑 sāng is a notional word meaning "mulberry tree" or "mulberry leaves." In the sentence above, it is used predicatively to mean "to pick mulberry leaves" and nominalized with the function word 者 zhě, resulting in the noun phrase 桑者 sāng zhě "one who picks mulberry leaves."
+<br/><br/>
+<span class="example">知我者谓我心忧 zhī wǒ zhě wèi wǒ xīn yōu</span> "Those who know me say that my heart is sad."
+<br/><br/>
+Here, the predicative phrase 知我 zhī wǒ "to know me" is neutralized with 者 zhě.
+<br/><br/>
+Thus, if a predicative neutralized with 所 suǒ acquires the meaning of an object, then a similar phrase with 者 zhě corresponds to the subject of the action expressed by the neutralized predicative.
+<br/><br/>
+Compare: <span class="example">人譖我 rén zèn wǒ</span> "people slandered me"; <span class="example">人所譖 rén suǒ zèn</span> "the one slandered by people"; <span class="example">譖我者 zèn wǒ zhě</span> "the one who slandered me".
+<br/><br/>
+Of course, a noun phrase with 者 zhě or 所 suǒ can function in a sentence in any nominal function.
+</p>
+<h3>30.2. The "Empty" Word 兮 xī</h3>
+<p class="original">
+The word 兮 xī is used in poetry and represents a caesura, i.e., it serves to indicate a rhythmic pause. By itself, 兮 xī has no meaning and does not rhyme.
+</p>
+<h3>30.3. Marker of Completeness of Action 已 yǐ</h3>
+<p class="original">
+In its meaning, 已 yǐ corresponds to the earlier 既 jì, denoting the completion of an action expressed by a predicate:
+<br/>
+<span class="example">朋友已譖 péng yǒu yǐ zèn</span> "Friends slandered [each other]."
+</p>
+<h3>30.4. The superlative indicator 甚 shèn</h3>
+<p class="original">
+The function word 甚 shèn indicates a superlative degree of quality and is placed after the corresponding predicative:
+<br/>
+<span class="example">熯大甚 hàn dà shèn</span> "The drought has reached its limit."
+<br/><br/>
+甚 shèn can also be used before a qualitative predicative. In this case, it means "very," "extremely":
+<br/>
+<span class="example">其人甚遠 qí rén shèn yuăn</span> "His master is very far from here."
+</p>
+<h3>30.5. The function word 而 ér (continued)</h3>
+<p class="original">
+In the late preclassical language, 而 ér can link nouns (22.2). Another function of 而 ér is to formalize the coordinating relationship between predicatives. In this case, the predicative that follows 而 ér denotes the main action, and the one preceding it denotes the accompanying action:
+<br/>
+<span class="example">爾還而入, 我心易也 ěr huán ér rù, wǒ xīn yì yě</span> "When you return and enter me, you will fill your heart with such joy."* <br/>
+<span class="example">桑之落矣其黄而隕 sāng zhī luò yǐ qí huáng ér yǔn</span> “But the mulberry leaves dry up, they fall to the ground, yellow”**. 
+<br/><br/>
+<span style="font-size: 0.85em;">* Shijing. P. 268.</span><br/>
+<span style="font-size: 0.85em;">** Ibid. P. 75.</span>
+</p>
+<h3>30.6. The Demonstrative Pronoun 是 shì</h3>
+<p class="original">
+Another demonstrative pronoun characteristic of the late preclassical language is 是 shì. It is synonymous with 此 cǐ both in its function and in the meaning of "this," "this":
+<br/>
+<span class="example">正是四國 zhèng shì sì guó</span> "He put these four states in order."
+<br/>
+<span class="example">成是貝錦 chéng shì bèi jǐn</span> "They wove this brocade with a shell pattern."
+</p>
+<h3>30.7. Anomalous Position of a Pronoun-Expressed Object in a Negative Sentence
+<p class="original">
+In ancient Chinese, there was a rule that a pronoun acting as an object in a negative sentence could not follow the predicate, but always preceded it (5.2; 15.3). This rule only became obsolete in the first centuries of our era.
+<br/><br/>
+However, the Shijing contains a few, very few, exceptions to this rule. We encountered one of them in the text of this lesson: <span class="example">不知我者 bù zhī wǒ zhě</span> "those who do not know me."
+<br/><br/>
+This phenomenon can apparently only be explained by the fact that the modern text of the Shijing contains certain later interpolations, the result of the processing of the text during the Eastern Han period. </p>
+<h3>30.8. The Function Word 哉 zāi</h3>
+<p class="original">
+The word 哉 zāi, which we encountered in the emphatic construction with the inversion of the qualitative predicate (22.3), is also used as a final particle. It is an exclamatory particle and is used primarily in rhetorical questions:
+<br/>
+<span class="example">此何人哉 cǐ hé rén zāi</span> "What kind of people are these?!"
+</p>
+</h3></div>
+<h2>СПИСОК СЛОВ УРОКА</h2>
+<div class="char-list"></div>
+<script>
+    // Укажи номер урока здесь
+    const LESSON = parseInt((window.location.pathname.match(/\/lesson(\d+)(?:\/|$)/) || [])[1] || '1');
+
+    // Находим все иероглифы этого урока из charData
+    const lessonChars = Object.entries(charData)
+        .filter(([char, data]) => data.lesson === LESSON)
+        .sort(([charA, dataA], [charB, dataB]) => {
+            // Сортировка по пиньиню (опционально)
+            return dataA.pinyin.localeCompare(dataB.pinyin, 'zh');
+        });
+
+    // Получаем контейнер
+    const charList = document.querySelector('.char-list');
+
+    // Очищаем (на всякий случай)
+    charList.innerHTML = '';
+
+    // Генерируем элементы
+    lessonChars.forEach(([char, data]) => {
+        const item = document.createElement('div');
+        item.className = 'char-item';
+
+        item.innerHTML = `
+            <span>${char}<span class="inline-pinyin">${data.pinyin}</span></span>
+            <div class="char-tooltip">${data.meaning}</div>
+        `;
+
+        charList.appendChild(item);
+    });
+</script>
+
+<div class="lexicon">
+<h2>LEXICAL COMMENTARY</h2>
+<h3>30.A. Patterned Brocade</h3>
+<p class="original">
+The production of silk fabrics in China dates back to ancient times. The Yin people already knew how to make silk fabrics. Brocades were usually decorated with intricate patterns. Our text refers to "brocade with a pattern of cowrie shells." </p>
+</div>
+<div class="assignment">
+<h2>ASSIGNMENT FOR INDEPENDENT STUDY</h2>
+<ol>
+<li>Perform a grammatical analysis of the text.</li>
+<li>Translate the text into Russian.</li>
+<li>Write down all the function words that first appear in the late preclassical language and recall their meanings.</li>
+<li>Point out the grammatical features of the late preclassical language that distinguish it from the early preclassical language.</li>
+</ol>
+</div>
+<div class="footer">
+Textbook: V. A. Kryukov - Archaic Old Chinese.<br>
+Recovered using OCR, preserving the author's style and adding pinyin.<br>
+All characters are from Lessons 1–30, or from cyclic characters (甲子 – 癸亥).
+</br></br></div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggle = document.getElementById('fontToggle');
+        const label = document.getElementById('toggleLabel');
+        const styleSheet = document.getElementById('2change');
+
+        const normalCSS = `
+            .oracle-table {
+                border-collapse: collapse;
+                margin: 20px auto;
+                font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+                font-size: 1.3em;
+                table-layout: fixed;
+                width: 95%;
+                max-width: 1200px;
+            }
+            .oracle-table td {
+                padding: 6px 8px;
+                border: 1px solid #d4d4d4;
+                text-align: center;
+                position: relative;
+                word-break: keep-all;
+                white-space: nowrap;
+            }
+            .line-num, .col-num {
+                background-color: #f0f4f8;
+                color: #1a4f72;
+                font-weight: bold;
+                font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+                font-size: 0.85em;
+                white-space: nowrap;
+            }
+        `;
+
+        const oracleCSS = `
+            .oracle-table {
+                border-collapse: collapse;
+                margin: 20px auto;
+                font-family: 'Jiaguwen', 'Noto Serif CJK SC', 'KaiTi', serif;
+                font-size: 1.3em;
+                table-layout: fixed;
+                width: 95%;
+                max-width: 1200px;
+            }
+            .oracle-table td {
+                padding: 6px 8px;
+                border: 1px solid #d4d4d4;
+                text-align: center;
+                position: relative;
+                word-break: keep-all;
+                white-space: nowrap;
+            }
+            .line-num, .col-num {
+                background-color: #f0f4f8;
+                color: #1a4f72;
+                font-weight: bold;
+                font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+                font-size: 0.85em;
+                white-space: nowrap;
+            }
+        `;
+
+        styleSheet.textContent = normalCSS;
+
+        toggle.addEventListener('change', function () {
+            if (toggle.checked) {
+                styleSheet.textContent = oracleCSS;
+                label.textContent = 'Оракульный вид';
+            } else {
+                styleSheet.textContent = normalCSS;
+                label.textContent = 'Обычный вид';
+            }
+        });
+    });
+</script>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const table = document.getElementById('oracleTable');
+        if (!table) return;
+
+        const rows = table.querySelectorAll('tr');
+        rows.forEach(row => {
+            const cells = row.querySelectorAll('td');
+            cells.forEach(cell => {
+                // Получаем текстовое содержимое ячейки, включая скрытые элементы, и удаляем пробелы
+                const cellText = cell.textContent.trim();
+                
+                // Проверяем, является ли содержимое ячейки только "_"
+                if (cellText === '_') {
+                    // Делаем текст невидимым, очищая textContent
+                    // Это удалит текстовый узел "_" , но оставит другие элементы (например, подсказки)
+                    cell.textContent = ''; 
+                }
+                // Проверяем, является ли содержимое ячейки только "|"
+                else if (cellText === '|') {
+                    // Меняем фоновый цвет на пастельно-бордовый
+                    cell.style.backgroundColor = '#e0bfb8'; // Пример пастельно-бордового цвета
+                    // Делаем текст (символ "|") невидимым, очищая textContent
+                    cell.textContent = '';
+                }
+            });
+        });
+    });
+</script>
+<script id="help" src="../help.js"></script>
+</html>

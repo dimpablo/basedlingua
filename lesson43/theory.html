@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<script src="./../dictionary.js">//dictionary.js содержит переменную charData используемую для подсказок таблицы! НЕ УДАЛЯТЬ! КРИТИЧЕСКИ ВАЖЕН!</script>
+<meta charset="utf-8"/>
+<title>Урок 43 — Древнекитайский язык по Крюкову</title>
+<style>
+        body {
+            font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+            line-height: 1.8;
+            margin: 50px auto;
+            background-color: #fbf8f0;
+            color: #2c3e50;
+            max-width: 1000px;
+            padding: 0 20px;
+        }
+        h1, h2, h3 {
+            color: #1a4f72;
+            font-weight: normal;
+            letter-spacing: 0.5px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.8em;
+            border-bottom: 2px solid #1a4f72;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 1.5em;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin: 40px 0 20px;
+        }
+        h3 {
+            font-size: 1.2em;
+            color: #2c3e50;
+            border-bottom: none;
+            margin-top: 30px;
+        }
+        .original {
+            background-color: #f0f4f8;
+            padding: 18px 20px;
+            border-left: 6px solid #1a4f72;
+            font-size: 1.08em;
+            line-height: 1.6;
+            border-radius: 0 8px 8px 0;
+        }
+        .text, .grammar, .lexicon, .assignment {
+            margin-bottom: 45px;
+        }
+        .footer {
+            font-size: 0.85em;
+            color: #777;
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px dashed #ccc;
+            line-height: 1.4;
+        }
+        .example {
+            display: block;
+            margin: 8px 0 8px 15px;
+            font-family: "Courier New", monospace;
+            font-size: 0.95em;
+            color: #1a4f72;
+        }
+        ol {
+            line-height: 1.8;
+        }
+
+        /* === Интерактивные подсказки для иероглифов === */
+        .char-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .char-item {
+            position: relative;
+            display: inline-block;
+            background: #f0f4f8;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+            font-size: 1.1em;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+
+        .char-item:hover {
+            background: #e6f2ff;
+        }
+
+        .char-item > span {
+            cursor: help;
+        }
+
+        .inline-pinyin {
+            font-size: 0.85em;
+            color: #555;
+            margin-left: 4px;
+            font-style: italic;
+        }
+
+        .char-tooltip {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: max-content;
+            max-width: 260px;
+            background: #1a4f72;
+            color: white;
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            text-align: left;
+            white-space: normal;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(26, 79, 114, 0.3);
+            line-height: 1.5;
+            pointer-events: none;
+        }
+
+        .char-item:hover .char-tooltip {
+            display: block;
+        }
+    </style>
+<style>
+        @font-face {
+            font-family: 'Jiaguwen';
+            src: url('../jiaguwen.ttf') format('truetype');
+            font-style: normal;
+            font-weight: normal;
+            font-display: swap;
+        }
+    </style>
+<style id="2change">
+        .oracle-table {
+            border-collapse: collapse;
+            margin: 20px auto;
+            font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+            font-size: 1.3em;
+            table-layout: fixed;
+            width: 95%;
+            max-width: 1200px;
+        }
+        .oracle-table td {
+            padding: 6px 8px;
+            border: 1px solid #d4d4d4;
+            text-align: center;
+            position: relative;
+            word-break: keep-all;
+            white-space: nowrap;
+        }
+        .line-num, .col-num {
+            background-color: #f0f4f8;
+            color: #1a4f72;
+            font-weight: bold;
+            font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+            font-size: 0.85em;
+            white-space: nowrap;
+        }
+    </style>
+<style>
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 30px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #1a5fb4;
+        }
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+    </style>
+<style>
+        .char-tooltip {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: max-content;
+            max-width: 300px;
+            background: #1a4f72;
+            color: white;
+            padding: 12px 15px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            text-align: left;
+            white-space: normal;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(26, 79, 114, 0.3);
+            line-height: 1.5;
+        }
+        td:hover .char-tooltip {
+            display: block;
+        }
+        .lesson-badge {
+            display: inline-block;
+            background: #e6f2ff;
+            color: #1a4f72;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-left: 5px;
+        }
+
+        /* Стили для правой фигурной скобки, объединяющей строки справа */
+        .math-example {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            font-size: 0.95em;
+        }
+        .math-content {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            margin-right: 12px; /* Отступ между текстом и скобкой */
+        }
+        .math-content .example {
+            margin: 2px 0;
+            white-space: pre; /* Сохраняем пробелы */
+        }
+        .math-brace {
+            font-size: 2em; /* Большая скобка */
+            line-height: 0.7;
+            color: #1a4f72;
+            font-family: monospace;
+            font-weight: bold;
+            margin: 0;
+        }
+        .math-caption {
+            margin-left: 15px;
+            font-style: italic;
+            color: #1a4f72;
+        }
+        .image-container-inline {
+            float: right;
+            margin: 10px 0 10px 15px;
+            text-align: center;
+            max-width: 40%;
+        }
+        .lesson-image-inline {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .image-caption-inline {
+            font-size: 0.85em;
+            color: #555;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        table.data-table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+        table.data-table th, table.data-table td {
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        table.data-table th {
+            background-color: #f0f4f8;
+            color: #1a4f72;
+            font-weight: bold;
+        }
+        table.data-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+<h1>УРОК 43</h1>
+<!-- ТАБЛИЦА ТЕКСТ УРОКА -->
+<div class="text">
+<h2>Lesson Text</h2>
+<table class="oracle-table" id="oracleTable"></table>
+</div>
+<div style="text-align: center; margin: 20px 0;">
+<label class="toggle-switch">
+<input id="fontToggle" type="checkbox"/>
+<span class="slider"></span>
+</label>
+<span id="toggleLabel" style="margin-left: 10px; font-family: 'Segoe UI', sans-serif; color: #333;">
+    Обычный вид
+  </span>
+</div>
+<style>
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+  }
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 30px;
+  }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  input:checked + .slider {
+    background-color: #1a5fb4;
+  }
+  input:checked + .slider:before {
+    transform: translateX(30px);
+  }
+</style>
+<style>/* Уменьшаем размер для номеров */
+
+/* Tooltip — без изменений */
+.char-tooltip {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: 300px;
+    background: #1a4f72;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    text-align: left;
+    white-space: normal;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(26, 79, 114, 0.3);
+    line-height: 1.5;
+}
+
+td:hover .char-tooltip {
+    display: block;
+}
+
+.lesson-badge {
+    display: inline-block;
+    background: #e6f2ff;
+    color: #1a4f72;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-left: 5px;
+}</style>
+<script>
+const lessonText = [
+    "平原君竟與毛遂偕十九人相與目笑",
+    "之而未發也毛遂比至楚與十九人論",
+    "議十九人皆服平原君與楚合縱言其",
+    "利害日出而言之日中不決十九人謂",
+    "毛遂曰先生上毛遂按劍歷階而上謂",
+    "平原君曰縱之利害兩言而決今日出",
+    "而言縱日中不決何也楚王謂平原君",
+    "曰客何為者也平原君曰是勝之舍人",
+    "也楚王叱曰胡不下吾乃與而君言汝",
+    "何為者也毛遂按劍而前曰王之所以",
+    "叱遂者以楚國之衆也今十步之内王",
+    "不得恃楚國之衆也王之命懸於遂手",
+    "吾君在前叱者何也且遂聞湯以七十",
+    "里之地王天下文王以百里之壤而臣",
+    "諸侯豈其士卒衆多哉誠能據其勢而",
+    "奮其威今楚地方五千里持戟百萬此",
+    "霸王之資也以楚之強天下弗能當"
+];
+// Функция для создания таблицы
+function createOracleTable() {
+    const table = document.getElementById('oracleTable');
+    
+    // Создаём строку с номерами колонок
+    const headerRow = document.createElement('tr');
+    
+    // Пустая ячейка для выравнивания с номерами строк
+    const emptyCell = document.createElement('td');
+    emptyCell.className = 'line-num';
+    headerRow.appendChild(emptyCell);
+    
+    // Номера колонок: от 1 до 15
+    for (let i = 1; i <= 15; i++) {
+        const th = document.createElement('td');
+        th.className = 'col-num';
+        th.textContent = i;
+        headerRow.appendChild(th);
+    }
+    table.appendChild(headerRow);
+    
+    // Создаём строки с текстом
+    for (let i = 0; i < lessonText.length; i++) {
+        const row = document.createElement('tr');
+        
+        // Номер строки
+        const lineNumCell = document.createElement('td');
+        lineNumCell.className = 'line-num';
+        lineNumCell.textContent = i + 1;
+        row.appendChild(lineNumCell);
+        
+        // Разбиваем строку на символы
+        const chars = Array.from(lessonText[i]);
+        
+        // Заполняем ячейки для позиций 1–15
+        for (let j = 0; j < 15; j++) {  // Ровно 15 ячеек
+            const td = document.createElement('td');
+            
+            // Если есть символ на этой позиции — ставим его
+            if (j < chars.length && chars[j].trim() !== '') {
+                const char = chars[j];
+                td.textContent = char;
+                
+                if (charData[char]) {
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'char-tooltip';
+                    tooltip.innerHTML = `
+                        <strong>${char}</strong> <em>${charData[char].pinyin}</em><br>
+                        ${charData[char].meaning}<br>
+                        <span class="lesson-badge">Урок ${charData[char].lesson}</span>
+                    `;
+                    td.appendChild(tooltip);
+                }
+            }
+            // Если символа нет — ячейка остаётся пустой (ничего не делаем)
+            row.appendChild(td);
+        }
+        
+        table.appendChild(row);
+    }
+}
+
+// Инициализация таблицы при загрузке страницы
+document.addEventListener('DOMContentLoaded', createOracleTable);
+</script>
+<!-- КОНЕЦ ТАБЛИЦЫ ТЕКСТ УРОКА -->
+<!-- ГРАММАТИЧЕСКИЙ КОММЕНТАРИЙ -->
+<div class="grammar">
+<h2>GRAMMAR COMMENTARY</h2>
+<h3>43.1. Adverbial modifier of place</h3>
+<p class="original">
+In addition to the object denoting place, classical English introduces a new clause term used to designate
+the location of an action. It is very similar to the adverbial modifier of time in that it is used without a preposition and occupies a position
+before either the subject or the predicate.
+<br/><br/>
+Usually, such a modifier is a noun phrase, formed with one or another spatial indicator.
+If a sentence contains an adverbial modifier of time, the latter precedes the adverbial modifier of place: <span class="example">今十步之内王不得持楚國之衆也 jīn shí bù zhī nèi wáng bù dé chí chǔ guó zhī zhòng yě</span> “Now, within these ten steps, the king will not be able to take advantage of the large population of the Chu kingdom.”
+<br/>
+<span class="example">五步之内相如請以頸血濺大王矣 wǔ bù zhī nèi xiàng rú qǐng yǐ jǐng xiě jiàn dà wáng yǐ</span> "At a distance of five steps, I, [Lin] Xiangru, request permission to splash the great king with blood from my throat."
+</p>
+<h3>43.2. The Functional Word 乃 nǎi (continued)</h3>
+<p class="original">
+In addition to its use as a copula with an emphatic meaning, the word 乃 nǎi can also be used with a predicative predicate, also emphasizing
+the action it expresses. In Russian, this 乃 nǎi can be translated as "here," "right here," "just right," and so on: <span class="example">吾乃與而君言,汝何為者也 wú nǎi yǔ ér jūn yán, rǔ hé wéi zhě yě</span> "I'm just talking with your master, and what does this have to do with you?"
+</p>
+<h3>43.3. The Phrase 相與 xiāng yǔ</h3>
+<p class="original">
+The adverb 相 xiāng can be combined with the preposition 與 yǔ, which means togetherness. Such a phrase, placed before an intransitive predicative, is translated, depending on the semantics of the predicative, as "each other," "mutually," etc.
+If 相與 xiāng yǔ refers to a predicative with a transitive meaning, it can mean "each other," "among themselves," etc.:
+<br/>
+<span class="example">十九人相與目笑之 shí jiǔ rén xiāng yǔ mù xiào zhī</span> "All nineteen people laughed at him, pointing at him with their eyes."
+</p>
+<h3>43.4. Adverb 竟 jìng</h3>
+<p class="original">
+This adverb indicates that the action expressed by the predicate following it is the result of some previous events. It is translated into Russian with the words “in 
+as a result of all this", "in the end": 
+<br/>
+<span class="example"> wéi tài zǐ yì nǚ, nài hé qì zhī xiōng nú, shàng jìng bù néng qiǎn zhǎng gōng zhǔ</span> “Empress Lü-hou cried day and night, saying: “My only daughter! How could she be abandoned to the mercy of the Xiongnu?” And in the end, the emperor was unable to send Princess Chang away.
+<br/><br/>
+In some cases, 竟 jìng can indicate a result that was not anticipated in advance and even completely unexpected, contrary to the logic of events. In this context, the adverb 竟 jìng can 
+translated as “nevertheless”, “and yet”: 
+<br/>
+<span class="example">白起為秦將,南征鄢郢,北坑馬服,攻城掠地而竟賜死 bái qǐ wéi qín jiàng, nán zhēng yàn yǐng, běi kēng mǎ fú, gōng chéng luè dì ér jìng cì sǐ</span> “Bai Qi was a Qin commander, in the south he made a campaign against Yanying, in the north he buried Ma Fu alive, he besieged countless times cities and seized lands—and yet he was sentenced to death."
+</p>
+<h3>43.5. Use of Spatial Indicators in a Predicative Meaning</h3>
+<p class="original">
+Spatial indicators (3.8) have the grammatical function of a name. However, in classical English, they can sometimes also be used as predicatives—in meanings derived from the original ones: <span class="example">相王乃復引兵而東 xiàng wáng nǎi fù yǐn bīng ér dōng</span> "And then Xiangwang led his troops away and headed east."
+<br/>
+<span class="example">十九人謂毛遂曰先生上 shí jiǔ rén wèi máo suí yuē xiān shēng shàng</span> "All nineteen people said to Mao Sui: 'Master, come up!'"
+</p>
+<h3>43.6. Numeral 兩 liǎng</h3>
+<p class="original">
+In the period before the Late Classical period,
+the word 兩 liǎng was a definitive pronoun meaning "both" or "either" and was used only when
+they were talking about two specific, already known objects: <span class="example">願君堅塞兩耳無聽其談也 yuàn jūn jiān sāi liǎng ěr wú tīng qí tán yě</span> "I want you to tightly plug both your ears and not listen to his words."
+<br/><br/>
+In the Early Classical period, the word 兩 liǎng began to be used as the numeral "two" alongside 二 èr:
+<br/>
+<span class="example">楚人有兩妻者 chǔ rén yǒu liǎng qī zhě</span> "Among the people of Chu, there was a man who had two wives."
+<br/><br/>
+In the Late Classical period, 兩 liǎng and 二 èr became complete synonyms.
+</p>
+<h3>43.7. The interrogative word 胡 hú</h3>
+<p class="original">
+This word was first recorded in the Songs of the Shijing, but
+it was rarely used until the Late Classical period. In the last centuries BC, a rather clear distinction emerged between the grammatical functions of the words 胡 hú and 何 hé:
+<br/><br/>
+The former is used primarily as an adverb, the latter as a pronoun. This is clearly evident in the text of this lesson:
+<br/>
+<span class="example">Chinese king shouted: "Why are you still here? I'm talking to your master, so what are you doing here?"
+<br/><br/>
+Besides the meaning of "why," the word hú can also mean "how": <span class="example">人盡夫也,父一而已,胡可比也 rén jìn fū yě, fù yī ér yǐ, hū kě bǐ yě</span> "Anyone can be a husband, but there's only one father. How can they be compared?"
+</span></p>
+<h3>43.8. Functional word 誠 chéng</h3>
+<p class="original"> 
+In addition to the adverbial meaning “really”, “in fact”, 
+the word 誠 chéng is used in late classical language as 
+conjunction in a subordinate clause conditions: 
+<br/>
+<span class="example">僕誠已著此書,藏之名山,傳之其人,通邑大都,則僕償前辱之則 pú chéng yǐ zhù cǐ shū, cáng zhī míng shān, chuán zhī qí rén, tōng yì dà dū, zé pú cháng qián rǔ zhī zé</span> "If I finish this book, hide it in the famous mountain, give it to the people, distribute it in villages and big cities, then I will have paid my debt for my past humiliation."
+<br/><br/>
+It should be noted that, unlike 如 rú and 使 shǐ, 誠 chéng, as a rule, does not come before the subject of a subordinate clause, but before its predicate.
+</p>
+</div>
+<h2>СПИСОК СЛОВ УРОКА</h2>
+<div class="char-list"></div>
+<script>
+    // Укажи номер урока здесь
+    const LESSON = parseInt((window.location.pathname.match(/\/lesson(\d+)(?:\/|$)/) || [])[1] || '1');
+
+    // Находим все иероглифы этого урока из charData
+    const lessonChars = Object.entries(charData)
+        .filter(([char, data]) => data.lesson === LESSON)
+        .sort(([charA, dataA], [charB, dataB]) => {
+            // Сортировка по пиньиню (опционально)
+            return dataA.pinyin.localeCompare(dataB.pinyin, 'zh');
+        });
+
+    // Получаем контейнер
+    const charList = document.querySelector('.char-list');
+
+    // Очищаем (на всякий случай)
+    charList.innerHTML = '';
+
+    // Генерируем элементы
+    lessonChars.forEach(([char, data]) => {
+        const item = document.createElement('div');
+        item.className = 'char-item';
+
+        item.innerHTML = `
+            <span>${char}<span class="inline-pinyin">${data.pinyin}</span></span>
+            <div class="char-tooltip">${data.meaning}</div>
+        `;
+
+        charList.appendChild(item);
+    });
+</script>
+
+<div class="lexicon">
+<h2>LEXICAL COMMENTARY</h2>
+<h3>43.A. "Ascend to the palace"</h3>
+<p class="original">
+A traditional feature of ancient Chinese architecture was that palace chambers were constructed on a clay stylobate. The palace floor was therefore significantly higher than the ground around it. To access the hall, a special inclined staircase was built onto the stylobate.
+<br/><br/>
+The structural features of ancient Chinese palaces were often used metaphorically to characterize the social structure of society: "The ruler's authority is like the palace hall, his dignitaries are like the steps of the palace staircase, and other loyal subjects are like the foundation of the palace." Therefore, "to enter the palace" in ancient Chinese is expressed by the words 上堂 shàng
+táng "to ascend to the palace," and "to leave the palace hall" is 下堂
+xià táng "to descend from the palace."
+</p>
+<div style="text-align: center; margin: 20px 0;">
+<img alt="Palace Hall (from a depiction on a bronze vessel of the 4th century BC)" class="original" src="./img/page_7_img_1.jpeg" style="border: none; padding: 0; max-width: 100%;"/>
+<p class="footer" style="margin-top: 8px; border-top: none; padding-top: 0;">Palace Hall<br/>(from a depiction on a bronze vessel of the 4th century BC)</p>
+</div>
+<div class="clearfix"></div>
+
+</div>
+<div class="assignment">
+<h2>ASSIGNMENT FOR INDEPENDENT WORK</h2>
+<ol>
+<li>Rewrite the text, with punctuation marks.</li>
+<li>Perform a grammatical analysis of the text.</li>
+<li>Translate the text into Russian.</li>
+<li>What changes in the classification of sentence parts occurred in Classical Old Chinese compared to the previous period, and how did word order change as a result?</li>
+</ol>
+</div>
+<div class="footer">
+Textbook: V. A. Kryukov — Archaic Old Chinese.<br>
+Recovered using OCR, preserving the author's style and adding pinyin.<br>
+All characters are from Lessons 1–43, or from cyclic characters (甲子 – 癸亥).
+</br></br></div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggle = document.getElementById('fontToggle');
+        const label = document.getElementById('toggleLabel');
+        const styleSheet = document.getElementById('2change');
+
+        const normalCSS = `
+            .oracle-table {
+                border-collapse: collapse;
+                margin: 20px auto;
+                font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+                font-size: 1.3em;
+                table-layout: fixed;
+                width: 95%;
+                max-width: 1200px;
+            }
+            .oracle-table td {
+                padding: 6px 8px;
+                border: 1px solid #d4d4d4;
+                text-align: center;
+                position: relative;
+                word-break: keep-all;
+                white-space: nowrap;
+            }
+            .line-num, .col-num {
+                background-color: #f0f4f8;
+                color: #1a4f72;
+                font-weight: bold;
+                font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+                font-size: 0.85em;
+                white-space: nowrap;
+            }
+        `;
+
+        const oracleCSS = `
+            .oracle-table {
+                border-collapse: collapse;
+                margin: 20px auto;
+                font-family: 'Jiaguwen', 'Noto Serif CJK SC', 'KaiTi', serif;
+                font-size: 1.3em;
+                table-layout: fixed;
+                width: 95%;
+                max-width: 1200px;
+            }
+            .oracle-table td {
+                padding: 6px 8px;
+                border: 1px solid #d4d4d4;
+                text-align: center;
+                position: relative;
+                word-break: keep-all;
+                white-space: nowrap;
+            }
+            .line-num, .col-num {
+                background-color: #f0f4f8;
+                color: #1a4f72;
+                font-weight: bold;
+                font-family: "Palatino Linotype", "Book Antiquа", Palatino, serif;
+                font-size: 0.85em;
+                white-space: nowrap;
+            }
+        `;
+
+        styleSheet.textContent = normalCSS;
+
+        toggle.addEventListener('change', function () {
+            if (toggle.checked) {
+                styleSheet.textContent = oracleCSS;
+                label.textContent = 'Оракульный вид';
+            } else {
+                styleSheet.textContent = normalCSS;
+                label.textContent = 'Обычный вид';
+            }
+        });
+    });
+</script>
+<script id="help" src="../help.js"></script>
+</body>
+</html>

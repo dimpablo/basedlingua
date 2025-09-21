@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<title>Урок 13 — Древнекитайский язык по Крюкову</title>
+<style>
+        body {
+            font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+            line-height: 1.8;
+            margin: 50px auto;
+            background-color: #fbf8f0;
+            color: #2c3e50;
+            max-width: 1000px;
+            padding: 0 20px;
+        }
+        h1, h2, h3 {
+            color: #1a4f72;
+            font-weight: normal;
+            letter-spacing: 0.5px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.8em;
+            border-bottom: 2px solid #1a4f72;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 1.5em;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin: 40px 0 20px;
+        }
+        h3 {
+            font-size: 1.2em;
+            color: #2c3e50;
+            border-bottom: none;
+            margin-top: 30px;
+        }
+        .original {
+            background-color: #f0f4f8;
+            padding: 18px 20px;
+            border-left: 6px solid #1a4f72;
+            font-size: 1.08em;
+            line-height: 1.6;
+            border-radius: 0 8px 8px 0;
+        }
+        .text, .grammar, .lexicon, .assignment {
+            margin-bottom: 45px;
+        }
+        .footer {
+            font-size: 0.85em;
+            color: #777;
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px dashed #ccc;
+            line-height: 1.4;
+        }
+        .example {
+            display: block;
+            margin: 8px 0 8px 15px;
+            font-family: "Courier New", monospace;
+            font-size: 0.95em;
+            color: #1a4f72;
+        }
+        ol {
+            line-height: 1.8;
+        }
+
+        /* === Интерактивные подсказки для иероглифов === */
+        .char-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .char-item {
+            position: relative;
+            display: inline-block;
+            background: #f0f4f8;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+            font-size: 1.1em;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+
+        .char-item:hover {
+            background: #e6f2ff;
+        }
+
+        .char-item > span {
+            cursor: help;
+        }
+
+        .inline-pinyin {
+            font-size: 0.85em;
+            color: #555;
+            margin-left: 4px;
+            font-style: italic;
+        }
+
+        .char-tooltip {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: max-content;
+            max-width: 260px;
+            background: #1a4f72;
+            color: white;
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            text-align: left;
+            white-space: normal;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(26, 79, 114, 0.3);
+            line-height: 1.5;
+            pointer-events: none;
+        }
+
+        .char-item:hover .char-tooltip {
+            display: block;
+        }
+    </style>
+<style>
+        @font-face {
+            font-family: 'Jiaguwen';
+            src: url('../jiaguwen.ttf') format('truetype');
+            font-style: normal;
+            font-weight: normal;
+            font-display: swap;
+        }
+    </style>
+<style id="2change">
+        .oracle-table {
+            border-collapse: collapse;
+            margin: 20px auto;
+            font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+            font-size: 1.3em;
+            table-layout: fixed;
+            width: 95%;
+            max-width: 1200px;
+        }
+        .oracle-table td {
+            padding: 6px 8px;
+            border: 1px solid #d4d4d4;
+            text-align: center;
+            position: relative;
+            word-break: keep-all;
+            white-space: nowrap;
+        }
+        .line-num, .col-num {
+            background-color: #f0f4f8;
+            color: #1a4f72;
+            font-weight: bold;
+            font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+            font-size: 0.85em;
+            white-space: nowrap;
+        }
+    </style>
+<script src="./../dictionary.js"></script>
+</head>
+<body>
+<h1>УРОК 13</h1>
+<!-- ТАБЛИЦА ТЕКСТ УРОКА -->
+<div class="text">
+<h2>Lesson Text</h2>
+<table class="oracle-table" id="oracleTable"></table>
+</div>
+<div style="text-align: center; margin: 20px 0;">
+<label class="toggle-switch">
+<input id="fontToggle" type="checkbox"/>
+<span class="slider"></span>
+</label>
+<span id="toggleLabel" style="margin-left: 10px; font-family: 'Segoe UI', sans-serif; color: #333;">
+        Обычный вид
+    </span>
+</div>
+<style>
+    .toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 30px;
+    }
+    .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: .4s;
+        border-radius: 30px;
+    }
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 22px;
+        width: 22px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: .4s;
+        border-radius: 50%;
+    }
+    input:checked + .slider {
+        background-color: #1a5fb4;
+    }
+    input:checked + .slider:before {
+        transform: translateX(30px);
+    }
+</style>
+<style>
+    .char-tooltip {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: max-content;
+        max-width: 300px;
+        background: #1a4f72;
+        color: white;
+        padding: 12px 15px;
+        border-radius: 6px;
+        font-size: 0.9em;
+        text-align: left;
+        white-space: normal;
+        z-index: 100;
+        box-shadow: 0 4px 12px rgba(26, 79, 114, 0.3);
+        line-height: 1.5;
+    }
+    td:hover .char-tooltip {
+        display: block;
+    }
+    .lesson-badge {
+        display: inline-block;
+        background: #e6f2ff;
+        color: #1a4f72;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.8em;
+        margin-left: 5px;
+    }
+</style>
+<script>
+    // Данные текста урока 13 (по строкам из PDF)
+const lessonText = [
+    "唯王十又一月既生霸丁亥榮季入右",
+    "卯立中廷榮伯呼令卯曰載乃先祖考",
+    "死司榮公室昔乃祖亦既令乃父死司",
+    "豐人不弔取我家株用喪今余非敢夢",
+    "先公有進退余懋稱先公官今余唯令",
+    "汝死司豐宮豐人汝毋敢不善賜汝瓚",
+    "璋四瑴一宗彝一賜汝馬十匹牛十賜",
+    "于作一田卯拜手稽首敢對揚榮伯休",
+    "用作寳尊簋卯其萬年子子孫孫永寳",
+    "用"
+];
+
+    // Функция для создания таблицы
+    function createOracleTable() {
+        const table = document.getElementById('oracleTable');
+        // Создаём строку с номерами колонок
+        const headerRow = document.createElement('tr');
+        const emptyCell = document.createElement('td');
+        emptyCell.className = 'line-num';
+        headerRow.appendChild(emptyCell);
+        for (let i = 1; i <= 15; i++) {
+            const th = document.createElement('td');
+            th.className = 'col-num';
+            th.textContent = i;
+            headerRow.appendChild(th);
+        }
+        table.appendChild(headerRow);
+
+        // Создаём строки с текстом
+        for (let i = 0; i < lessonText.length; i++) {
+            const row = document.createElement('tr');
+            const lineNumCell = document.createElement('td');
+            lineNumCell.className = 'line-num';
+            lineNumCell.textContent = i + 1;
+            row.appendChild(lineNumCell);
+
+            const chars = Array.from(lessonText[i].replace(/\s+/g, ' ')).filter(ch => ch.trim() !== '');
+            for (let j = 0; j < 15; j++) {
+                const td = document.createElement('td');
+                if (j < chars.length) {
+                    const char = chars[j];
+                    td.textContent = char;
+                    if (charData[char]) {
+                        const tooltip = document.createElement('div');
+                        tooltip.className = 'char-tooltip';
+                        tooltip.innerHTML = `
+                            <strong>${char}</strong> <em>${charData[char].pinyin}</em><br>
+                            ${charData[char].meaning}<br>
+                            <span class="lesson-badge">Урок ${charData[char].lesson}</span>
+                        `;
+                        td.appendChild(tooltip);
+                    }
+                }
+                row.appendChild(td);
+            }
+            table.appendChild(row);
+        }
+    }
+
+    // Инициализация таблицы при загрузке страницы
+    document.addEventListener('DOMContentLoaded', createOracleTable);
+</script>
+<!-- КОНЕЦ ТАБЛИЦЫ ТЕКСТ УРОКА -->
+<!-- ГРАММАТИЧЕСКИЙ КОММЕНТАРИЙ -->
+<div class="grammar">
+<h2>GRAMMAR COMMENTARY</h2>
+<h3>13.1. Tense-aspect markers (continued)
+<p class="original">
+Besides the marker for the beginning of an action <strong>肇 zhào</strong>, discussed in the previous lesson, there are other function words of the same class in the pre-classical language.
+</p>
+<p class="original">
+One of them, <strong>既 jì</strong>, indicates the completion of an action. The meaning of <strong>既 jì</strong> is very close to the meaning of the perfect tenses in English. It does not correspond to any specific time. This marker merely emphasizes that the action has already been completed in the past or will be completed in the future. In this sense, <strong>既 jì</strong> is contrasted with <strong>肇 zhào</strong>, which denotes the beginning, and therefore the incompleteness, of an action.
+</p>
+<p class="original">
+Compare: <span class="example">汝肇誨于戎工 rǔ zhào huì yú róng gōng</span> "You have only just begun to penetrate the secrets of the art of war." <span class="example">余既令汝 yú jì lìng rǔ</span> "I have already ordered you."
+</p>
+<h3>13.2. Nominal Tense Markers</h3>
+<p class="original">
+Aspect-tense markers in predicatives should not be confused with a group of words denoting a relative moment in time and functioning as a noun. Two words from this group have already been encountered in archaic texts. These are <strong>今 jīn</strong> "now" and <strong>昔 xī</strong> "earlier," "in the past."
+</p>
+<p class="original">
+In pre-classical Chinese, the system of notations for relative moments in time becomes more complex. A special notation is given to the moment preceding <strong>昔 xī</strong>, corresponding to the Russian "long ago," "once upon a time." It is expressed by the word <strong>載 zài</strong>: <span class="example">載先王既令乃祖考, 今余唯帥型先王令 zài xiān wáng jì lìng nǎi zǔ kǎo, jīn yú wéi shuài xíng xiān wáng lìng</span> “The once deceased Wang already ordered your ancestors, now I take the order of the late Wang as a model.” 
+</p>
+<p class="original">
+Apparently, in the context of the Zhou inscriptions, the period referred to as <strong>昔 xī</strong> refers to the reign of the previous king, while <strong>載 zài</strong> refers to an earlier period.
+</p>
+<h3>13.3. The Negation of <strong>非 fēi</strong></h3>
+<p class="original">
+In the Early Preclassical language, along with the previous negations <strong>不 bù</strong>, <strong>弗 fú</strong>, <strong>勿 wù</strong>, a new word of the same category appears—<strong>非 fēi</strong>. In its properties, it is similar to a neutral negation: <span class="example">非出五夫 fēi chū wǔ fū</span> "not to hand over five people."
+</p>
+<h3>13.4. Counters</h3>
+<p class="original">
+In the archaic language, when denoting quantities, in addition to duplicate names (<span class="example">人十人 rén shí rén</span> "ten people", <span class="example">羌五羌 qiāng wǔ qiāng</span> "five qiang"), only units of counting denoting the measure of the volume of small objects or substances are used.
+</p>
+<p class="original">
+Counting constructions of these two types are also found in Western Zhou texts:
+<br/><br/>
+a) <span class="example">人萬三千八十一人 rén wàn sān qiān bā shí yī rén</span> "13,081 people";<br/>
+<span class="example">聝百三十七聝 guó bǎi sān shí qī guó</span> "137 cut off ears";
+<br/><br/>
+b) <span class="example">鬯一卣 chàng yī yǒu</span> "one jug of wine";<br/>
+<span class="example">矢五束 shī wǔ shù</span> "five bunches of arrows".
+</p>
+<p class="original">
+One of the manifestations of the development of the ancient Chinese language during this period was the emergence of counters in the proper sense of the word, used to count individual objects and not coinciding with the corresponding names.
+</p>
+<p class="original">
+Thus, the word <strong>匹 pǐ</strong> becomes a counter for horses: <span class="example">馬百四匹 mǎ bǎi sì pǐ</span> "104 horses"; for people - <strong>夫 fū</strong>: <span class="example">人鬲自御至于庶人六百又五十又九夫 rén lì zì yù zhì yú shù rén liù bǎi yòu wǔ shí yòu jiǔ fū</span> “659 dependent people, starting with grooms and ending with common farmers”; for chariots — <strong>兩 liàng</strong> (in the Yin Dynasty, this word was used to mean "a pair of horses," "a team"): <span class="example">車三十兩 jū sān shí liàng</span> "30 chariots."
+</p>
+<p class="original">
+If a counter is placed before a noun without a numeral, it is assumed that the unit has been omitted: <span class="example">馬一匹絲一束 mǎ yī pǐ sī yī shù</span> or <span class="example">馬匹絲束 mǎ pǐ sī shù</span> — "1 horse and 1 skein of silk."
+</p>
+</h3></div>
+<h2>СПИСОК СЛОВ УРОКА</h2>
+<div class="char-list"></div>
+<script>
+    // Укажи номер урока здесь
+    const LESSON = parseInt((window.location.pathname.match(/\/lesson(\d+)(?:\/|$)/) || [])[1] || '1');
+
+    // Находим все иероглифы этого урока из charData
+    const lessonChars = Object.entries(charData)
+        .filter(([char, data]) => data.lesson === LESSON)
+        .sort(([charA, dataA], [charB, dataB]) => {
+            // Сортировка по пиньиню (опционально)
+            return dataA.pinyin.localeCompare(dataB.pinyin, 'zh');
+        });
+
+    // Получаем контейнер
+    const charList = document.querySelector('.char-list');
+
+    // Очищаем (на всякий случай)
+    charList.innerHTML = '';
+
+    // Генерируем элементы
+    lessonChars.forEach(([char, data]) => {
+        const item = document.createElement('div');
+        item.className = 'char-item';
+
+        item.innerHTML = `
+            <span>${char}<span class="inline-pinyin">${data.pinyin}</span></span>
+            <div class="char-tooltip">${data.meaning}</div>
+        `;
+
+        charList.appendChild(item);
+    });
+</script>
+<!-- ЛЕКСИЧЕСКИЙ КОММЕНТАРИЙ -->
+<div class="lexicon">
+<h2>LEXICAL COMMENTARY</h2>
+<h3>13.A. Date Designation (continued)
+<p class="original">
+An innovation in the Zhou dating system was the division of the month into several time periods.
+</p>
+<p class="original">
+The renowned Chinese researcher Wang Guowei once proposed that there were four such periods. Based on data from the Shangshu and inscriptions on bronze vessels, he believed that the first period was called <strong>初吉 chū jí</strong>, the second - <strong>既生霸 jì shēng bà</strong>, the third - <strong>既望 jì wàng</strong>, and the fourth - <strong>既死霸 jì sǐ bà</strong>. According to Wang Guowei, each of these comprised 7 or 8 days (thus, the first period spanned from the 1st to the 7th-8th of each month, the second from the 8th-9th to the 14th-15th, the third from the 15th-16th to the 22nd-23rd, and the fourth from the 23rd to the end of the month).
+</p>
+<p class="original">
+Later, a different viewpoint was formulated, according to which each month, consisting of 29-30 days, was divided into three periods in Zhou time. This division was necessary because, within a single month, days with the same decimal signs appeared three times. Accordingly, the first 10 days of the month were called <strong>既生霸 jì shēng bà</strong>, the second - <strong>既望 jì wàng</strong>, and the third - <strong>既死霸 jì sǐ bà</strong>. As for <strong>初吉 chū jí</strong>, this phrase did not designate a division of the month, but meant "the first lucky day" (followed by the designation of the day): the Zhou people considered all days of the first ten-day period to be auspicious.
+</p>
+<p class="original">
+This interpretation seems convincing. It is also supported by the etymology of the names of the ten-day periods: <strong>既生霸 jì shēng bà</strong> "the moonlight has already appeared"; <strong>既望 jì wàng</strong> "[the moonlight] has already become bright"; <strong>既死霸 jì sǐ bà</strong> "the moonlight has already dimmed".
+</p>
+<p class="original">
+Note that in the first and third expressions, the noun <strong>霸 bà</strong> "moonlight" is not the subject, but the direct object of the predicates <strong>生</strong> "to give birth" and <strong>死</strong> "to make less bright"; however, in Russian, it is difficult to find equivalents that grammatically accurately reflect the structure of these phrases.
+</p>
+<h3>13.B. Palace Layout and the Investiture Ceremony
+<p class="original">
+Inscriptions often contain descriptions of investiture ceremonies (granting awards, orders, appointments, etc.). During the Zhou period, such ceremonies were conducted according to a strictly defined ritual. To understand it, it is necessary to understand the setting in which they took place.
+</p>
+<p class="original">
+Palace buildings during the Zhou period were strictly oriented to the cardinal directions, so the main entrance always faced south and was therefore called <strong>南門 nán mén</strong> "southern gate."
+</p>
+<p class="original">
+Upon entering the main gate, one entered a courtyard called the "great" <strong>大廷 dà tíng</strong>. It housed the ancestral temple <strong>大廟 dà miào</strong>, and beyond it another gate (<strong>二門 èr mén</strong> "second gate") leading to the next, or "middle," courtyard (<strong>中廷 zhōng tíng</strong>). On the opposite side of the middle courtyard was the palace itself, usually called the "big" <strong>大室 dà shì</strong>.
+</p>
+<p class="original">
+The investiture ceremony typically took place in the middle courtyard. The king was in the palace hall and therefore faced south (hence the ancient expression <strong>南面 nán miàn</strong> "to face south," i.e., to rule, to be a ruler).
+</p>
+<p class="original">
+The dignitary escorting (<strong>右 yòu</strong>) the person being invested entered the courtyard through the second gate. They stopped before the steps leading to the palace hall, facing the king, i.e., north.
+</p>
+<div style="text-align: center; margin: 20px 0;">
+<img alt="Ritual Jasper Objects" class="original" src="./img/page_6_img_1.jpeg" style="border: none; padding: 0; max-width: 100%;"/>
+<p class="footer" style="margin-top: 8px; border-top: none; padding-top: 0;">Zhou Palace (reconstruction)</p>
+</div>
+<div style="text-align: center; margin: 20px 0;">
+<img alt="Ritual Jasper Objects" class="original" src="./img/page_7_img_1.jpeg" style="border: none; padding: 0; max-width: 100%;"/>
+<p class="footer" style="margin-top: 8px; border-top: none; padding-top: 0;">The frame of a traditional Chinese dwelling</p>
+</div>
+<div style="text-align: center; margin: 20px 0;">
+<img alt="Ritual jasper objects" class="original" src="./img/page_9_img_1.jpeg" style="border: none; padding: 0; max-width: 100%;"/>
+<p class="footer" style="margin-top: 8px; border-top: none; padding-top: 0;">Ritual jasper objects: 1 — 環 huán; 2 — 璧 bì; 3 — Yuan (瑗 yuàn)</p>
+</div>
+
+</h3></h3></div>
+<!-- ЗАДАНИЕ ДЛЯ САМОСТОЯТЕЛЬНОЙ РАБОТЫ -->
+<div class="assignment">
+<h2>INDEPENDENT STUDY ASSIGNMENT</h2>
+<ol>
+<li>Rewrite the text and add punctuation.</li>
+<li>Perform a grammatical analysis of the text.</li>
+<li>Translate the lesson text into Russian.</li>
+</ol>
+</div>
+<div class="footer">
+Textbook: V. A. Kryukov — Archaic Old Chinese.<br/>
+Recovered using OCR, preserving the author's style and adding pinyin.<br/>
+All characters are from Lessons 1–13, or from cyclic characters (甲子 – 癸亥).
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggle = document.getElementById('fontToggle');
+        const label = document.getElementById('toggleLabel');
+        const styleSheet = document.getElementById('2change');
+
+        const normalCSS = `
+            .oracle-table {
+                border-collapse: collapse;
+                margin: 20px auto;
+                font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+                font-size: 1.3em;
+                table-layout: fixed;
+                width: 95%;
+                max-width: 1200px;
+            }
+            .oracle-table td {
+                padding: 6px 8px;
+                border: 1px solid #d4d4d4;
+                text-align: center;
+                position: relative;
+                word-break: keep-all;
+                white-space: nowrap;
+            }
+            .line-num, .col-num {
+                background-color: #f0f4f8;
+                color: #1a4f72;
+                font-weight: bold;
+                font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+                font-size: 0.85em;
+                white-space: nowrap;
+            }
+        `;
+
+        const oracleCSS = `
+            .oracle-table {
+                border-collapse: collapse;
+                margin: 20px auto;
+                font-family: 'Jiaguwen', 'Noto Serif CJK SC', 'KaiTi', serif;
+                font-size: 1.3em;
+                table-layout: fixed;
+                width: 95%;
+                max-width: 1200px;
+            }
+            .oracle-table td {
+                padding: 6px 8px;
+                border: 1px solid #d4d4d4;
+                text-align: center;
+                position: relative;
+                word-break: keep-all;
+                white-space: nowrap;
+            }
+            .line-num, .col-num {
+                background-color: #f0f4f8;
+                color: #1a4f72;
+                font-weight: bold;
+                font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+                font-size: 0.85em;
+                white-space: nowrap;
+            }
+        `;
+
+        styleSheet.textContent = normalCSS;
+
+        toggle.addEventListener('change', function () {
+            if (toggle.checked) {
+                styleSheet.textContent = oracleCSS;
+                label.textContent = 'Оракульный вид';
+            } else {
+                styleSheet.textContent = normalCSS;
+                label.textContent = 'Обычный вид';
+            }
+        });
+    });
+</script>
+<script id="help" src="../help.js"></script>
+</body>
+</html>

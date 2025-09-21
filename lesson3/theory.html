@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<title>Урок 3 — Древнекитайский язык по Крюкову</title>
+<style>
+        body {
+            font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+            line-height: 1.8;
+            margin: 50px auto;
+            background-color: #fbf8f0;
+            color: #2c3e50;
+            max-width: 1000px;
+            padding: 0 20px;
+        }
+        h1, h2, h3 {
+            color: #1a4f72;
+            font-weight: normal;
+            letter-spacing: 0.5px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.8em;
+            border-bottom: 2px solid #1a4f72;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 1.5em;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin: 40px 0 20px;
+        }
+        h3 {
+            font-size: 1.2em;
+            color: #2c3e50;
+            border-bottom: none;
+            margin-top: 30px;
+        }
+        .original {
+            background-color: #f0f4f8;
+            padding: 18px 20px;
+            border-left: 6px solid #1a4f72;
+            font-size: 1.08em;
+            line-height: 1.6;
+            border-radius: 0 8px 8px 0;
+        }
+        .text, .grammar, .lexicon, .assignment {
+            margin-bottom: 45px;
+        }
+        .footer {
+            font-size: 0.85em;
+            color: #777;
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px dashed #ccc;
+            line-height: 1.4;
+        }
+        .example {
+            display: block;
+            margin: 8px 0 8px 15px;
+            font-family: "Courier New", monospace;
+            font-size: 0.95em;
+            color: #1a4f72;
+        }
+        ol {
+            line-height: 1.8;
+        }
+
+        /* === Интерактивные подсказки для иероглифов === */
+        .char-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .char-item {
+            position: relative;
+            display: inline-block;
+            background: #f0f4f8;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+            font-size: 1.1em;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+
+        .char-item:hover {
+            background: #e6f2ff;
+        }
+
+        .char-item > span {
+            cursor: help;
+        }
+
+        .inline-pinyin {
+            font-size: 0.85em;
+            color: #555;
+            margin-left: 4px;
+            font-style: italic;
+        }
+
+        .char-tooltip {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: max-content;
+            max-width: 260px;
+            background: #1a4f72;
+            color: white;
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            text-align: left;
+            white-space: normal;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(26, 79, 114, 0.3);
+            line-height: 1.5;
+            pointer-events: none;
+        }
+
+        .char-item:hover .char-tooltip {
+            display: block;
+        }
+    </style>
+<style>
+@font-face {
+  font-family: 'Jiaguwen';
+  src: url('../jiaguwen.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+}
+</style></head>
+<body><style id="2change">
+.oracle-table {
+    border-collapse: collapse;
+    margin: 20px auto;
+    font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+    font-size: 1.3em;
+    table-layout: fixed;
+    width: 95%;
+    max-width: 1200px;
+}
+.oracle-table td {
+    padding: 6px 8px;
+    border: 1px solid #d4d4d4;
+    text-align: center;
+    position: relative;
+    word-break: keep-all;
+    white-space: nowrap;
+}
+.line-num, .col-num {
+    background-color: #f0f4f8;
+    color: #1a4f72;
+    font-weight: bold;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 0.85em;
+    white-space: nowrap;
+}
+</style>
+<script src="./../dictionary.js"></script>
+<h1>УРОК 3</h1>
+<div class="text">
+<h2>Lesson Text</h2>
+<table class="oracle-table" id="oracleTable"></table>
+</div>
+<div style="text-align: center; margin: 20px 0;">
+<label class="toggle-switch">
+<input id="fontToggle" type="checkbox"/>
+<span class="slider"></span>
+</label>
+<span id="toggleLabel" style="margin-left: 10px; font-family: 'Segoe UI', sans-serif; color: #333;">
+    Обычный вид
+  </span>
+</div>
+<style>
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+  }
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 30px;
+  }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  input:checked + .slider {
+    background-color: #1a5fb4;
+  }
+  input:checked + .slider:before {
+    transform: translateX(30px);
+  }
+</style>
+<style>/* Уменьшаем размер для номеров */
+
+/* Tooltip — без изменений */
+.char-tooltip {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: 300px;
+    background: #1a4f72;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    text-align: left;
+    white-space: normal;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(26, 79, 114, 0.3);
+    line-height: 1.5;
+}
+
+td:hover .char-tooltip {
+    display: block;
+}
+
+.lesson-badge {
+    display: inline-block;
+    background: #e6f2ff;
+    color: #1a4f72;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-left: 5px;
+}</style>
+<script>
+
+const lessonText = [
+    "庚寅卜㱿貞來乙巳王勿入于商貞來",
+    "辛丑王入于商王其入大邑商今六月",
+    "王入于商王于生七月入于商九月我",
+    "入商",
+    "貞勿求于妣庚貞今日求于大庚于大",
+    "甲求求大甲求妣辛",
+    "貞翌庚寅王告王于甲午告勿告于中",
+    "丁勿于大甲告勿于大戊告貞告工方",
+    "于上甲于大甲告于大丁告工方貞于",
+    "河告貞于唐告"
+];
+
+// Функция для создания таблицы
+function createOracleTable() {
+    const table = document.getElementById('oracleTable');
+    
+    // Создаём строку с номерами колонок
+    const headerRow = document.createElement('tr');
+    
+    // Пустая ячейка для выравнивания с номерами строк
+    const emptyCell = document.createElement('td');
+    emptyCell.className = 'line-num';
+    headerRow.appendChild(emptyCell);
+    
+    // Номера колонок: от 1 до 15
+    for (let i = 1; i <= 15; i++) {
+        const th = document.createElement('td');
+        th.className = 'col-num';
+        th.textContent = i;
+        headerRow.appendChild(th);
+    }
+    table.appendChild(headerRow);
+    
+    // Создаём строки с текстом
+    for (let i = 0; i < lessonText.length; i++) {
+        const row = document.createElement('tr');
+        
+        // Номер строки
+        const lineNumCell = document.createElement('td');
+        lineNumCell.className = 'line-num';
+        lineNumCell.textContent = i + 1;
+        row.appendChild(lineNumCell);
+        
+        // Разбиваем строку на символы
+        const chars = Array.from(lessonText[i]);
+        
+        // Заполняем ячейки для позиций 1–15
+        for (let j = 0; j < 15; j++) {  // Ровно 15 ячеек
+            const td = document.createElement('td');
+            
+            // Если есть символ на этой позиции — ставим его
+            if (j < chars.length && chars[j].trim() !== '') {
+                const char = chars[j];
+                td.textContent = char;
+                
+                if (charData[char]) {
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'char-tooltip';
+                    tooltip.innerHTML = `
+                        <strong>${char}</strong> <em>${charData[char].pinyin}</em><br>
+                        ${charData[char].meaning}<br>
+                        <span class="lesson-badge">Урок ${charData[char].lesson}</span>
+                    `;
+                    td.appendChild(tooltip);
+                }
+            }
+            // Если символа нет — ячейка остаётся пустой (ничего не делаем)
+            row.appendChild(td);
+        }
+        
+        table.appendChild(row);
+    }
+}
+
+// Инициализация таблицы при загрузке страницы
+document.addEventListener('DOMContentLoaded', createOracleTable);
+</script>
+<!-- ГРАММАТИЧЕСКИЙ КОММЕНТАРИЙ -->
+<div class="grammar">
+<h2>GRAMMAR COMMENTARY</h2>
+<h3>3.1. Preposition 于 yú</h3>
+<p class="original">
+The group of prepositions in the archaic language is small.
+The most common of them is 于 yú, a word that can rightfully be called a universal preposition.
+The preposition 于 yú in combination with the following word can
+convey the following meanings:
+<br/><br/>
+a) a point in space or time where an action occurs:<br/>
+<span class="example">田于宋 tián yú sòng</span> "to hunt in Song";<br/>
+<span class="example">于甲子田 yú jiă zǐ tián</span> "to hunt on Jia Zi Day";
+<br/><br/>
+b) a point in space or time—the final destination of an action:<br/>
+<span class="example">入于商 rù yú shāng</span> "to enter Shang";
+<br/><br/>
+c) a person or thing that is the addressee of an action:<br/>
+<span class="example">告于王 gào yú wáng</span> "to inform the ruler".
+</p>
+<h3>3.2. Indirect Object</h3>
+<p class="original">
+In archaic language, there are three types of indirect objects—those with the meaning of time, place, and addressee. The usual position of the indirect object of place and addressee is after the predicate.
+If the predicate already has a direct object, the indirect object is placed after it. <br/><br/>
+A characteristic of indirect objects is that they can appear either without a preposition or with a preposition. However, if an indirect object follows a direct object, a preposition is required:<br/>
+<span class="example">獲鹿于宋 huò lù yú sòng</span> "to catch deer in Song."
+<br/><br/>
+Note that the indirect object can also come before the predicate, but in this case it must also be
+formed with a preposition:<br/>
+<span class="example">告上甲 gào shàng jiă</span><br/>
+<span class="example">于上甲告 yú shàng jiă gào</span> } "inform Upper Jia"
+</p>
+<h3>3.3. Position of the object indicating time</h3>
+<p class="original">
+In archaic Old Chinese, the object indicating time usually comes before the subject without a preposition, but can also come after it (before the predicate).
+In this case, such an addition is necessarily formed by a preposition:<br/>
+<span class="example">甲子王田 jiă zǐ wáng tián</span><br/>
+<span class="example">王于甲子田 wáng yú jiă zǐ tián</span> } "On the day of Jia Zi, Wang hunted"
+</p>
+<h3>3.4. Sentence patterns in archaic language</h3>
+<p class="original">
+Based on the above, we can construct several general sentence models in archaic Old Chinese.
+Let's denote the predicate as S, the subject as P, the direct object as Dp, the indirect object as Dk, and the indirect object
+with the meaning of time of action as Dk (v).
+<br/><br/>
+By placing the sentence members in their usual positions, we obtain the following model:<br/>
+Dk (v) - P - S - Dp - (preposition) Dk
+<br/><br/>
+Taking into account the possible position of the object with a tense meaning after the subject, this basic model can be transformed into the following:<br/>
+P - (preposition) Dk (v) - S - Dp - (preposition) Dk
+<br/><br/>
+Finally, another variant of the sentence model is possible:<br/>
+Dk (v) - P - (preposition) Dk - S - Dp
+<br/><br/>
+Thus, we can derive the following rule: any sentence member that can be combined with a preposition can
+occupy a position between the subject and the predicate in the prepositional form. <br/><br/>
+Note that in a negative phrase, such a clause member
+is placed after the negation:<br/>
+<span class="example">辛亥王不于宋獲鹿 xīn hài wáng bù yú sòng huò lù</span><br/>
+"On Xin Hai Day, will the wang not catch a deer in Song?"
+</p>
+<h3>3.5. Negations 勿 wù and 毋 wú</h3>
+<p class="original">
+Unlike 不 bù, the negations 勿 wù and 毋 wú, when combined with a predicate, have an additional modal connotation,
+indicating the undesirability of performing the corresponding action.
+<br/><br/>
+Compare:<br/>
+<span class="example">王不田 wáng bù tián</span> "The ruler does not hunt."<br/>
+<span class="example">王勿田 wáng wù tián</span> "The ruler should not hunt."<br/>
+<span class="example">王曰勿田 wáng yuē wù tián</span> "The ruler said: "You should not go hunting!""
+</p>
+<h3>3.6. Function word 翌 yì</h3>
+<p class="original">
+In this lesson, we encounter a function word used
+as a modifier for a noun denoting a date, meaning "future" or "next"—翌 yì.
+<br/><br/>
+The notional word 生 shēng "to be born" (here: "coming"—referring to the month) is also used with a similar meaning.
+</p>
+<h3>3.7. Numerals</h3>
+<p class="original">
+The peculiarities of the ancient Chinese numeral system will be discussed further below. Here, we will only note the fact that in archaic ancient Chinese, cardinal numerals do not have any formal differences from ordinal numerals. For example, the phrase <span class="example">六月 liù yuè</span> can mean both "six months" and "the sixth
+
+month," so its specific meaning can only be determined by context.
+</p>
+<h3>3.8. Spatial Indicators</h3>
+<p class="original">
+In ancient Chinese, there is a group of words that can be called spatial indicators. They denote divisions of space relative to a particular
+
+point: 上 shàng "top"; 下 xià "bottom"; 中 zhōng "middle"; 内 nèi
+"inside"; 外 wài "outside", etc. This also includes designations of
+
+cardinal directions: 東 dōng "east"; 西 xī "west"; 南 nán "south";北 běi
+"north".
+<br/><br/>
+When used as an attribute of a name, the spatial indicator expresses a feature of the thing being determined:<br/>
+<span class="example">北羌 běi qiāng</span> "northern Qiang" (name of a tribe);<br/>
+<span class="example">下危 xià wēi</span> "Lower Wei" (geographical name).
+<br/><br/>
+If the spatial indicator follows a name, it indicates the direction from a particular point:<br/>
+<span class="example">河東 hé dōng</span> "east of the river".
+</p>
+</div>
+<h2>СПИСОК СЛОВ УРОКА</h2>
+<div class="char-list"></div>
+<script>
+    // Укажи номер урока здесь
+    const LESSON = parseInt((window.location.pathname.match(/\/lesson(\d+)(?:\/|$)/) || [])[1] || '1');
+
+    // Находим все иероглифы этого урока из charData
+    const lessonChars = Object.entries(charData)
+        .filter(([char, data]) => data.lesson === LESSON)
+        .sort(([charA, dataA], [charB, dataB]) => {
+            // Сортировка по пиньиню (опционально)
+            return dataA.pinyin.localeCompare(dataB.pinyin, 'zh');
+        });
+
+    // Получаем контейнер
+    const charList = document.querySelector('.char-list');
+
+    // Очищаем (на всякий случай)
+    charList.innerHTML = '';
+
+    // Генерируем элементы
+    lessonChars.forEach(([char, data]) => {
+        const item = document.createElement('div');
+        item.className = 'char-item';
+
+        item.innerHTML = `
+            <span>${char}<span class="inline-pinyin">${data.pinyin}</span></span>
+            <div class="char-tooltip">${data.meaning}</div>
+        `;
+
+        charList.appendChild(item);
+    });
+</script>
+<!-- ЛЕКСИЧЕСКИЙ КОММЕНТАРИЙ -->
+<div class="lexicon">
+<h2>LEXICAL COMMENTARY</h2>
+<h3>3.A. Cycle Signs in Ancestor Names</h3>
+<p class="original">
+The signs of the decimal cycle (甲 jiă, 乙 yǐ, 丙 bǐng, 丁 dīng, 戊
+wù, 己 jǐ, 庚 gēng, 辛 xīn, 壬 rèn, 癸 guǐ) are used in archaic Old Chinese not only to denote days,
+but also in the names of deceased ancestors. There are several points of view regarding the explanation for this coincidence. According to one theory, the name of a deceased ancestor contains an indication of his or her birthday, according to another, the day of death, etc. In one way or another,
+cyclic signs are combined in ancestor names with the following
+three categories of words:
+<br/><br/>
+a) kinship terms:<br/>
+<span class="example">父甲 fù jiă</span> "father of Jia";<br/>
+<span class="example">兄乙 xiōng yǐ</span> "brother of Yi";
+<br/><br/>
+b) spatial indicators:<br/>
+<span class="example">上甲 shàng jiă</span> "Upper Jia";<br/>
+<span class="example">外壬 wài rèn</span> "Outer Ren";
+<br/><br/>
+c) significant words with the meaning of quality:<br/>
+<span class="example">大庚 dà gēng</span> "Great Geng";<br/>
+<span class="example">小乙 xiăo yǐ</span> "Small Yi".
+</p>
+<h3>3.B. Kinship Terms</h3>
+<p class="original">
+When encountering kinship terms in ancient Chinese texts, it is important to keep in mind that many of them do not have full equivalents in Russian and therefore can only be translated into it conditionally.
+<br/><br/>
+A distinctive feature of the ancient Chinese Yin kinship system is that, unlike the Russian system, it:
+<br/><br/>
+Firstly, it clearly distinguishes between the paternal and maternal lines (therefore, in archaic ancient Chinese, for example, there is no term corresponding to the Russian "uncle" – there, mother's brother and father's brother are designated by separate terms);
+<br/><br/>
+Secondly, the ancient Chinese kinship system does not distinguish between direct and collateral lines, as is the case in the Russian system
+(therefore, in particular, a father's brother is designated by the same term
+as a father, and a mother's sister is terminologically indistinguishable from
+a mother, etc.);
+<br/><br/>
+Thirdly, it does not distinguish between relatives separated from
+the speaker by more than two generations (therefore, grandfather, great-grandfather, great-great-grandfather, etc. are designated by the same term);
+<br/><br/>
+Fourth, the Yin kinship system does not distinguish between relatives and in-laws (for example, in a woman's mouth, her father's sister
+and her husband's mother are referred to by the same term).
+<br/><br/>
+This system of kinship terms reflected the former rule that two clans were linked
+by obligatory bilateral marriage. However,
+by Yin times, the actual forms of marriage had already changed, although the prohibition on marrying within one's own clan remained.
+</p>
+<h3>3.B. Yin Concepts of the Ecumene</h3>
+<p class="original">
+Like many other sedentary ancient peoples, the Yin people's overall view of the inhabited world is egocentric.
+At the center of the ecumene is the capital of the Yin state, <span class="example">大邑商 dà yì shāng</span> "Great City of Shang."
+<br/><br/>
+It is surrounded on all four sides by "lands" divided by
+cardinal directions:<br/>
+<span class="example">北土 běi tǔ</span> "northern lands";<br/>
+<span class="example">南土 nán tǔ</span> "southern lands";<br/>
+<span class="example">西土 xī tǔ</span> "western lands";<br/>
+<span class="example">東土 dōng tǔ</span> "eastern lands".
+<br/><br/>
+Outside the circle of lands are hostile tribes.
+<span class="example">方 fāng</span>Several dozen names of such tribes appear in inscriptions. The Yin rulers most often waged war with the Gong, Qiang, and other tribes.
+<br/><br/>
+However, there was no clear boundary between "lands" and "tribes": by recognizing the authority of the wang, a "tribe" became a member of the Yin coalition and was part of the "lands." Conversely,
+any territory that initially submitted to the Yin ruler but later seceded from him became a "tribe."
+</p>
+</div>
+<div style="text-align: center; margin-bottom: 40px;">
+<img alt="Обитаемый мир в представлении иньцев" class="original" src="./img/5.png" style="border: none; padding: 0; max-width: 100%;"/>
+<p class="footer" style="margin-top: 8px; border-top: none; padding-top: 0;">Обитаемый мир в представлении иньцев</p>
+</div>
+<!-- ЗАДАНИЕ ДЛЯ САМОСТОЯТЕЛЬНОЙ РАБОТЫ -->
+<div class="assignment">
+<h2>ASSIGNMENT FOR INDEPENDENT STUDY</h2>
+<ol>
+<li>Analyze the text grammatically.</li>
+<li>Translate the text into Russian.</li>
+<li>Translate the following sentences into Old Chinese:
+<ol type="1">
+<li>Today, the tribe Gong sent white horses to the Great City of Shang.</li>
+<li>We will enter the city in the coming second month.</li>
+<li>Don't tell the ruler about the rain!</li>
+<li>I asked the fortune teller for some foxtail. The fortune teller will send some foxtail next year.</li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="footer">
+Textbook: V. A. Kryukov - Archaic Old Chinese.<br/>
+Reconstructed using OCR, preserving the author's style and adding pinyin.<br/>
+All characters are from the texts of Lessons 1-3, or from cyclic characters (甲子 – 癸亥).
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const toggle = document.getElementById('fontToggle');
+  const label = document.getElementById('toggleLabel');
+  const styleSheet = document.getElementById('2change');
+
+  const normalCSS = `
+    .oracle-table {
+      border-collapse: collapse;
+      margin: 20px auto;
+      font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+      font-size: 1.3em;
+      table-layout: fixed;
+      width: 95%;
+      max-width: 1200px;
+    }
+    .oracle-table td {
+      padding: 6px 8px;
+      border: 1px solid #d4d4d4;
+      text-align: center;
+      position: relative;
+      word-break: keep-all;
+      white-space: nowrap;
+    }
+    .line-num, .col-num {
+      background-color: #f0f4f8;
+      color: #1a4f72;
+      font-weight: bold;
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      font-size: 0.85em;
+      white-space: nowrap;
+    }
+  `;
+
+  const oracleCSS = `
+    .oracle-table {
+      border-collapse: collapse;
+      margin: 20px auto;
+      font-family: 'Jiaguwen', 'Noto Serif CJK SC', 'KaiTi', serif;
+      font-size: 1.3em;
+      table-layout: fixed;
+      width: 95%;
+      max-width: 1200px;
+    }
+    .oracle-table td {
+      padding: 6px 8px;
+      border: 1px solid #d4d4d4;
+      text-align: center;
+      position: relative;
+      word-break: keep-all;
+      white-space: nowrap;
+    }
+    .line-num, .col-num {
+      background-color: #f0f4f8;
+      color: #1a4f72;
+      font-weight: bold;
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      font-size: 0.85em;
+      white-space: nowrap;
+    }
+  `;
+
+  styleSheet.textContent = normalCSS;
+
+  toggle.addEventListener('change', function () {
+    if (toggle.checked) {
+      styleSheet.textContent = oracleCSS;
+      label.textContent = 'Оракульный вид';
+    } else {
+      styleSheet.textContent = normalCSS;
+      label.textContent = 'Обычный вид';
+    }
+  });
+});
+</script></body>
+<script id="help" src="../help.js"></script>
+</html>

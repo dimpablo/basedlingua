@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<title>Урок 11 — Древнекитайский язык по Крюкову</title>
+<style>
+        body {
+            font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+            line-height: 1.8;
+            margin: 50px auto;
+            background-color: #fbf8f0;
+            color: #2c3e50;
+            max-width: 1000px;
+            padding: 0 20px;
+        }
+        h1, h2, h3 {
+            color: #1a4f72;
+            font-weight: normal;
+            letter-spacing: 0.5px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.8em;
+            border-bottom: 2px solid #1a4f72;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 1.5em;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin: 40px 0 20px;
+        }
+        h3 {
+            font-size: 1.2em;
+            color: #2c3e50;
+            border-bottom: none;
+            margin-top: 30px;
+        }
+        .original {
+            background-color: #f0f4f8;
+            padding: 18px 20px;
+            border-left: 6px solid #1a4f72;
+            font-size: 1.08em;
+            line-height: 1.6;
+            border-radius: 0 8px 8px 0;
+        }
+        .text, .grammar, .lexicon, .assignment {
+            margin-bottom: 45px;
+        }
+        .footer {
+            font-size: 0.85em;
+            color: #777;
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px dashed #ccc;
+            line-height: 1.4;
+        }
+        .example {
+            display: block;
+            margin: 8px 0 8px 15px;
+            font-family: "Courier New", monospace;
+            font-size: 0.95em;
+            color: #1a4f72;
+        }
+        ol {
+            line-height: 1.8;
+        }
+
+        /* === Интерактивные подсказки для иероглифов === */
+        .char-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .char-item {
+            position: relative;
+            display: inline-block;
+            background: #f0f4f8;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+            font-size: 1.1em;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+
+        .char-item:hover {
+            background: #e6f2ff;
+        }
+
+        .char-item > span {
+            cursor: help;
+        }
+
+        .inline-pinyin {
+            font-size: 0.85em;
+            color: #555;
+            margin-left: 4px;
+            font-style: italic;
+        }
+
+        .char-tooltip {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: max-content;
+            max-width: 260px;
+            background: #1a4f72;
+            color: white;
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            text-align: left;
+            white-space: normal;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(26, 79, 114, 0.3);
+            line-height: 1.5;
+            pointer-events: none;
+        }
+
+        .char-item:hover .char-tooltip {
+            display: block;
+        }
+    </style>
+<style>
+        @font-face {
+            font-family: 'Jiaguwen';
+            src: url('../jiaguwen.ttf') format('truetype');
+            font-style: normal;
+            font-weight: normal;
+            font-display: swap;
+        }
+    </style>
+<style id="2change">
+        .oracle-table {
+            border-collapse: collapse;
+            margin: 20px auto;
+            font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+            font-size: 1.3em;
+            table-layout: fixed;
+            width: 95%;
+            max-width: 1200px;
+        }
+        .oracle-table td {
+            padding: 6px 8px;
+            border: 1px solid #d4d4d4;
+            text-align: center;
+            position: relative;
+            word-break: keep-all;
+            white-space: nowrap;
+        }
+        .line-num, .col-num {
+            background-color: #f0f4f8;
+            color: #1a4f72;
+            font-weight: bold;
+            font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+            font-size: 0.85em;
+            white-space: nowrap;
+        }
+    </style>
+<script src="./../dictionary.js"></script>
+</head>
+<body>
+<h1>УРОК 11</h1>
+<!-- ТАБЛИЦА ТЕКСТ УРОКА -->
+<div class="text">
+<h2>Lesson Text</h2>
+<table class="oracle-table" id="oracleTable"></table>
+</div>
+<div style="text-align: center; margin: 20px 0;">
+<label class="toggle-switch">
+<input id="fontToggle" type="checkbox"/>
+<span class="slider"></span>
+</label>
+<span id="toggleLabel" style="margin-left: 10px; font-family: 'Segoe UI', sans-serif; color: #333;">
+    Обычный вид
+  </span>
+</div>
+<style>
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+  }
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 30px;
+  }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  input:checked + .slider {
+    background-color: #1a5fb4;
+  }
+  input:checked + .slider:before {
+    transform: translateX(30px);
+  }
+</style>
+<style>/* Уменьшаем размер для номеров */
+/* Tooltip — без изменений */
+.char-tooltip {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: 300px;
+    background: #1a4f72;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    text-align: left;
+    white-space: normal;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(26, 79, 114, 0.3);
+    line-height: 1.5;
+}
+td:hover .char-tooltip {
+    display: block;
+}
+.lesson-badge {
+    display: inline-block;
+    background: #e6f2ff;
+    color: #1a4f72;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-left: 5px;
+}</style>
+<script>
+
+// Данные текста урока 10
+const lessonText = [
+    "唯四月甲午王灌于嘗公東宮納饗于",
+    "王王賜公貝五十朋公賜厥順子效王",
+    "休貝二十朋效對公休用作寳尊彝效",
+    "其萬年夙夜奔走揚公休亦其子子孫",
+    "孫永寳用",
+    "唯十又二月王在周眛爽王格于大廟",
+    "井叔右免即位王受作冊尹書俾冊令",
+    "免曰令汝司林賜汝赤芾用事免對揚",
+    "王休用作尊簋免其萬年永寳用"
+];
+
+// Функция для создания таблицы
+function createOracleTable() {
+    const table = document.getElementById('oracleTable');
+    // Создаём строку с номерами колонок
+    const headerRow = document.createElement('tr');
+    // Пустая ячейка для выравнивания с номерами строк
+    const emptyCell = document.createElement('td');
+    emptyCell.className = 'line-num';
+    headerRow.appendChild(emptyCell);
+    // Номера колонок: от 1 до 15
+    for (let i = 1; i <= 15; i++) {
+        const th = document.createElement('td');
+        th.className = 'col-num';
+        th.textContent = i;
+        headerRow.appendChild(th);
+    }
+    table.appendChild(headerRow);
+    // Создаём строки с текстом
+    for (let i = 0; i < lessonText.length; i++) {
+        const row = document.createElement('tr');
+        // Номер строки
+        const lineNumCell = document.createElement('td');
+        lineNumCell.className = 'line-num';
+        lineNumCell.textContent = i + 1;
+        row.appendChild(lineNumCell);
+        // Разбиваем строку на символы
+        const chars = Array.from(lessonText[i]);
+        // Заполняем ячейки для позиций 1–15
+        for (let j = 0; j < 15; j++) {  // Ровно 15 ячеек
+            const td = document.createElement('td');
+            // Если есть символ на этой позиции — ставим его
+            if (j < chars.length && chars[j].trim() !== '') {
+                const char = chars[j];
+                td.textContent = char;
+                if (charData[char]) {
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'char-tooltip';
+                    tooltip.innerHTML = `
+                        <strong>${char}</strong> <em>${charData[char].pinyin}</em><br>
+                        ${charData[char].meaning}<br>
+                        <span class="lesson-badge">Урок ${charData[char].lesson}</span>
+                    `;
+                    td.appendChild(tooltip);
+                }
+            }
+            // Если символа нет — ячейка остаётся пустой (ничего не делаем)
+            row.appendChild(td);
+        }
+        table.appendChild(row);
+    }
+}
+// Инициализация таблицы при загрузке страницы
+document.addEventListener('DOMContentLoaded', createOracleTable);
+</script>
+<!-- КОНЕЦ ТАБЛИЦЫ ТЕКСТ УРОКА -->
+<!-- ГРАММАТИЧЕСКИЙ КОММЕНТАРИЙ -->
+<div class="grammar">
+<h2>GRAMMAR COMMENTARY</h2>
+<h3>11.1. Text Division Techniques
+<p class="original">
+When reading pre-classical Chinese texts, we constantly face a problem that rarely arose when studying Yin inscriptions. This involves dividing the text and defining sentence boundaries.
+</p>
+<p class="original">
+For this purpose, several specific techniques can be used with Zhou texts. Of course, not every one of them can be applied in every case.
+</p>
+<p class="original">
+The basis for dividing a text into sentences is our knowledge of the structure of the ancient Chinese sentence. The same sentence parts exist in the pre-classical language as in the archaic language, and they occupy the same positions as before. Therefore, it can be argued that, for example, after a predicate and a direct object, only an indirect object with a preposition can follow, and after that, the presence of any other sentence part is impossible. Thus, if we determine the presence of an indirect object with a preposition in postposition relative to the predicate, this indicates the end of the sentence.
+</p>
+<p class="original">
+Further, although Zhou inscriptions are not as standardized in their formula as Yin inscriptions, they also contain some familiar formulas, knowledge of which allows us to break the text into smaller parts.
+</p>
+<p class="original">
+For example, almost every inscription contains words addressed by the king or another high-ranking official to the owner of the vessel. These words are usually given as direct speech, i.e., introduced by the word <span class="example">曰 yuē</span>, and begin with an address. The king's speech in such cases begins with the words: <span class="example">王若曰 wáng ruò yuē</span> "The king said: ‘...”".
+</p>
+<p class="original">
+The wang's speech is usually followed by a phrase in which the owner of the vessel expresses gratitude for the award, favor, or other recognition of his services. This phrase can take various forms, most often as follows:
+<br/><br/>
+<span class="example">...拜手稽首對揚...休 ...bài shǒu qǐ shǒu duì yáng ... xiū</span>
+"...folded his hands and bowed to the ground, made an inscription [on the vessel and thereby] offered praise... for [his] mercy."
+</p>
+<p class="original">
+The following is a message stating that the owner of the vessel dedicates it to the memory of an ancestor:
+<br/><br/>
+<span class="example">用作...尊彝 yòng zuò...zūn yí</span> "Used it as a sacrificial vessel..."
+</p>
+<h3>11.2. The Personal Pronoun <strong>厥 jué</strong></h3>
+<p class="original">
+The personal pronoun system of the archaic period was characterized, as already mentioned, by a clear contrast between one group of personal pronouns used as subjects and objects, and another group (as noun modifiers).
+</p>
+<p class="original">
+This distinction persists in the early preclassical language. </p>
+<p class="original">
+First-person pronouns (余 yú for the 1st person, 汝 rǔ for the 2nd):
+<br/><br/>
+a) subject pronouns:
+<br/>
+<span class="example">余唯令 yú wéi lìng</span> "I command";
+<br/>
+<span class="example">汝勿不善 rǔ wù bù shàn</span> "You should not do wrong";
+<br/><br/>
+b) object pronouns:
+<br/>
+<span class="example">受余 shòu yú</span> "grant to me";
+<br/>
+<span class="example">令汝 lìng rǔ</span> "to command you."
+</p>
+<p class="original">
+Second-person pronouns (朕 zhèn for the 1st person, 乃 năi for the 2nd):
+<br/><br/>
+<span class="example">拼朕位 pīn zhèn wèi</span> "Support my throne!"
+<br/>
+<span class="example">乃祖既令乃父 năi zǔ jì lìng năi fù</span> "Your grandfather commanded your father."
+</p>
+<p class="original">
+However, if the archaic language was completely devoid of any third-person pronouns, then in the texts of the early pre-classical period, <strong>厥 jué</strong> appears - a new personal pronoun belonging to the second group.
+</p>
+<p class="original">
+The specific usage of this pronoun is evident, for example, from the following two passages, one of which contains direct speech and the other does not:
+<br/><br/>
+<span class="example">令曰更乃祖考 lìng yuē gēng năi zǔ kăo</span> "He ordered: 'Take the place of your grandfather and father!'"
+<br/>
+<span class="example">令更厥祖考 lìng gèng jué zǔ kăo</span> "He ordered: 'Take the place of his grandfather and father.'"
+</p>
+<p class="original">
+<strong>厥 jué</strong> is a third-person personal pronoun used only as an attribute of a noun. This means that in the text, only a name can follow this pronoun:
+<br/><br/>
+<span class="example">厥絲束 jué sī shù</span> "his skein of silk";
+<br/>
+<span class="example">厥寶尊彝 jué băo zūn yí</span> "his precious vessel."
+</p>
+<p class="original">
+<strong>厥 jué</strong> can be translated as <em>"his"</em>:
+<br/><br/>
+<span class="example">公賜厥順子貝 gōng cì jué shùn zǐ bèi</span> "Gong gave his obedient son shells."
+</p>
+<h3>11.3. Doubling of Notional Words</h3>
+<p class="original">
+Several different cases of doubling notional words are found in pre-classical Chinese.
+</p>
+<p class="original">
+One of these is doubling a word in a nominal function. It is used to denote a plurality of objects (persons) expressed by a given name:
+<br/><br/>
+<span class="example">子子孫孫 zǐ zǐ sūn sūn</span> "children and grandchildren."
+</p>
+<h3>11.4. Adverbial modifiers of action duration</h3>
+<p class="original">
+In pre-classical (as well as archaic) language, an indication of the duration of an action or state is expressed by an adverbial modifier preceding the corresponding predicate:
+<br/><br/>
+<span class="example">三年静東國 sān nián jìng dōng guó</span> "He pacified the eastern states for three years."
+</p>
+<p class="original">
+Inscriptions on Western Zhou bronze vessels often use standard formulas to indicate duration of action, including the phrase <strong>萬年 wàn nián</strong> "ten thousand years":
+<br/><br/>
+<span class="example">余其萬年寶用 yú qí wàn nián băo yòng</span> "I will treasure [this vessel] for ten thousand years."
+<br/>
+<span class="example">效其萬年奔走扬公休 xiào qí wàn nián bēn zǒu yáng gōng xiū</span> "Xiao will try to repay the gong for his favor for ten thousand years."
+</p>
+<p class="original">
+The fact that this phrase is used here specifically as a circumstance is indicated by the adverb <strong>其 qí</strong> preceding it.
+</p>
+<p class="original">
+The presence of the adverbs <strong>亦 yì</strong> and <strong>其 qí</strong> before the noun phrase <span class="example">子子孫孫 zǐ zǐ sūn sūn</span> allows us to determine that it is also an adverbial modifier in the following sentence:
+<br/><br/>
+<span class="example">亦其子子孫孫永寳 yì qí zǐ zǐ sūn sūn yǒng băo</span> "And [this vessel] will also be used as a treasure forever, throughout the lives of all sons and grandsons."
+</p>
+</h3></div>
+<h2>СПИСОК СЛОВ УРОКА</h2>
+<div class="char-list"></div>
+<script>
+    // Укажи номер урока здесь
+    const LESSON = parseInt((window.location.pathname.match(/\/lesson(\d+)(?:\/|$)/) || [])[1] || '1');
+
+    // Находим все иероглифы этого урока из charData
+    const lessonChars = Object.entries(charData)
+        .filter(([char, data]) => data.lesson === LESSON)
+        .sort(([charA, dataA], [charB, dataB]) => {
+            // Сортировка по пиньиню (опционально)
+            return dataA.pinyin.localeCompare(dataB.pinyin, 'zh');
+        });
+
+    // Получаем контейнер
+    const charList = document.querySelector('.char-list');
+
+    // Очищаем (на всякий случай)
+    charList.innerHTML = '';
+
+    // Генерируем элементы
+    lessonChars.forEach(([char, data]) => {
+        const item = document.createElement('div');
+        item.className = 'char-item';
+
+        item.innerHTML = `
+            <span>${char}<span class="inline-pinyin">${data.pinyin}</span></span>
+            <div class="char-tooltip">${data.meaning}</div>
+        `;
+
+        charList.appendChild(item);
+    });
+</script>
+<div class="lexicon">
+<h2>LEXICAL COMMENTARY</h2>
+<h3>11.A. Date Designations</h3>
+<p class="original">
+The system of cyclic signs continues to be used to designate days in Zhou time, as in Yin time. However, in general, dates are now written somewhat differently.
+</p>
+<p class="original">
+First of all, the word <strong>年 nián</strong> is used to designate the year, which previously meant "harvest." It is usually preceded by the word <strong>王 wáng</strong>, indicating the system of chronology adopted by the Zhou ruler. However, the title of wang is not indicated, and it remains unknown which ruler is meant (there was no unified calendar system during the Zhou period).
+</p>
+<p class="original">
+The year designation is usually followed by the corresponding month. The first month of the year is called <strong>正月 zhēng yuè</strong>, and subsequent months are designated by the phrases <strong>二月 èr yuè</strong> "second month," <strong>三月 sān yuè</strong> "third month," etc.
+</p>
+<p class="original">
+The day designation is sometimes preceded by the expression <strong>辰在 chén zài</strong> "the constellation is in...," related to the peculiarities of Zhou astronomical beliefs. </p>
+<p class="original">
+The date at the beginning of the inscription is always marked with the emphatic particle <strong>唯 wéi</strong>:
+<br/><br/>
+<span class="example">唯王二十又五年四月甲午 wéi wáng èr shí yòu wǔ nián sì yuè jiă wǔ</span> "the twenty-fifth year of Wang, the fourth month, the day of Jia-wu."
+</p>
+<h3>11.B. Designating the Time of Day</h3>
+<p class="original">
+Yin inscriptions contain several special terms for designating parts of the day: <strong>明 míng</strong> "dawn," <strong>旦 dàn</strong> "sunrise," <strong>朝 zhāo</strong> "morning," <strong>中日 zhōng rì</strong> "noon," <strong>昏 hūn</strong> "evening," <strong>夕 xī</strong> "night." The Zhou people divided the day in almost the same way. The only innovation, perhaps, was the identification of another period—the time before dawn, when the night was already drawing to an end. This time was called <strong>昧爽 mèi shuăng</strong> or <strong>昧旦 mèi dàn</strong> (the Shijing contains the following phrase: <span class="example">女曰雞鳴, 士曰昧旦 nǚ yuē jī míng, shì yuē mèi dàn</span> "The wife said: 'The rooster has crowed,' the husband said: 'The darkness is thinning.'").
+</p>
+<p class="original">
+Note that all the ceremonies associated with the appointment of high-ranking officials, etc., always began very early, often before dawn, so that their most important part would occur at the moment when the sun rose.
+</p>
+<h3>11.B. Zhou Ritual Vessels</h3>
+<p class="original">
+Before their conquest, the Zhou apparently did not possess bronze casting technology. After conquering Yin, they recruited Yin artisans into their service, and therefore early Zhou bronzes, including ritual vessels, are generally similar to their Yin prototypes.
+</p>
+<p class="original">
+Sacrificial offerings during the Zhou period used several types of vessels, each with a different purpose.
+Meat was boiled in tripods or tetrapods called <strong>鼎 dǐng</strong>, and grain in <strong>鬲 lì</strong>. The cooked food was placed in a <strong>簋 guǐ</strong> vessel—a round vessel on a low tray. Wine libations were an essential part of any sacrifice. Wine was poured into vessels of various shapes, the most important of which were lidded jugs with an arched handle, <strong>卣 yǒu</strong>. Wine was drunk from goblets called <strong>爵 jué</strong>. </p>
+<div style="text-align: center; margin-bottom: 40px;">
+<img alt="Zhou Ritual Bronze Vessels" class="original" src="./img/13.jpg" style="border: none; padding: 0; max-width: 100%;"/>
+<img alt="Zhou Ritual Bronze Vessels" class="original" src="./img/14.jpg" style="border: none; padding: 0; max-width: 100%;"/><br/>
+<img alt="Zhou Ritual Bronze Vessels" class="original" src="./img/15.jpg" style="border: none; padding: 0; max-width: 100%;"/>
+<img alt="Zhou Ritual Bronze Vessels" class="original" src="./img/16.jpg" style="border: none; padding: 0; max-width: 100%;"/><br/>
+<img alt="Zhou Ritual Bronze Vessels" class="original" src="./img/17.jpg" style="border: none; padding: 0; max-width: 100%;"/>
+<img alt="Zhou Ritual Bronze Vessels" class="original" src="./img/18.jpg" style="border: none; padding: 0; max-width: 100%;"/>
+<p class="footer" style="margin-top: 8px; border-top: none; padding-top: 0;">Zhou Ritual Bronze Vessels Vessels</p>
+</div>
+<div style="text-align: center; margin-bottom: 40px;">
+<img alt="This jasper figurine gives an idea of ​​what the fú tío looked like" class="original" src="./img/19.jpg" style="border: none; padding: 0; max-width: 100%;"/>
+<p class="footer" style="margin-top: 8px; border-top: none; padding-top: 0;">This jasper figurine gives an idea of ​​what the fú tío looked like</p>
+</div>
+
+</div>
+<div style="text-align: center; margin-bottom: 40px;">
+<img alt="Эта яшмовая статуэтка дает представление о том, как выглядели 芾 fú" class="original" src="./img/19.jpg" style="border: none; padding: 0; max-width: 100%;"/>
+<p class="footer" style="margin-top: 8px; border-top: none; padding-top: 0;">Эта яшмовая статуэтка дает представление о том, как выглядели 芾 fú</p>
+</div>
+<!-- ЗАДАНИЕ ДЛЯ САМОСТОЯТЕЛЬНОЙ РАБОТЫ -->
+<div class="assignment">
+<h2>ASSIGNMENT FOR INDEPENDENT WORK</h2>
+<ol>
+<li>Rewrite the text, adding punctuation.</li>
+<li>Perform a grammatical analysis text.</li>
+<li>Translate the text into Russian.</li>
+</ol>
+<p class="footer" style="margin-top: 20px; border-top: none; font-style: italic;">
+* Shijing. Moscow, 1957. Page 226.
+</p>
+</div>
+<div class="footer">
+Textbook: V. A. Kryukov - Archaic Old Chinese Language.<br>
+Restored using OCR, preserving the author's style and adding pinyin.<br>
+All characters are from Lessons 1–11, or from cyclic characters (甲子 – 癸亥).
+</br></br></div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggle = document.getElementById('fontToggle');
+        const label = document.getElementById('toggleLabel');
+        const styleSheet = document.getElementById('2change');
+
+        const normalCSS = `
+            .oracle-table {
+                border-collapse: collapse;
+                margin: 20px auto;
+                font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+                font-size: 1.3em;
+                table-layout: fixed;
+                width: 95%;
+                max-width: 1200px;
+            }
+            .oracle-table td {
+                padding: 6px 8px;
+                border: 1px solid #d4d4d4;
+                text-align: center;
+                position: relative;
+                word-break: keep-all;
+                white-space: nowrap;
+            }
+            .line-num, .col-num {
+                background-color: #f0f4f8;
+                color: #1a4f72;
+                font-weight: bold;
+                font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+                font-size: 0.85em;
+                white-space: nowrap;
+            }
+        `;
+
+        const oracleCSS = `
+            .oracle-table {
+                border-collapse: collapse;
+                margin: 20px auto;
+                font-family: 'Jiaguwen', 'Noto Serif CJK SC', 'KaiTi', serif;
+                font-size: 1.3em;
+                table-layout: fixed;
+                width: 95%;
+                max-width: 1200px;
+            }
+            .oracle-table td {
+                padding: 6px 8px;
+                border: 1px solid #d4d4d4;
+                text-align: center;
+                position: relative;
+                word-break: keep-all;
+                white-space: nowrap;
+            }
+            .line-num, .col-num {
+                background-color: #f0f4f8;
+                color: #1a4f72;
+                font-weight: bold;
+                font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+                font-size: 0.85em;
+                white-space: nowrap;
+            }
+        `;
+
+        styleSheet.textContent = normalCSS;
+
+        toggle.addEventListener('change', function () {
+            if (toggle.checked) {
+                styleSheet.textContent = oracleCSS;
+                label.textContent = 'Оракульный вид';
+            } else {
+                styleSheet.textContent = normalCSS;
+                label.textContent = 'Обычный вид';
+            }
+        });
+    });
+</script>
+<script id="help" src="../help.js"></script>
+</body>
+</html>

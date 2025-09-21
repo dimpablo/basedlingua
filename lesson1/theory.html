@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<title>Урок 1 — Древнекитайский язык по Крюкову</title>
+<style>
+    body {
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      line-height: 1.8;
+      margin: 50px auto;
+      background-color: #fbf8f0;
+      color: #2c3e50;
+      max-width: 1000px;
+      padding: 0 20px;
+    }
+    h1, h2, h3 {
+      color: #1a4f72;
+      font-weight: normal;
+      letter-spacing: 0.5px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.8em;
+      border-bottom: 2px solid #1a4f72;
+      padding-bottom: 15px;
+      margin-bottom: 40px;
+    }
+    h2 {
+      text-align: center;
+      font-size: 1.5em;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+      margin: 40px 0 20px;
+    }
+    h3 {
+      font-size: 1.2em;
+      color: #2c3e50;
+      border-bottom: none;
+      margin-top: 30px;
+    }
+    .original {
+      background-color: #f0f4f8;
+      padding: 18px 20px;
+      border-left: 6px solid #1a4f72;
+      font-size: 1.08em;
+      line-height: 1.6;
+      border-radius: 0 8px 8px 0;
+    }
+    .text, .grammar, .lexicon, .assignment {
+      margin-bottom: 45px;
+    }
+    .footer {
+      font-size: 0.85em;
+      color: #777;
+      text-align: center;
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px dashed #ccc;
+      line-height: 1.4;
+    }
+    .example {
+      display: block;
+      margin: 8px 0 8px 15px;
+      font-family: "Courier New", monospace;
+      font-size: 0.95em;
+      color: #1a4f72;
+    }
+    ol {
+      line-height: 1.8;
+    }
+
+    /* === Контейнеры для таблиц — исправлены стили === */
+    .table-container {
+      overflow-x: auto;
+      margin: 20px 0;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: antiquewhite;
+    }
+
+    .cycle-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      font-size: 0.95em;
+    }
+
+    .cycle-table th, .cycle-table td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+
+    .cycle-table th {
+      background: #e6f2ff;
+      font-weight: bold;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.95em;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background: #e6f2ff;
+      font-weight: bold;
+    }
+
+    /* === Интерактивные подсказки для иероглифов (совместимо с Уроком 2) === */
+    .char-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .char-item {
+      position: relative;
+      display: inline-block;
+      background: #f0f4f8;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+      font-size: 1.1em;
+      text-align: center;
+      transition: background-color 0.2s;
+    }
+
+    .char-item:hover {
+      background: #e6f2ff;
+    }
+
+    .char-item > span {
+      cursor: help;
+    }
+
+    .inline-pinyin {
+      font-size: 0.85em;
+      color: #555;
+      margin-left: 4px;
+      font-style: italic;
+    }
+
+    .char-tooltip {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: max-content;
+      max-width: 260px;
+      background: #1a4f72;
+      color: white;
+      padding: 10px 12px;
+      border-radius: 6px;
+      font-size: 0.85em;
+      text-align: left;
+      white-space: normal;
+      z-index: 10;
+      box-shadow: 0 4px 12px rgba(26, 79, 114, 0.3);
+      line-height: 1.5;
+      pointer-events: none;
+    }
+
+    .char-item:hover .char-tooltip {
+      display: block;
+    }
+  </style>
+<style>
+    @font-face {
+      font-family: 'Jiaguwen';
+      src: url('../jiaguwen.ttf') format('truetype');
+      font-style: normal;
+      font-weight: normal;
+      font-display: swap;
+    }
+  </style>
+<style id="2change">
+    .oracle-table {
+      border-collapse: collapse;
+      margin: 20px auto;
+      font-family: 'Noto Serif CJK SC', 'KaiTi', serif;
+      font-size: 1.3em;
+      table-layout: fixed;
+      width: 95%;
+      max-width: 1200px;
+    }
+    .oracle-table td {
+      padding: 6px 8px;
+      border: 1px solid #d4d4d4;
+      text-align: center;
+      position: relative;
+      word-break: keep-all;
+      white-space: nowrap;
+    }
+    .line-num, .col-num {
+      background-color: #f0f4f8;
+      color: #1a4f72;
+      font-weight: bold;
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      font-size: 0.85em;
+      white-space: nowrap;
+    }
+  </style>
+<script src="./../dictionary.js"></script>
+</head>
+<body>
+<h1>УРОК 1</h1>
+<div class="text">
+<h2>Lesson text</h2>
+<table class="oracle-table" id="oracleTable"></table>
+</div>
+<div style="text-align: center; margin: 20px 0;">
+<label class="toggle-switch">
+<input id="fontToggle" type="checkbox"/>
+<span class="slider"></span>
+</label>
+<span id="toggleLabel" style="margin-left: 10px; font-family: 'Segoe UI', sans-serif; color: #333;">
+    Обычный вид
+  </span>
+</div>
+<style>
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+  }
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 30px;
+  }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  input:checked + .slider {
+    background-color: #1a5fb4;
+  }
+  input:checked + .slider:before {
+    transform: translateX(30px);
+  }
+</style>
+<style>
+  .char-tooltip {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: 300px;
+    background: #1a4f72;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    text-align: left;
+    white-space: normal;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(26, 79, 114, 0.3);
+    line-height: 1.5;
+  }
+
+  td:hover .char-tooltip {
+    display: block;
+  }
+
+  .lesson-badge {
+    display: inline-block;
+    background: #e6f2ff;
+    color: #1a4f72;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-left: 5px;
+  }
+</style>
+<script>
+  const lessonText = [
+    "丙寅卜爭貞雨貞曰其雨貞癸亥不其",
+    "雨允不雨貞不雨王占曰癸其雨癸丑",
+    "允其雨己卯卜㱿貞雨王占曰雨壬午",
+    "允雨"
+  ];
+
+  function createOracleTable() {
+    const table = document.getElementById('oracleTable');
+
+    const headerRow = document.createElement('tr');
+    const emptyCell = document.createElement('td');
+    emptyCell.className = 'line-num';
+    headerRow.appendChild(emptyCell);
+
+    for (let i = 1; i <= 15; i++) {
+      const th = document.createElement('td');
+      th.className = 'col-num';
+      th.textContent = i;
+      headerRow.appendChild(th);
+    }
+    table.appendChild(headerRow);
+
+    for (let i = 0; i < lessonText.length; i++) {
+      const row = document.createElement('tr');
+
+      const lineNumCell = document.createElement('td');
+      lineNumCell.className = 'line-num';
+      lineNumCell.textContent = i + 1;
+      row.appendChild(lineNumCell);
+
+      const chars = Array.from(lessonText[i]);
+
+      for (let j = 0; j < 15; j++) {
+        const td = document.createElement('td');
+
+        if (j < chars.length && chars[j].trim() !== '') {
+          const char = chars[j];
+          td.textContent = char;
+
+          if (charData[char]) {
+            const tooltip = document.createElement('div');
+            tooltip.className = 'char-tooltip';
+            tooltip.innerHTML = `
+              <strong>${char}</strong> <em>${charData[char].pinyin}</em><br>
+              ${charData[char].meaning}<br>
+              <span class="lesson-badge">Урок ${charData[char].lesson}</span>
+            `;
+            td.appendChild(tooltip);
+          }
+        }
+        row.appendChild(td);
+      }
+
+      table.appendChild(row);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', createOracleTable);
+</script>
+<!-- Аудиоозвучка текста -->
+<div style="text-align: center; margin: 10px 0;">
+<audio controls="" style="vertical-align: middle;">
+<source src="./mp3/1.mp3" type="audio/mpeg"/>
+    Ваш браузер не поддерживает элемент <code>audio</code>.
+  </audio>
+<div class="footnote" style="margin-top: 5px;">
+Listen to the text: Lesson 1 — Rain Fortune Telling
+</div>
+</div>
+<div class="grammar">
+<h2>GRAMMATICAL COMMENTARY</h2>
+<h3>1.1. Declarative and Interrogative Sentences</h3>
+<p class="original">
+As already noted, Yin inscriptions contain both declarative and interrogative sentences. The latter express a general question, i.e., require a positive or negative answer: "yes" or "no" (sentences containing a specific question are not recorded in Yin texts).
+<br/><br/>
+In their form, declarative and interrogative sentences are no different:
+<br/><br/>
+<span class="example">王田 wáng tián</span> — "The ruler is hunting"<br/>
+<span class="example">王田 wáng tián</span> — "Is the ruler hunting?"
+<br/><br/>
+Apparently, in archaic Old Chinese, a general question and a statement differed only in intonation, which we, naturally, cannot judge. Therefore, the only indication that a sentence is interrogative is the presence of the word <strong>貞 zhēn</strong> — "to ask."
+</p>
+<h3>1.2. Direct Speech</h3>
+<p class="original">
+The word <strong>曰 yuē</strong> is an indicator of direct speech in ancient Chinese.
+<br/><br/>
+It can be used independently: <span class="example">王曰 wáng yuē</span> — "Wang said: “...””.
+<br/><br/>
+Furthermore, this word can follow another significant word meaning "to speak", "to ask", etc.: <span class="example">王占曰 wáng zhān yuē</span> — "Wang read the answer: “...””.
+</p>
+<h3>1.3. Predicate</h3>
+<p class="original">
+When analyzing the structure of an ancient Chinese sentence, we assume that its center, i.e., the member without which the sentence as such ceases to exist, is the predicate. The predicate is the only member of the sentence that cannot be omitted under any circumstances.
+<br/><br/>
+The serial nature of Yin inscriptions makes it easy to find the predicate in each sentence of the series. If we write the inscriptions from Lesson 1 not as a continuous text, but as a distribution table (i.e., we divide the sentences so that words with the same grammatical function in different sentences are in the same vertical column), we obtain the following:
+</p>
+
+</div>
+<div class="lexicon">
+<h2>LESSON WORD LIST</h2>
+<div class="char-list"></div>
+<div class="char-tooltip">${data.meaning}</div>
+
+<div style="text-align: center; margin: 20px 0;">
+<img alt="Yin fortune tellers used these tables of cyclic signs to avoid errors in dates" class="original" src="./img/page_7_img_1.jpeg" style="border: none; padding: 0; max-width: 100%;"/>
+<p class="footer" style="margin-top: 8px; border-top: none; padding-top: 0;">Yin fortune tellers used these tables of cyclic signs to avoid errors in dates.</p>
+</div>
+
+</div>
+<h2>ЛЕКСИЧЕСКИЙ КОММЕНТАРИЙ</h2>
+<h3>1—1. Циклические знаки</h3>
+<p class="original">
+    В древнекитайском языке существует два набора, или цикла, знаков, расположенных в определенной последовательности и использовавшихся для обозначения дней. В первом цикле — десять знаков: 甲 jiǎ, 乙 yǐ, 丙 bǐng, 丁 dīng, 戊 wù, 己 jǐ, 庚 gēng, 辛 xīn, 壬 rén, 癸 guǐ; во втором — двенадцать: 子 zǐ, 丑 chǒu, 寅 yín, 卯 mǎo, 辰 chén, 巳 sì, 午 wǔ, 未 wèi, 申 shēn, 酉 yǒu, 戌 xū, 亥 hài.
+    <br/><br/>
+    Первый знак первого цикла сочетается с первым знаком второго цикла, второй знак — со вторым и т. д. В совокупности получается 60 сочетаний:
+  </p>
+<div class="table-container">
+<table class="cycle-table">
+<tbody>
+<tr>
+<td>1. 甲子<br/>jiǎ zǐ</td>
+<td>2. 乙丑<br/>yǐ chǒu</td>
+<td>3. 丙寅<br/>bǐng yín</td>
+<td>4. 丁卯<br/>dīng mǎo</td>
+</tr>
+<tr>
+<td>5. 戊辰<br/>wù chén</td>
+<td>6. 己巳<br/>jǐ sì</td>
+<td>7. 庚午<br/>gēng wǔ</td>
+<td>8. 辛未<br/>xīn wèi</td>
+</tr>
+<tr>
+<td>9. 壬申<br/>rén shēn</td>
+<td>10. 癸酉<br/>guǐ yǒu</td>
+<td>11. 甲戌<br/>jiǎ xū</td>
+<td>12. 乙亥<br/>yǐ hài</td>
+</tr>
+<tr>
+<td>13. 丙子<br/>bǐng zǐ</td>
+<td>14. 丁丑<br/>dīng chǒu</td>
+<td>15. 戊寅<br/>wù yín</td>
+<td>16. 己卯<br/>jǐ mǎo</td>
+</tr>
+<tr>
+<td>17. 庚辰<br/>gēng chén</td>
+<td>18. 辛巳<br/>xīn sì</td>
+<td>19. 壬午<br/>rén wǔ</td>
+<td>20. 癸未<br/>guǐ wèi</td>
+</tr>
+<tr>
+<td>21. 甲申<br/>jiǎ shēn</td>
+<td>22. 乙酉<br/>yǐ yǒu</td>
+<td>23. 丙戌<br/>bǐng xū</td>
+<td>24. 丁亥<br/>dīng hài</td>
+</tr>
+<tr>
+<td>25. 戊子<br/>wù zǐ</td>
+<td>26. 己丑<br/>jǐ chǒu</td>
+<td>27. 庚寅<br/>gēng yín</td>
+<td>28. 辛卯<br/>xīn mǎo</td>
+</tr>
+<tr>
+<td>29. 壬辰<br/>rén chén</td>
+<td>30. 癸巳<br/>guǐ sì</td>
+<td>31. 甲午<br/>jiǎ wǔ</td>
+<td>32. 乙未<br/>yǐ wèi</td>
+</tr>
+<tr>
+<td>33. 丙申<br/>bǐng shēn</td>
+<td>34. 丁酉<br/>dīng yǒu</td>
+<td>35. 戊戌<br/>wù xū</td>
+<td>36. 己亥<br/>jǐ hài</td>
+</tr>
+<tr>
+<td>37. 庚子<br/>gēng zǐ</td>
+<td>38. 辛丑<br/>xīn chǒu</td>
+<td>39. 壬寅<br/>rén yín</td>
+<td>40. 癸卯<br/>guǐ mǎo</td>
+</tr>
+<tr>
+<td>41. 甲辰<br/>jiǎ chén</td>
+<td>42. 乙巳<br/>yǐ sì</td>
+<td>43. 丙午<br/>bǐng wǔ</td>
+<td>44. 丁未<br/>dīng wèi</td>
+</tr>
+<tr>
+<td>45. 戊申<br/>wù shēn</td>
+<td>46. 己酉<br/>jǐ yǒu</td>
+<td>47. 庚戌<br/>gēng xū</td>
+<td>48. 辛亥<br/>xīn hài</td>
+</tr>
+<tr>
+<td>49. 壬子<br/>rén zǐ</td>
+<td>50. 癸丑<br/>guǐ chǒu</td>
+<td>51. 甲寅<br/>jiǎ yín</td>
+<td>52. 乙卯<br/>yǐ mǎo</td>
+</tr>
+<tr>
+<td>53. 丙辰<br/>bǐng chén</td>
+<td>54. 丁巳<br/>dīng sì</td>
+<td>55. 戊午<br/>wù wǔ</td>
+<td>56. 己未<br/>jǐ wèi</td>
+</tr>
+<tr>
+<td>57. 庚申<br/>gēng shēn</td>
+<td>58. 辛酉<br/>xīn yǒu</td>
+<td>59. 壬戌<br/>rén xū</td>
+<td>60. 癸亥<br/>guǐ hài</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="original">
+Thus, the first day of the 60-day cycle is designated by the combination 甲子 jiǎ zǐ, the last by 癸亥 guǐ hài; then comes 甲子 jiǎ zǐ again, and so on. If the context makes it clear which ten-day period is being referred to, the second character in the combination could be omitted.
+<br><br>
+Combinations of cyclic characters are used in ancient Chinese only as nouns, more specifically, as adverbial modifiers of time. Therefore, such a combination of characters, used without a preposition, can serve as an indication of the beginning of a sentence: <span class="example">甲子 jiǎ zǐ 允其雨 yǔn qí yǔ</span> — "On the day of Jia Zi, it really rained."
+</br></br></p>
+
+<div style="text-align: center; margin: 20px 0;">
+<img alt="Yin diviners used these tables of cyclic signs to avoid errors in dates" class="original" src="./img/page_7_img_1.jpeg" style="border: none; padding: 0; max-width: 100%;"/>
+<p class="footer" style="margin-top: 8px; border-top: none; padding-top: 0;">Yin diviners used these tables of cyclic signs to avoid errors in dates.</p>
+</div>
+<div class="assignment">
+<h2>ASSIGNMENTS FOR INDEPENDENT WORK</h2>
+<ol>
+<li>Analyze the text grammatically and find familiar sentence parts.</li>
+<li>Using a dictionary, provide a literary translation of the text into Russian.</li>
+<li>Translate the following sentences into Old Chinese:
+<ol type="a">
+<li>On the sixth day, the ruler asked no questions.</li>
+<li>The question reads: "Did it rain?"</li>
+<li>The fortune teller Zheng said: "The ruler truly does not ask questions."</li>
+<li>On the tenth day, the ruler read the answer on the oracle bone.</li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="footer">
+Textbook: M.V. Kryukov, Huang Shuying - Archaic Old Chinese Language<br/>
+Restored and formatted in a Duolingo-like format, 2025
+</div>
+</body>
+<script id="help" src="../help.js"></script>
+</html>
