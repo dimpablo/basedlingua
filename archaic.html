@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Курс древнекитайского</title>
+  <title>Ancient Chinese Course</title>
 
 <style>
   body {
@@ -11,10 +11,10 @@
     background: linear-gradient(315deg, #8a9cf8 0%, #9a75c8 100%);
     font-family: Verdana, sans-serif;
     min-height: 100vh;
-    overscroll-behavior: none; /* Отключает эффект "резиновой" прокрутки на iOS */
+    overscroll-behavior: none; /* Disables "rubber band" scroll effect on iOS */
   }
 
-  /* Цвета для различных типов юнитов */
+  /* Colors for different unit types */
   :root {
     --color-theory: #d32f2f;
     --color-vocab: #6a5acd;
@@ -27,7 +27,7 @@
     --color-community: #00897b;
   }
 
-  /* КРУЖОК дефолт 150x150 */
+  /* Default CIRCLE 150x150 */
   .unit-circle {
     display: block;
     width: 300px;
@@ -51,7 +51,7 @@
     box-shadow: 0 15px 25px rgba(0,0,0,0.3);
   }
 
-  /* Цвета для различных типов юнитов */
+  /* Colors for different unit types */
   .unit-theory { background-color: var(--color-theory); }
   .unit-vocab { background-color: var(--color-vocab); }
   .unit-kanji { background-color: var(--color-kanji); }
@@ -61,7 +61,7 @@
   .unit-syntax { background-color: var(--color-syntax); }
   .unit-puzzle { background-color: var(--color-puzzle); }
 
-  /* Ячейка для кружков — высокая */
+  /* Cell for circles - tall */
   .unit-row {
     height: 180px;
     background-color: transparent;
@@ -71,7 +71,7 @@
     text-align: center;
   }
 
-  /* Ячейка для текстов — вдвое короче и с радостным цветом */
+  /* Cell for text labels - half the height and with a cheerful color */
   .label-row {
     height: 30px;
     border-bottom: hidden;
@@ -88,18 +88,18 @@
     font-size: 18px;
     font-weight: 500;
     margin: 10px 20px;
-    /* Добавлено: фиксация при прокрутке */
+    /* Added: sticky on scroll */
     position: sticky;
     top: 0;
     z-index: 10;
-    pointer-events: none; /* Чтобы не мешал кликам */
+    pointer-events: none; /* So it doesn't interfere with clicks */
   }
 
   .label-row * {
-    pointer-events: auto; /* Разрешаем клики по содержимому */
+    pointer-events: auto; /* Allow clicks on content */
   }
 
-  /* Прямоугольник на всю ячейку */
+  /* Rectangle filling the entire cell */
   .unit-label {
     display: block;
     width: 100%;
@@ -115,15 +115,15 @@
     z-index: 1;
   }
 
-  /* Таблица — без границ */
+  /* Table - no borders */
   table {
     width: 100%;
     border-collapse: collapse;
-    /* Убедимся, что таблица не обрезает sticky */
+    /* Ensure the table doesn't clip sticky elements */
     overflow: visible;
   }
 
-  /* Панель пользователя */
+  /* User panel */
   .user-panel {
     height: 100px;
     border-bottom: hidden;
@@ -135,7 +135,7 @@
     margin: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     padding: 20px;
-    /* Добавлено: фиксация панели */
+    /* Added: sticky panel */
     position: sticky;
     top: 0;
     z-index: 20;
@@ -234,13 +234,13 @@
     display: none !important;
   }
 
-  /* Скрытие элементов по умолчанию */
+  /* Hide elements by default */
   #user-info,
   #logoutBtn {
     display: none;
   }
 
-  /* Улучшение восприятия на тач-устройствах */
+  /* Improve touch device experience */
   @media (hover: none) and (pointer: coarse) {
     .unit-circle {
       transition: transform 0.2s ease;
@@ -252,15 +252,15 @@
 </style>
 </head>
 <body>
-  <!-- Основная таблица -->
+  <!-- Main table -->
   <table cellpadding="0" cellspacing="0">
-    <!-- Строка: Панель пользователя -->
+    <!-- Row: User Panel -->
     <tr>
       <td>
         <div class="user-panel">
           <div id="login-container" class="login-container">
-            <button class="btn btn-primary" id="loginWithGoogle">Войти через Google</button>
-            <button class="btn btn-primary" onclick="document.location.href='https://t.me/oldcnio  '" >Связаться с разработчиком</button>
+            <button class="btn btn-primary" id="loginWithGoogle">Sign in with Google</button>
+            <button class="btn btn-primary" onclick="document.location.href='https://t.me/oldcnio    '" >Contact the Developer</button>
 
           </div>
           
@@ -271,193 +271,193 @@
               <span id="user-email" class="user-email"></span>
             </div>
             <div class="auth-buttons">
-              <a href="./community.html#users" class="btn btn-secondary">Сообщество</a>
-              <a href="https://t.me/oldcnio  " class="btn btn-secondary">Связаться с разработчиком</a>
-              <button class="btn btn-logout" id="logoutBtn">Выйти</button>
+              <a href="./community.html#users" class="btn btn-secondary">Community</a>
+              <a href="https://t.me/oldcnio    " class="btn btn-secondary">Contact the Developer</a>
+              <button class="btn btn-logout" id="logoutBtn">Sign Out</button>
             </div>
           </div>
         </div>
       </td>
     </tr>
 
-    <!-- Начальный блок -->
+    <!-- Starting block -->
     <tr>
       <td class="unit-row">
         <a href="./lesson0/1.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-theory">Начнём!</div>
+          <div class="unit-circle unit-theory">Let's Begin!</div>
         </a>
       </td>
     </tr>
 
-    <!-- Строка: Урок 1 -->
+    <!-- Row: Lesson 1 -->
     <tr>
       <td class="label-row">
-        <div class="unit-label">Урок 1: Будет ли дождь?</div>
+        <div class="unit-label">Lesson 1: Will it Rain?</div>
       </td>
     </tr>
 
-    <!-- Теория -->
+    <!-- Theory -->
     <tr>
       <td class="unit-row">
         <a href="./lesson1/theory.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-theory">📚 Теория</div>
+          <div class="unit-circle unit-theory">📚 Theory</div>
         </a>
       </td>
     </tr>
 
-    <!-- Словарный запас -->
+    <!-- Vocabulary -->
     <tr>
       <td class="unit-row">
         <a href="./lesson1/vocab.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-vocab">🔠 Словарный запас</div>
+          <div class="unit-circle unit-vocab">🔠 Vocabulary</div>
         </a>
       </td>
     </tr>
 
-    <!-- Иероглифы -->
+    <!-- Characters -->
     <tr>
       <td class="unit-row">
         <a href="./lesson1/hanzi.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-kanji">🪶 Иероглифы</div>
+          <div class="unit-circle unit-kanji">🪶 Characters</div>
         </a>
       </td>
     </tr>
 
-    <!-- Сегментация -->
+    <!-- Segmentation -->
     <tr>
       <td class="unit-row">
         <a href="./lesson1/quiz.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-segmentation">📐 Сегментация</div>
+          <div class="unit-circle unit-segmentation">📐 Segmentation</div>
         </a>
       </td>
     </tr>
 
-    <!-- Перевод -->
+    <!-- Translation -->
     <tr>
       <td class="unit-row">
         <a href="./lesson1/translateall.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-translation">🗣️ Перевод</div>
+          <div class="unit-circle unit-translation">🗣️ Translation</div>
         </a>
       </td>
     </tr>
 
-    <!-- Задания -->
+    <!-- Exercises -->
     <tr>
       <td class="unit-row">
         <a href="./lesson1/index.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-exercise">📝 Задания</div>
+          <div class="unit-circle unit-exercise">📝 Exercises</div>
         </a>
       </td>
     </tr>
 
-    <!-- Строка: Урок 2 -->
+    <!-- Row: Lesson 2 -->
     <tr>
       <td class="label-row">
-        <div class="unit-label">Урок 2: Урожай и скот — будет ли год удачным?</div>
+        <div class="unit-label">Lesson 2: Harvest and Livestock - Will the Year be Fortunate?</div>
       </td>
     </tr>
 
-    <!-- Теория -->
+    <!-- Theory -->
     <tr>
       <td class="unit-row">
         <a href="./lesson2/theory.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-theory">📚 Теория</div>
+          <div class="unit-circle unit-theory">📚 Theory</div>
         </a>
       </td>
     </tr>
 
-    <!-- Словарный запас -->
+    <!-- Vocabulary -->
     <tr>
       <td class="unit-row">
         <a href="./lesson2/vocab.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-vocab">🔠 Словарный запас</div>
+          <div class="unit-circle unit-vocab">🔠 Vocabulary</div>
         </a>
       </td>
     </tr>
 
-    <!-- Иероглифы -->
+    <!-- Characters -->
     <tr>
       <td class="unit-row">
         <a href="./lesson2/hanzi.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-kanji">🪶 Иероглифы</div>
+          <div class="unit-circle unit-kanji">🪶 Characters</div>
         </a>
       </td>
     </tr>
 
-    <!-- Сегментация -->
+    <!-- Segmentation -->
     <tr>
       <td class="unit-row">
         <a href="./lesson2/quiz.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-segmentation">📐 Сегментация</div>
+          <div class="unit-circle unit-segmentation">📐 Segmentation</div>
         </a>
       </td>
     </tr>
 
-    <!-- Перевод -->
+    <!-- Translation -->
     <tr>
       <td class="unit-row">
         <a href="./lesson2/translateall.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-translation">🗣️ Перевод</div>
+          <div class="unit-circle unit-translation">🗣️ Translation</div>
         </a>
       </td>
     </tr>
 
-    <!-- Головоломка -->
+    <!-- Puzzle -->
     <tr>
       <td class="unit-row">
         <a href="./lesson2/table.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-puzzle">🧠 Головоломка</div>
+          <div class="unit-circle unit-puzzle">🧠 Puzzle</div>
         </a>
       </td>
     </tr>
 
-    <!-- Синтаксис -->
+    <!-- Syntax -->
     <tr>
       <td class="unit-row">
         <a href="./lesson2/syntax.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-syntax">🧩 Синтаксис</div>
+          <div class="unit-circle unit-syntax">🧩 Syntax</div>
         </a>
       </td>
     </tr>
 
-    <!-- Задания -->
+    <!-- Exercises -->
     <tr>
       <td class="unit-row">
         <a href="./lesson2/index.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-exercise">📝 Задания</div>
+          <div class="unit-circle unit-exercise">📝 Exercises</div>
         </a>
       </td>
     </tr>
 
-    <!-- Остальные уроки (аналогично) -->
-    <!-- Урок 3 -->
+    <!-- Other lessons (similarly) -->
+    <!-- Lesson 3 -->
     <tr>
       <td class="label-row">
-        <div class="unit-label">Урок 3. Великий город Шан.</div>
+        <div class="unit-label">Lesson 3. The Great City of Shang.</div>
       </td>
     </tr>
     <tr>
       <td class="unit-row">
         <a href="./lesson3/theory.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-theory">📚 Теория</div>
+          <div class="unit-circle unit-theory">📚 Theory</div>
         </a>
       </td>
     </tr>
 
-    <!-- Словарный запас -->
+    <!-- Vocabulary -->
     <tr>
       <td class="unit-row">
         <a href="./lesson3/vocab.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-vocab">🔠 Словарный запас</div>
+          <div class="unit-circle unit-vocab">🔠 Vocabulary</div>
         </a>
       </td>
     </tr>
 
-    <!-- Иероглифы -->
+    <!-- Characters -->
     <tr>
       <td class="unit-row">
         <a href="./lesson3/hanzi.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-kanji">🪶 Иероглифы</div>
+          <div class="unit-circle unit-kanji">🪶 Characters</div>
         </a>
       </td>
     </tr>
@@ -465,53 +465,53 @@
     <tr>
       <td class="unit-row">
         <a href="./lesson3/quiz.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-segmentation">📐 Сегментация</div>
+          <div class="unit-circle unit-segmentation">📐 Segmentation</div>
         </a>
       </td>
     </tr>
     <tr>
       <td class="unit-row">
         <a href="./lesson3/translateall.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-translation">🗣️ Перевод</div>
+          <div class="unit-circle unit-translation">🗣️ Translation</div>
         </a>
       </td>
     </tr>
     <tr>
       <td class="unit-row">
         <a href="./lesson3/index.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-exercise">📝 Задания</div>
+          <div class="unit-circle unit-exercise">📝 Exercises</div>
         </a>
       </td>
     </tr>
 
-    <!-- Урок 4 -->
+    <!-- Lesson 4 -->
     <tr>
       <td class="label-row">
-        <div class="unit-label">Урок 4: Город в огне.</div>
+        <div class="unit-label">Lesson 4: City in Flames.</div>
       </td>
     </tr>
     <tr>
       <td class="unit-row">
         <a href="./lesson4/theory.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-theory">📚 Теория</div>
+          <div class="unit-circle unit-theory">📚 Theory</div>
         </a>
       </td>
     </tr>
 
-    <!-- Словарный запас -->
+    <!-- Vocabulary -->
     <tr>
       <td class="unit-row">
         <a href="./lesson4/vocab.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-vocab">🔠 Словарный запас</div>
+          <div class="unit-circle unit-vocab">🔠 Vocabulary</div>
         </a>
       </td>
     </tr>
 
-    <!-- Иероглифы -->
+    <!-- Characters -->
     <tr>
       <td class="unit-row">
         <a href="./lesson4/hanzi.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-kanji">🪶 Иероглифы</div>
+          <div class="unit-circle unit-kanji">🪶 Characters</div>
         </a>
       </td>
     </tr>
@@ -519,53 +519,53 @@
     <tr>
       <td class="unit-row">
         <a href="./lesson4/quiz.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-segmentation">📐 Сегментация</div>
+          <div class="unit-circle unit-segmentation">📐 Segmentation</div>
         </a>
       </td>
     </tr>
     <tr>
       <td class="unit-row">
         <a href="./lesson4/translateall.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-translation">🗣️ Перевод</div>
+          <div class="unit-circle unit-translation">🗣️ Translation</div>
         </a>
       </td>
     </tr>
     <tr>
       <td class="unit-row">
         <a href="./lesson4/index.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-exercise">📝 Задания</div>
+          <div class="unit-circle unit-exercise">📝 Exercises</div>
         </a>
       </td>
     </tr>
 
-    <!-- Урок 5 -->
+    <!-- Lesson 5 -->
     <tr>
       <td class="label-row">
-        <div class="unit-label">Урок 5: Что пошлёт Небесный Владыка?</div>
+        <div class="unit-label">Lesson 5: What Will the Heavenly Lord Send?</div>
       </td>
     </tr>
     <tr>
       <td class="unit-row">
         <a href="./lesson5/theory.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-theory">📚 Теория</div>
+          <div class="unit-circle unit-theory">📚 Theory</div>
         </a>
       </td>
     </tr>
 
-    <!-- Словарный запас -->
+    <!-- Vocabulary -->
     <tr>
       <td class="unit-row">
         <a href="./lesson5/vocab.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-vocab">🔠 Словарный запас</div>
+          <div class="unit-circle unit-vocab">🔠 Vocabulary</div>
         </a>
       </td>
     </tr>
 
-    <!-- Иероглифы -->
+    <!-- Characters -->
     <tr>
       <td class="unit-row">
         <a href="./lesson5/hanzi.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-kanji">🪶 Иероглифы</div>
+          <div class="unit-circle unit-kanji">🪶 Characters</div>
         </a>
       </td>
     </tr>
@@ -573,53 +573,53 @@
     <tr>
       <td class="unit-row">
         <a href="./lesson5/quiz.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-segmentation">📐 Сегментация</div>
+          <div class="unit-circle unit-segmentation">📐 Segmentation</div>
         </a>
       </td>
     </tr>
     <tr>
       <td class="unit-row">
         <a href="./lesson5/translateall.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-translation">🗣️ Перевод</div>
+          <div class="unit-circle unit-translation">🗣️ Translation</div>
         </a>
       </td>
     </tr>
     <tr>
       <td class="unit-row">
         <a href="./lesson5/index.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-exercise">📝 Задания</div>
+          <div class="unit-circle unit-exercise">📝 Exercises</div>
         </a>
       </td>
     </tr>
 
-    <!-- Урок 6 -->
+    <!-- Lesson 6 -->
     <tr>
       <td class="label-row">
-        <div class="unit-label">Урок 6: Болеет ли правитель?</div>
+        <div class="unit-label">Lesson 6: Is the Ruler Ill?</div>
       </td>
     </tr>
     <tr>
       <td class="unit-row">
         <a href="./lesson6/theory.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-theory">📚 Теория</div>
+          <div class="unit-circle unit-theory">📚 Theory</div>
         </a>
       </td>
     </tr>
 
-    <!-- Словарный запас -->
+    <!-- Vocabulary -->
     <tr>
       <td class="unit-row">
         <a href="./lesson6/vocab.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-vocab">🔠 Словарный запас</div>
+          <div class="unit-circle unit-vocab">🔠 Vocabulary</div>
         </a>
       </td>
     </tr>
 
-    <!-- Иероглифы -->
+    <!-- Characters -->
     <tr>
       <td class="unit-row">
         <a href="./lesson6/hanzi.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-kanji">🪶 Иероглифы</div>
+          <div class="unit-circle unit-kanji">🪶 Characters</div>
         </a>
       </td>
     </tr>
@@ -627,53 +627,53 @@
     <tr>
       <td class="unit-row">
         <a href="./lesson6/quiz.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-segmentation">📐 Сегментация</div>
+          <div class="unit-circle unit-segmentation">📐 Segmentation</div>
         </a>
       </td>
     </tr>
     <tr>
       <td class="unit-row">
         <a href="./lesson6/translateall.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-translation">🗣️ Перевод</div>
+          <div class="unit-circle unit-translation">🗣️ Translation</div>
         </a>
       </td>
     </tr>
     <tr>
       <td class="unit-row">
         <a href="./lesson6/index.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-exercise">📝 Задания</div>
+          <div class="unit-circle unit-exercise">📝 Exercises</div>
         </a>
       </td>
     </tr>
 
-    <!-- Урок 7 -->
+    <!-- Lesson 7 -->
     <tr>
       <td class="label-row">
-        <div class="unit-label">Урок 7: Пора собирать войско!</div>
+        <div class="unit-label">Lesson 7: Time to Gather the Army!</div>
       </td>
     </tr>
     <tr>
       <td class="unit-row">
         <a href="./lesson7/theory.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-theory">📚 Теория</div>
+          <div class="unit-circle unit-theory">📚 Theory</div>
         </a>
       </td>
     </tr>
 
-    <!-- Словарный запас -->
+    <!-- Vocabulary -->
     <tr>
       <td class="unit-row">
         <a href="./lesson7/vocab.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-vocab">🔠 Словарный запас</div>
+          <div class="unit-circle unit-vocab">🔠 Vocabulary</div>
         </a>
       </td>
     </tr>
 
-    <!-- Иероглифы -->
+    <!-- Characters -->
     <tr>
       <td class="unit-row">
         <a href="./lesson7/hanzi.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-kanji">🪶 Иероглифы</div>
+          <div class="unit-circle unit-kanji">🪶 Characters</div>
         </a>
       </td>
     </tr>
@@ -681,53 +681,53 @@
     <tr>
       <td class="unit-row">
         <a href="./lesson7/quiz.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-segmentation">📐 Сегментация</div>
+          <div class="unit-circle unit-segmentation">📐 Segmentation</div>
         </a>
       </td>
     </tr>
     <tr>
       <td class="unit-row">
         <a href="./lesson7/translateall.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-translation">🗣️ Перевод</div>
+          <div class="unit-circle unit-translation">🗣️ Translation</div>
         </a>
       </td>
     </tr>
     <tr>
       <td class="unit-row">
         <a href="./lesson7/index.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-exercise">📝 Задания</div>
+          <div class="unit-circle unit-exercise">📝 Exercises</div>
         </a>
       </td>
     </tr>
 
-    <!-- Урок 8 -->
+    <!-- Lesson 8 -->
     <tr>
       <td class="label-row">
-        <div class="unit-label">Урок 8: Жертвоприношение предкам</div>
+        <div class="unit-label">Lesson 8: Ancestral Sacrifice</div>
       </td>
     </tr>
     <tr>
       <td class="unit-row">
         <a href="./lesson8/theory.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-theory">📚 Теория</div>
+          <div class="unit-circle unit-theory">📚 Theory</div>
         </a>
       </td>
     </tr>
 
-    <!-- Словарный запас -->
+    <!-- Vocabulary -->
     <tr>
       <td class="unit-row">
         <a href="./lesson8/vocab.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-vocab">🔠 Словарный запас</div>
+          <div class="unit-circle unit-vocab">🔠 Vocabulary</div>
         </a>
       </td>
     </tr>
 
-    <!-- Иероглифы -->
+    <!-- Characters -->
     <tr>
       <td class="unit-row">
         <a href="./lesson8/hanzi.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-kanji">🪶 Иероглифы</div>
+          <div class="unit-circle unit-kanji">🪶 Characters</div>
         </a>
       </td>
     </tr>
@@ -735,53 +735,53 @@
     <tr>
       <td class="unit-row">
         <a href="./lesson8/quiz.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-segmentation">📐 Сегментация</div>
+          <div class="unit-circle unit-segmentation">📐 Segmentation</div>
         </a>
       </td>
     </tr>
     <tr>
       <td class="unit-row">
         <a href="./lesson8/translateall.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-translation">🗣️ Перевод</div>
+          <div class="unit-circle unit-translation">🗣️ Translation</div>
         </a>
       </td>
     </tr>
     <tr>
       <td class="unit-row">
         <a href="./lesson8/index.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-exercise">📝 Задания</div>
+          <div class="unit-circle unit-exercise">📝 Exercises</div>
         </a>
       </td>
     </tr>
 
-    <!-- Урок 9 -->
+    <!-- Lesson 9 -->
     <tr>
       <td class="label-row">
-        <div class="unit-label">Урок 9: Кто пойдёт в поход — мы или они?</div>
+        <div class="unit-label">Lesson 9: Who Will Go on Campaign - Us or Them?</div>
       </td>
     </tr>
     <tr>
       <td class="unit-row">
         <a href="./lesson9/theory.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-theory">📚 Теория</div>
+          <div class="unit-circle unit-theory">📚 Theory</div>
         </a>
       </td>
     </tr>
 
-    <!-- Словарный запас -->
+    <!-- Vocabulary -->
     <tr>
       <td class="unit-row">
         <a href="./lesson9/vocab.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-vocab">🔠 Словарный запас</div>
+          <div class="unit-circle unit-vocab">🔠 Vocabulary</div>
         </a>
       </td>
     </tr>
 
-    <!-- Иероглифы -->
+    <!-- Characters -->
     <tr>
       <td class="unit-row">
         <a href="./lesson9/hanzi.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-kanji">🪶 Иероглифы</div>
+          <div class="unit-circle unit-kanji">🪶 Characters</div>
         </a>
       </td>
     </tr>
@@ -789,53 +789,53 @@
     <tr>
       <td class="unit-row">
         <a href="./lesson9/quiz.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-segmentation">📐 Сегментация</div>
+          <div class="unit-circle unit-segmentation">📐 Segmentation</div>
         </a>
       </td>
     </tr>
     <tr>
       <td class="unit-row">
         <a href="./lesson9/translateall.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-translation">🗣️ Перевод</div>
+          <div class="unit-circle unit-translation">🗣️ Translation</div>
         </a>
       </td>
     </tr>
     <tr>
       <td class="unit-row">
         <a href="./lesson9/index.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-exercise">📝 Задания</div>
+          <div class="unit-circle unit-exercise">📝 Exercises</div>
         </a>
       </td>
     </tr>
 
-    <!-- Урок 10 -->
+    <!-- Lesson 10 -->
     <tr>
       <td class="label-row">
-        <div class="unit-label">Урок 10: Враг у ворот!</div>
+        <div class="unit-label">Lesson 10: The Enemy at the Gates!</div>
       </td>
     </tr>
     <tr>
       <td class="unit-row">
         <a href="./lesson10/theory.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-theory">📚 Теория</div>
+          <div class="unit-circle unit-theory">📚 Theory</div>
         </a>
       </td>
     </tr>
 
-    <!-- Словарный запас -->
+    <!-- Vocabulary -->
     <tr>
       <td class="unit-row">
         <a href="./lesson10/vocab.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-vocab">🔠 Словарный запас</div>
+          <div class="unit-circle unit-vocab">🔠 Vocabulary</div>
         </a>
       </td>
     </tr>
 
-    <!-- Иероглифы -->
+    <!-- Characters -->
     <tr>
       <td class="unit-row">
         <a href="./lesson10/hanzi.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-kanji">🪶 Иероглифы</div>
+          <div class="unit-circle unit-kanji">🪶 Characters</div>
         </a>
       </td>
     </tr>
@@ -843,31 +843,31 @@
     <tr>
       <td class="unit-row">
         <a href="./lesson10/quiz.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-segmentation">📐 Сегментация</div>
+          <div class="unit-circle unit-segmentation">📐 Segmentation</div>
         </a>
       </td>
     </tr>
     <tr>
       <td class="unit-row">
         <a href="./lesson10/translateall.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-translation">🗣️ Перевод</div>
+          <div class="unit-circle unit-translation">🗣️ Translation</div>
         </a>
       </td>
     </tr>
     <tr>
       <td class="unit-row">
         <a href="./lesson10/index.html" style="display: block; text-decoration: none;">
-          <div class="unit-circle unit-exercise">📝 Задания</div>
+          <div class="unit-circle unit-exercise">📝 Exercises</div>
         </a>
       </td>
     </tr>
   </table>
 
-  <!-- Скрипт анимации -->
+  <!-- Animation Script -->
   <script>
-    // 🌊 Просторная синусоида
-    const amplitude = 350;    // амплитуда движения
-    const frequency = 0.004;  // частота волны
+    // 🌊 Spacious sine wave
+    const amplitude = 350;    // Movement amplitude
+    const frequency = 0.004;  // Wave frequency
 
     const units = document.querySelectorAll('.unit-circle');
 
@@ -882,12 +882,12 @@
   
   <!-- Firebase SDK -->
 <script type="module">
-  // === 🔥 ИМПОРТ FIREBASE (без лишних пробелов) ===
-  import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js';
-  import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js';
-  import { getFirestore, doc, getDoc, setDoc, collection, query, where, onSnapshot } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
+  // === 🔥 IMPORT FIREBASE (no extra spaces) ===
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js  ';
+  import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js  ';
+  import { getFirestore, doc, getDoc, setDoc, collection, query, where, onSnapshot } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js  ';
 
-  // === 🔧 КОНФИГУРАЦИЯ FIREBASE ===
+  // === 🔧 FIREBASE CONFIGURATION ===
   const firebaseConfig = {
     apiKey: "AIzaSyBvyxPtx5PICYk60HUCERw5Cxh1TyCcZCY",
     authDomain: "antient-9bff0.firebaseapp.com",
@@ -898,13 +898,13 @@
     measurementId: "G-W4ZQXWRTKK"
   };
 
-  // Инициализация
+  // Initialization
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
   const provider = new GoogleAuthProvider();
 
-  // === 🎯 ЭЛЕМЕНТЫ DOM ===
+  // === 🎯 DOM ELEMENTS ===
   const loginBtn = document.getElementById('loginWithGoogle');
   const loginContainer = document.getElementById('login-container');
   const userContainer = document.getElementById('user-container');
@@ -914,8 +914,8 @@
   const logoutBtn = document.getElementById('logoutBtn');
   const userInfo = document.querySelector('#user-container .user-info');
 
-  // === 📊 ДОБАВЛЕНИЕ СТАТИСТИКИ: баллы, друзья, сообщения ===
-// === 📊 ДОБАВЛЕНИЕ СТАТИСТИКИ: баллы, друзья, сообщения (кликабельные) ===
+  // === 📊 ADD STATISTICS: points, friends, messages ===
+// === 📊 ADD STATISTICS: points, friends, messages (clickable) ===
 
 const statsContainer = document.createElement('div');
 statsContainer.style.cssText = `
@@ -929,44 +929,44 @@ statsContainer.style.cssText = `
 
 statsContainer.innerHTML = `
   <a href="./community.html#leaderboard" style="color: inherit; text-decoration: none;" target="_blank">
-    🎯 <strong id="user-points">0</strong> баллов
+    🎯 <strong id="user-points">0</strong> points
   </a>
   <a href="./community.html#friends" style="color: inherit; text-decoration: none;" target="_blank">
-    👥 <strong id="user-friends">0</strong> друзей
+    👥 <strong id="user-friends">0</strong> friends
   </a>
   <a href="./community.html#messages" style="color: inherit; text-decoration: none;" target="_blank">
-    ✉️ <strong id="user-unread">0</strong> новых
+    ✉️ <strong id="user-unread">0</strong> new
   </a>
 `;
 
   userInfo.appendChild(statsContainer);
 
-  // Ссылки на элементы
+  // Element references
   const userPointsEl = document.getElementById('user-points');
   const userFriendsEl = document.getElementById('user-friends');
   const userUnreadEl = document.getElementById('user-unread');
 
-  // Текущий пользователь
+  // Current user
   let currentUser = null;
 
-  // === 🔐 ОБРАБОТЧИКИ АВТОРИЗАЦИИ ===
+  // === 🔐 AUTHENTICATION HANDLERS ===
   loginBtn.addEventListener('click', () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         loadUserData(result.user);
       })
       .catch((error) => {
-        alert("Ошибка входа: " + error.message);
+        alert("Login error: " + error.message);
       });
   });
 
   logoutBtn.addEventListener('click', () => {
     signOut(auth).catch(() => {
-      alert("Ошибка выхода");
+      alert("Logout error");
     });
   });
 
-  // === 📥 ЗАГРУЗКА ДАННЫХ ПОЛЬЗОВАТЕЛЯ ===
+  // === 📥 LOAD USER DATA ===
   async function loadUserData(user) {
     const userRef = doc(db, 'users', user.uid);
     const userSnap = await getDoc(userRef);
@@ -974,7 +974,7 @@ statsContainer.innerHTML = `
     if (!userSnap.exists()) {
       await setDoc(userRef, {
         uid: user.uid,
-        displayName: user.displayName || 'Аноним',
+        displayName: user.displayName || 'Anonymous',
         email: user.email,
         photoURL: user.photoURL,
         points: 0,
@@ -986,25 +986,25 @@ statsContainer.innerHTML = `
     const data = userSnap.data();
     currentUser = { uid: user.uid, ...data };
 
-    // Обновить UI
-    userName.textContent = user.displayName || 'Пользователь';
+    // Update UI
+    userName.textContent = user.displayName || 'User';
     userEmail.textContent = user.email;
-    userPhoto.src = user.photoURL || 'https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg';
+    userPhoto.src = user.photoURL || 'https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg  ';
 
     userPointsEl.textContent = data.points || 0;
     userFriendsEl.textContent = (data.friends ? data.friends.length : 0);
 
-    // Подключить отслеживание непрочитанных
+    // Connect unread message tracking
     if (currentUser) {
       loadUnreadMessages(currentUser.uid);
     }
 
-    // Показать панель
+    // Show panel
     loginContainer.classList.add('hidden');
     userContainer.classList.remove('hidden');
   }
 
-  // === ✉️ ПОДСЧЁТ НЕПРОЧИТАННЫХ СООБЩЕНИЙ ===
+  // === ✉️ COUNT UNREAD MESSAGES ===
   function loadUnreadMessages(userId) {
     const msgQuery = query(
       collection(db, 'messages'),
@@ -1015,18 +1015,18 @@ statsContainer.innerHTML = `
       let unread = 0;
       snap.forEach(doc => {
         const data = doc.data();
-        // Только входящие, где я не помечен как прочитавший
+        // Only incoming messages where I haven't marked as read
         if (data.to === userId && (!data.seenBy || !data.seenBy.includes(userId))) {
           unread++;
         }
       });
       userUnreadEl.textContent = unread;
     }, (error) => {
-      console.error("Ошибка при подсчёте непрочитанных:", error);
+      console.error("Error counting unread messages:", error);
     });
   }
 
-  // === 🔄 НАБЛЮДЕНИЕ ЗА СОСТОЯНИЕМ АВТОРИЗАЦИИ ===
+  // === 🔄 AUTH STATE OBSERVER ===
   onAuthStateChanged(auth, (user) => {
     if (user) {
       loadUserData(user);
@@ -1042,14 +1042,14 @@ statsContainer.innerHTML = `
   const circles = document.querySelectorAll('.unit-circle');
 
   circles.forEach(circle => {
-    // Очистим содержимое от предыдущих модификаций
+    // Clear content from previous modifications
     circle.innerHTML = circle.textContent.trim();
 
     const words = circle.textContent.split(' ').filter(w => w.length > 0);
     let html = '';
 
     if (words.length > 1) {
-      // Разбиваем на строки по одному слову
+      // Break into lines, one word per line
       html = words.map(word => `<div class="circle-line">${word}</div>`).join('');
     } else {
       html = `<div class="circle-line">${words[0]}</div>`;
@@ -1057,7 +1057,7 @@ statsContainer.innerHTML = `
 
     circle.innerHTML = html;
 
-    // Применяем стили для строк
+    // Apply styles to lines
     const lines = circle.querySelectorAll('.circle-line');
     lines.forEach(line => {
       line.style.textAlign = 'center';
@@ -1066,7 +1066,7 @@ statsContainer.innerHTML = `
       line.style.textOverflow = 'ellipsis';
     });
 
-    // Функция подбора максимального шрифта
+    // Function to find the maximum font size
     const fitText = () => {
       let minSize = 10;
       let maxSize = 200;
@@ -1074,9 +1074,9 @@ statsContainer.innerHTML = `
 
       for (let size = minSize; size <= maxSize; size++) {
         lines.forEach(line => line.style.fontSize = size + 'px');
-        circle.style.lineHeight = 'normal'; // сброс, чтобы не мешал
+        circle.style.lineHeight = 'normal'; // Reset to avoid interference
 
-        // Проверяем, не вылез ли текст за границы
+        // Check if text overflows
         const isOverflowing = Array.from(lines).some(line => {
           const rect = line.getBoundingClientRect();
           const circleRect = circle.getBoundingClientRect();
@@ -1095,25 +1095,25 @@ statsContainer.innerHTML = `
         }
       }
 
-      // Уменьшаем на 3 пикселя для запаса
+      // Reduce by 3 pixels for margin
       bestSize = Math.max(minSize, bestSize - 3);
 
-      // Устанавливаем размер
+      // Set the size
       lines.forEach(line => line.style.fontSize = bestSize + 'px');
 
-      // Центрируем по вертикали через flex
+      // Center vertically via flex
       circle.style.display = 'flex';
       circle.style.flexDirection = 'column';
       circle.style.justifyContent = 'center';
       circle.style.alignItems = 'center';
-      circle.style.lineHeight = 1.2; // для межстрочного интервала
+      circle.style.lineHeight = 1.2; // For line spacing
     };
 
-    // Запускаем подгонку
+    // Run the fitting
     fitText();
   });
 
-  console.log('✅ Размеры шрифтов уменьшены на 3px и оптимизированы!');
+  console.log('✅ Font sizes reduced by 3px and optimized!');
 })();
 </script>
 </html>
