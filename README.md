@@ -1,0 +1,2 @@
+# basedlingua
+anti-duolingo
