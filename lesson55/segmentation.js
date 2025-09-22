@@ -6,325 +6,325 @@ var SentenceData = {
       "number": 1,
       "original": "府君得聞之",
       "transliteration": "",
-      "translation": "Правитель услышал (новость)"
+      "translation": "The governor heard (the news)"
     },
     {
       "number": 2,
       "original": "心中大歡喜",
       "transliteration": "",
-      "translation": "Правитель в радости большой"
+      "translation": "The governor was greatly delighted"
     },
     {
       "number": 3,
       "original": "視曆復開書",
       "transliteration": "",
-      "translation": "Глядит в календари и памятные книги"
+      "translation": "He looked at the calendars and reference books"
     },
     {
       "number": 4,
       "original": "便利此月内",
       "transliteration": "",
-      "translation": "Удачна свадьба в этой же луне"
+      "translation": "The wedding is convenient within this lunar month"
     },
     {
       "number": 5,
       "original": "六月正相應",
       "transliteration": "",
-      "translation": "Шесть соответствий точно совпадают"
+      "translation": "Six correspondences match exactly"
     },
     {
       "number": 6,
       "original": "良吉三十日",
       "transliteration": "",
-      "translation": "День свадьбы выпал на тридцатый день"
+      "translation": "The wedding day falls on the thirtieth day"
     },
     {
       "number": 7,
       "original": "今已二十七",
       "transliteration": "",
-      "translation": "И до него всего три дня осталось"
+      "translation": "And there are only three days left until then"
     },
     {
       "number": 8,
       "original": "卿可去成婚",
       "transliteration": "",
-      "translation": "Пусть к свадьбе приготовится жених"
+      "translation": "Let the groom prepare for the wedding"
     },
     {
       "number": 9,
       "original": "交語速裝束",
       "transliteration": "",
-      "translation": "Рыданья заглушила дочь платком"
+      "translation": "Sobs silenced the daughter with a handkerchief"
     },
     {
       "number": 10,
       "original": "絡繹如浮雲",
       "transliteration": "",
-      "translation": "Как туча черная, гора тюков"
+      "translation": "Like a black cloud, a mountain of bundles"
     },
     {
       "number": 11,
       "original": "青雀白鵠舫",
       "transliteration": "",
-      "translation": "Рисованные птицы на бортах"
+      "translation": "Painted birds on the sides"
     },
     {
       "number": 12,
       "original": "四角龍子幡",
       "transliteration": "",
-      "translation": "Над лодками — с драконами знамена"
+      "translation": "Above the boats — banners with dragons"
     },
     {
       "number": 13,
       "original": "婀娜隨風轉",
       "transliteration": "",
-      "translation": "И лодки медленно плывут вперед"
+      "translation": "And the boats slowly move forward"
     },
     {
       "number": 14,
       "original": "金車玉作輪",
       "transliteration": "",
-      "translation": "В повозках золотых из яшм колеса"
+      "translation": "In golden chariots with jade wheels"
     },
     {
       "number": 15,
       "original": "躑躅青驄馬",
       "transliteration": "",
-      "translation": "Стучат копыта вороных коней"
+      "translation": "The hooves of bay horses clatter"
     },
     {
       "number": 16,
       "original": "流蘇金縷鞍",
       "transliteration": "",
-      "translation": "Узорною резьбой покрыты седла"
+      "translation": "The saddles are covered with ornate carvings"
     },
     {
       "number": 17,
       "original": "齎錢三百萬",
       "transliteration": "",
-      "translation": "Везут монеты в связках без числа"
+      "translation": "They carry coins in bundles without number"
     },
     {
       "number": 18,
       "original": "皆用青絲穿",
       "transliteration": "",
-      "translation": "Нанизаны на шелковые нити"
+      "translation": "Strung on silk threads"
     },
     {
       "number": 19,
       "original": "雜綵三百匹",
       "transliteration": "",
-      "translation": "Везут золототканые шелка"
+      "translation": "They carry gold-woven silks"
     },
     {
       "number": 20,
       "original": "廣交市鮭珍",
       "transliteration": "",
-      "translation": "Отборных рыбных яств купить послали по всем окрестным рынкам и торжкам"
+      "translation": "They were sent to buy select fish delicacies from all the surrounding markets and bazaars"
     },
     {
       "number": 21,
       "original": "從人四五百",
       "transliteration": "",
-      "translation": "Четыреста-пятьсот посыльных было"
+      "translation": "There were four to five hundred attendants"
     },
     {
       "number": 22,
       "original": "鬰鬰登君門",
       "transliteration": "",
-      "translation": "И суетились люди у ворот"
+      "translation": "And people bustled at the gates"
     },
     {
       "number": 23,
       "original": "阿母問阿女",
       "transliteration": "",
-      "translation": "Сказала дочери любимой мать"
+      "translation": "The beloved mother said to her daughter"
     },
     {
       "number": 24,
       "original": "適得府君書",
       "transliteration": "",
-      "translation": "Письмо от господина получила"
+      "translation": "I received a letter from the governor"
     },
     {
       "number": 25,
       "original": "明日來迎汝",
       "transliteration": "",
-      "translation": "Прибудут завтра за тобою, дочь"
+      "translation": "They will come for you tomorrow, daughter"
     },
     {
       "number": 26,
       "original": "何不作衣裳",
       "transliteration": "",
-      "translation": "Ты ж свадебный наряд еще не сшила"
+      "translation": "But you haven't sewn your wedding dress yet"
     },
     {
       "number": 27,
       "original": "莫令事不舉",
       "transliteration": "",
-      "translation": "Без этого ведь свадьбе не бывать!"
+      "translation": "Without this, there won't be a wedding!"
     },
     {
       "number": 28,
       "original": "阿女默無聲",
       "transliteration": "",
-      "translation": "Дочь ничего в ответ ей не сказала"
+      "translation": "The daughter said nothing in reply"
     },
     {
       "number": 29,
       "original": "手巾掩口啼",
       "transliteration": "",
-      "translation": "Рыданья заглушила дочь платком"
+      "translation": "Sobs silenced the daughter with a handkerchief"
     },
     {
       "number": 30,
       "original": "涙落便如瀉",
       "transliteration": "",
-      "translation": "И в горьких вздохах — тяжкая печаль (слезы текли, как дождевые ручьи)"
+      "translation": "And in bitter sighs — heavy sorrow (tears flowed like rain streams)"
     },
     {
       "number": 31,
       "original": "移我琉璃榻",
       "transliteration": "",
-      "translation": "Придвинула к окну резное кресло с мозаикой эмалевой на нем"
+      "translation": "She moved the inlaid chair with enamel mosaic on it to the window"
     },
     {
       "number": 32,
       "original": "出置前窗下",
       "transliteration": "",
-      "translation": "(Кресло) вынесла и поставила перед окном"
+      "translation": "(The chair) she took out and placed in front of the window"
     },
     {
       "number": 33,
       "original": "左手持刀尺",
       "transliteration": "",
-      "translation": "Вот шелк берет она рукою левой"
+      "translation": "Here she takes silk in her left hand"
     },
     {
       "number": 34,
       "original": "右手執綾羅",
       "transliteration": "",
-      "translation": "А правой — ножницы"
+      "translation": "And in her right hand — scissors"
     },
     {
       "number": 35,
       "original": "朝成繡裌裙",
       "transliteration": "",
-      "translation": "Двойную юбку делает за утро"
+      "translation": "She makes a double skirt in the morning"
     },
     {
       "number": 36,
       "original": "晚成單羅衫",
       "transliteration": "",
-      "translation": "А вечером рубашку шьет себе"
+      "translation": "And sews herself a shirt in the evening"
     },
     {
       "number": 37,
       "original": "晻晻日欲暝",
       "transliteration": "",
-      "translation": "А в сумерках перед закатом солнца"
+      "translation": "And in the dusk before sunset"
     },
     {
       "number": 38,
       "original": "愁思出門啼",
       "transliteration": "",
-      "translation": "Скорбя, в слезах выходит из ворот"
+      "translation": "Grieving, in tears, she goes out the gate"
     },
     {
       "number": 39,
       "original": "府吏聞此變",
       "transliteration": "",
-      "translation": "Чжунцин узнал об этих переменах"
+      "translation": "Zhongqin learned of these changes"
     },
     {
       "number": 40,
       "original": "因求假暫歸",
       "transliteration": "",
-      "translation": "И поспешил отправиться к жене"
+      "translation": "And hurried to send word to his wife"
     },
     {
       "number": 41,
       "original": "未至二三里",
       "transliteration": "",
-      "translation": "Двух ли, трех ли еще он не проехал"
+      "translation": "He hadn't traveled two or three li yet"
     },
     {
       "number": 42,
       "original": "摧藏馬悲哀",
       "transliteration": "",
-      "translation": "А ржание тоскливое коня"
+      "translation": "When the horse's mournful neighing"
     },
     {
       "number": 43,
       "original": "新婦識馬聲",
       "transliteration": "",
-      "translation": "Ланьчжи уже услышала, узнала"
+      "translation": "Lan Zhi already heard and recognized"
     },
     {
       "number": 44,
       "original": "躡履相逢迎",
       "transliteration": "",
-      "translation": "Она навстречу всаднику спешит"
+      "translation": "She hurried to meet the rider"
     },
     {
       "number": 45,
       "original": "悵然遙相望",
       "transliteration": "",
-      "translation": "Глядит, глядит на всадника в тревоге"
+      "translation": "She looks, looks at the rider in alarm"
     },
     {
       "number": 46,
       "original": "知是故人來",
       "transliteration": "",
-      "translation": "И узнает, что это прежний муж"
+      "translation": "And recognizes that it's her former husband"
     },
     {
       "number": 47,
       "original": "舉手拍馬鞍",
       "transliteration": "",
-      "translation": "Подняла руки и к седлу прижалась"
+      "translation": "She raised her hands and pressed against the saddle"
     },
     {
       "number": 48,
       "original": "磋嘆使心傷",
       "transliteration": "",
-      "translation": "И в горьких вздохах — тяжкая печаль"
+      "translation": "And in bitter sighs — heavy sorrow"
     },
     {
       "number": 49,
       "original": "自君别我後",
       "transliteration": "",
-      "translation": "С тех пор как вы со мною разлучились"
+      "translation": "Since you left me"
     },
     {
       "number": 50,
       "original": "果不如先願",
       "transliteration": "",
-      "translation": "И вышло все не так, как я хотела"
+      "translation": "Everything turned out not as I wished"
     },
     {
       "number": 51,
       "original": "人事不可量",
       "transliteration": "",
-      "translation": "Дела людей не объяснял никто"
+      "translation": "People's affairs were explained by no one"
     },
     {
       "number": 52,
       "original": "又非君所詳",
       "transliteration": "",
-      "translation": "Не так, как господин мой наставлял"
+      "translation": "Not as my lord had instructed"
     },
     {
       "number": 53,
       "original": "卿當日勝貴",
       "transliteration": "",
-      "translation": "Вы высшее займете положенье"
+      "translation": "You will attain a higher position"
     },
     {
       "number": 54,
       "original": "吾獨向黄泉",
       "transliteration": "",
-      "translation": "Я к Желтым Водам удалюсь один"
+      "translation": "I alone will depart to the Yellow Springs"
     }
   ]
 };

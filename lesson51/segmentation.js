@@ -6,337 +6,337 @@ var SentenceData = {
       "number": 1,
       "original": "孔雀東南飛",
       "transliteration": "",
-      "translation": "Один из них кружит, кружит устало..."  // БЫЛО №2
+      "translation": "One of them circles, circles wearily..."  // WAS #2
     },
     {
       "number": 2,
       "original": "五里一徘徊",
       "transliteration": "",
-      "translation": "Павлины в вышине летят на юг,"  // БЫЛО №1
+      "translation": "Peacocks fly south high in the sky,"  // WAS #1
     },
     {
       "number": 3,
       "original": "十三能織素",
       "transliteration": "",
-      "translation": "«В тринадцать лет я ткала лучший шелк,"  // БЫЛО №3 — ОСТАЛОСЬ
+      "translation": "«At thirteen, I wove the finest silk,"  // WAS #3 — REMAINED
     },
     {
       "number": 4,
       "original": "十四能裁衣",
       "transliteration": "",
-      "translation": "В четырадцать уже кроить умела,"  // БЫЛО №4 — ОСТАЛОСЬ
+      "translation": "At fourteen, I could already cut cloth,"  // WAS #4 — REMAINED
     },
     {
       "number": 5,
       "original": "十五彈箜篌",
       "transliteration": "",
-      "translation": "В пятнадцать научилась я играть"  // БЫЛО №5 — ОСТАЛОСЬ
+      "translation": "At fifteen, I learned to play"  // WAS #5 — REMAINED
     },
     {
       "number": 6,
       "original": "十六誦詩書",
       "transliteration": "",
-      "translation": "На звучной двадцатитрехструнной цитре."  // БЫЛО №6 — ОСТАЛОСЬ
+      "translation": "On a melodious twenty-three-stringed zither."  // WAS #6 — REMAINED
     },
     {
       "number": 7,
       "original": "十七為君婦",
       "transliteration": "",
-      "translation": "В шестнадцать я читала наизусть"  // БЫЛО №7 — ОСТАЛОСЬ
+      "translation": "At sixteen, I could recite by heart"  // WAS #7 — REMAINED
     },
     {
       "number": 8,
       "original": "心中常悲苦",
       "transliteration": "",
-      "translation": "Предания, поэмы и каноны,"  // БЫЛО №8 — ОСТАЛОСЬ
+      "translation": "Legends, poems, and canons,"  // WAS #8 — REMAINED
     },
     {
       "number": 9,
       "original": "君既為府吏",
       "transliteration": "",
-      "translation": "В семнадцать стала вашею женой."  // БЫЛО №9 — ОСТАЛОСЬ
+      "translation": "At seventeen, I became your wife."  // WAS #9 — REMAINED
     },
     {
       "number": 10,
       "original": "守節情不移",
       "transliteration": "",
-      "translation": "И вот живу я в скорби постоянной."  // БЫЛО №10 — ОСТАЛОСЬ
+      "translation": "And now I live in constant sorrow."  // WAS #10 — REMAINED
     },
     {
       "number": 11,
       "original": "賤妾留空房",
       "transliteration": "",
-      "translation": "Чиновником в приказе служит муж,"  // БЫЛО №11 — ОСТАЛОСЬ
+      "translation": "Your husband serves as a clerk in the commandery,"  // WAS #11 — REMAINED
     },
     {
       "number": 12,
       "original": "相見常日稀",
       "transliteration": "",
-      "translation": "И потому он в чувствах неизменен"  // БЫЛО №12 — ОСТАЛОСЬ
+      "translation": "And therefore he remains faithful in his feelings"  // WAS #12 — REMAINED
     },
     {
       "number": 13,
       "original": "雞鳴入機織",
       "transliteration": "",
-      "translation": "И целомудренную жизнь ведет."  // БЫЛО №13 — ОСТАЛОСЬ
+      "translation": "And leads a chaste life."  // WAS #13 — REMAINED
     },
     {
       "number": 14,
       "original": "夜夜不得息",
       "transliteration": "",
-      "translation": "Но потому же часто оставляет"  // БЫЛО №14 — ОСТАЛОСЬ
+      "translation": "But for the same reason, he often leaves"  // WAS #14 — REMAINED
     },
     {
       "number": 15,
       "original": "三日斷五匹",
       "transliteration": "",
-      "translation": "Меня одну, с ним редко вижусь я."  // БЫЛО №15 — ОСТАЛОСЬ
+      "translation": "Me alone, and we rarely see each other."  // WAS #15 — REMAINED
     },
     {
       "number": 16,
       "original": "大人故嫌遲",
       "transliteration": "",
-      "translation": "Поет петух, и я иду работать,"  // БЫЛО №16 — ОСТАЛОСЬ
+      "translation": "The rooster crows, and I go to work,"  // WAS #16 — REMAINED
     },
     {
       "number": 17,
       "original": "君家婦難為",
       "transliteration": "",
-      "translation": "Как следует за ночь не отдохнув."  // БЫЛО №17 — ОСТАЛОСЬ
+      "translation": "Not resting at all through the night."  // WAS #17 — REMAINED
     },
     {
       "number": 18,
       "original": "妾不堪驅使",
       "transliteration": "",
-      "translation": "Хоть за три дня я пять кусков наткала,"  // БЫЛО №18 — ОСТАЛОСЬ
+      "translation": "Though in three days I wove five bolts,"  // WAS #18 — REMAINED
     },
     {
       "number": 19,
       "original": "徒留無所施",
       "transliteration": "",
-      "translation": "А все ж свекровь за медленность корит,"  // БЫЛО №19 — ОСТАЛОСЬ
+      "translation": "My mother-in-law still scolds me for being slow,"  // WAS #19 — REMAINED
     },
     {
       "number": 20,
       "original": "便可白公姥",
       "transliteration": "",
-      "translation": "Но я старалась, ткала очень быстро..."  // БЫЛО №20 — ОСТАЛОСЬ
+      "translation": "But I tried hard, weaving very quickly..."  // WAS #20 — REMAINED
     },
     {
       "number": 21,
       "original": "便可速遣之",
       "transliteration": "",
-      "translation": "Да, трудно в вашем доме быть женой."  // БЫЛО №21 — ОСТАЛОСЬ
+      "translation": "Yes, it's hard to be a wife in your home."  // WAS #21 — REMAINED
     },
     {
       "number": 22,
       "original": "遣去慎莫留",
       "transliteration": "",
-      "translation": "Не потерплю напрасных понуканий,"  // БЫЛО №22 — ОСТАЛОСЬ
+      "translation": "I can't endure unnecessary prodding,"  // WAS #22 — REMAINED
     },
     {
       "number": 23,
       "original": "府吏長跪告",
       "transliteration": "",
-      "translation": "Придется вас покинуть навсегда."  // БЫЛО №23 — ОСТАЛОСЬ
+      "translation": "I will have to leave forever."  // WAS #23 — REMAINED
     },
     {
       "number": 24,
       "original": "伏惟啟阿母",
       "transliteration": "",
-      "translation": "Вы объяснить сумеете свекрови,"  // БЫЛО №24 — ОСТАЛОСЬ
+      "translation": "You can explain to your mother-in-law,"  // WAS #24 — REMAINED
     },
     {
       "number": 25,
       "original": "今若遣此婦",
       "transliteration": "",
-      "translation": "Что я должна оставить этот дом"  // БЫЛО №25 — ОСТАЛОСЬ
+      "translation": "That I must leave this house"  // WAS #25 — REMAINED
     },
     {
       "number": 26,
       "original": "終老不復取",
       "transliteration": "",
-      "translation": "И в прежнюю свою семью вернуться»."  // БЫЛО №26 — ОСТАЛОСЬ
+      "translation": "And return to my former family.»"  // WAS #26 — REMAINED
     },
     {
       "number": 27,
       "original": "阿母得聞之",
       "transliteration": "",
-      "translation": "Чиновник выслушал слова супруги"  // БЫЛО №27 — ОСТАЛОСЬ
+      "translation": "The clerk listened to his wife's words"  // WAS #27 — REMAINED
     },
     {
       "number": 28,
       "original": "椎床便大怒",
       "transliteration": "",
-      "translation": "И матери поведал обо всем:"  // БЫЛО №28 — ОСТАЛОСЬ
+      "translation": "And told his mother everything:"  // WAS #28 — REMAINED
     },
     {
       "number": 29,
       "original": "及時相遣歸",
       "transliteration": "",
-      "translation": "«Гаданьем по лицу мне предсказали"  // БЫЛО №29 — ОСТАЛОСЬ
+      "translation": "«Fortune-telling by my face predicted"  // WAS #29 — REMAINED
     },
     {
       "number": 30,
       "original": "府吏得聞之",
       "transliteration": "",
-      "translation": "Ничтожную карьеру и судьбу,"  // БЫЛО №30 — ОСТАЛОСЬ
+      "translation": "A lowly career and fate,"  // WAS #30 — REMAINED
     },
     {
       "number": 31,
       "original": "上堂啟阿母",
       "transliteration": "",
-      "translation": "Но счастлив тем я, что досталась в жены"  // БЫЛО №31 — ОСТАЛОСЬ
+      "translation": "But I'm happy that I got"  // WAS #31 — REMAINED
     },
     {
       "number": 32,
       "original": "兒已薄祿相",
       "transliteration": "",
-      "translation": "Девица небывалой красоты."  // БЫЛО №32 — ОСТАЛОСЬ
+      "translation": "A girl of unparalleled beauty."  // WAS #32 — REMAINED
     },
     {
       "number": 33,
       "original": "幸復得此婦",
       "transliteration": "",
-      "translation": "Мы с юных лет постель делили с нею"  // БЫЛО №33 — ОСТАЛОСЬ
+      "translation": "We shared a bed from our youth"  // WAS #33 — REMAINED
     },
     {
       "number": 34,
       "original": "結髪同枕席",
       "transliteration": "",
-      "translation": "И к Желтым Водам в час один пойдем."  // БЫЛО №34 — ОСТАЛОСЬ
+      "translation": "And we'll go to the Yellow Springs together."  // WAS #34 — REMAINED
     },
     {
       "number": 35,
       "original": "黃泉共為友",
       "transliteration": "",
-      "translation": "О вас печемся вместе два-три года"  // БЫЛО №35 — ОСТАЛОСЬ
+      "translation": "We've been caring for each other for two or three years"  // WAS #35 — REMAINED
     },
     {
       "number": 36,
       "original": "共事二三年",
       "transliteration": "",
-      "translation": "И только начинаем нашу жизнь."  // БЫЛО №36 — ОСТАЛОСЬ
+      "translation": "And we're just beginning our life."  // WAS #36 — REMAINED
     },
     {
       "number": 37,
       "original": "始爾未為久",
       "transliteration": "",
-      "translation": "Ответьте, в чем моя жена виновна,"  // БЫЛО №37 — ОСТАЛОСЬ
+      "translation": "Tell me, what is my wife guilty of,"  // WAS #37 — REMAINED
     },
     {
       "number": 38,
       "original": "女行無偏斜",
       "transliteration": "",
-      "translation": "Чем заслужила вашу неприязнь?»"  // БЫЛО №38 — ОСТАЛОСЬ
+      "translation": "To deserve your dislike?»"  // WAS #38 — REMAINED
     },
     {
       "number": 39,
       "original": "何意致不厚",
       "transliteration": "",
-      "translation": "Сказала мать чиновнику приказа:"  // БЫЛО №39 — ОСТАЛОСЬ
+      "translation": "The mother said to the clerk:"  // WAS #39 — REMAINED
     },
     {
       "number": 40,
       "original": "阿母謂府吏",
       "transliteration": "",
-      "translation": "«Обидчива, мой сын, твоя жена!"  // БЫЛО №40 — ОСТАЛОСЬ
+      "translation": "«Your wife is too sensitive, my son!"  // WAS #40 — REMAINED
     },
     {
       "number": 41,
       "original": "何乃大區區",
       "transliteration": "",
-      "translation": "У ней нет целомудрия устоев,"  // БЫЛО №41 — ОСТАЛОСЬ
+      "translation": "She has no moral principles,"  // WAS #41 — REMAINED
     },
     {
       "number": 42,
       "original": "此婦無禮節",
       "transliteration": "",
-      "translation": "И самоволья слишком много в ней."  // БЫЛО №42 — ОСТАЛОСЬ
+      "translation": "And too much willfulness in her."  // WAS #42 — REMAINED
     },
     {
       "number": 43,
       "original": "舉動自專由",
       "transliteration": "",
-      "translation": "Я долго-долго гнев в груди скрывала,"  // БЫЛО №43 — ОСТАЛОСЬ
+      "translation": "I've long concealed my anger in my chest,"  // WAS #43 — REMAINED
     },
     {
       "number": 44,
       "original": "吾意久懷忿",
       "transliteration": "",
-      "translation": "Но без меня ты справиться не смог!"  // БЫЛО №44 — ОСТАЛОСЬ
+      "translation": "But without me, you can't manage!"  // WAS #44 — REMAINED
     },
     {
       "number": 45,
       "original": "汝豈得自由",
       "transliteration": "",
-      "translation": "В семье восточной есть одна девица,"  // БЫЛО №45 — ОСТАЛОСЬ
+      "translation": "There's a girl in the eastern family,"  // WAS #45 — REMAINED
     },
     {
       "number": 46,
       "original": "東家有賢女",
       "transliteration": "",
-      "translation": "Что красотой, умом — как Цинь Лофу."  // БЫЛО №46 — ОСТАЛОСЬ
+      "translation": "Who in beauty and wisdom is like Qin Luofu."  // WAS #46 — REMAINED
     },
     {
       "number": 47,
       "original": "自名秦羅敷",
       "transliteration": "",
-      "translation": "Любви достойна, внешность несравненна,"  // БЫЛО №47 — ОСТАЛОСЬ
+      "translation": "Worthy of love, with incomparable appearance,"  // WAS #47 — REMAINED
     },
     {
       "number": 48,
       "original": "可憐體無比",
       "transliteration": "",
-      "translation": "Я там уже замолвила словцо."  // БЫЛО №48 — ОСТАЛОСЬ
+      "translation": "I've already put in a good word there."  // WAS #48 — REMAINED
     },
     {
       "number": 49,
       "original": "小子無所畏",
       "transliteration": "",
-      "translation": "Теперь прогнать нам нужно поскорее"  // БЫЛО №49 — ОСТАЛОСЬ
+      "translation": "Now we must quickly send away"  // WAS #49 — REMAINED
     },
     {
       "number": 50,
       "original": "何敢助婦語",
       "transliteration": "",
-      "translation": "Твою жену — пускай домой идет!»"  // БЫЛО №50 — ОСТАЛОСЬ
+      "translation": "Your wife — let her go home!»"  // WAS #50 — REMAINED
     },
     {
       "number": 51,
       "original": "吾已失恩義",
       "transliteration": "",
-      "translation": "Чиновник поклонился, но смиренно"  // БЫЛО №51 — ОСТАЛОСЬ
+      "translation": "The clerk bowed humbly"  // WAS #51 — REMAINED
     },
     {
       "number": 52,
       "original": "會不相從許",
       "transliteration": "",
-      "translation": "И робко матери в ответ сказал:"  // БЫЛО №52 — ОСТАЛОСЬ
+      "translation": "And timidly replied to his mother:"  // WAS #52 — REMAINED
     },
     {
       "number": 53,
       "original": "府吏默無聲",
       "transliteration": "",
-      "translation": "«Но если мы жену сейчас прогоним,"  // БЫЛО №53 — ОСТАЛОСЬ
+      "translation": "«But if we drive away my wife now,"  // WAS #53 — REMAINED
     },
     {
       "number": 54,
       "original": "再拜還入户",
       "transliteration": "",
-      "translation": "Клянусь, вовеки вновь я не женюсь!»"  // БЫЛО №54 — ОСТАЛОСЬ
+      "translation": "I swear I'll never marry again!»"  // WAS #54 — REMAINED
     },
     {
       "number": 55,
       "original": "舉言謂新婦",
       "transliteration": "",
-      "translation": "А мать, услышав возраженье сына,"  // БЫЛО №55 — ОСТАЛОСЬ
+      "translation": "And the mother, hearing her son's objection,"  // WAS #55 — REMAINED
     },
     {
       "number": 56,
       "original": "哽咽不能語",
       "transliteration": "",
-      "translation": "По креслу палкой в сильном гневе бьет:"  // БЫЛО №56 — ОСТАЛОСЬ
+      "translation": "Beat the chair with a stick in fierce anger:"  // WAS #56 — REMAINED
     }
   ]
 };

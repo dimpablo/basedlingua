@@ -4,22 +4,22 @@ var extra = {
         {
             "number": 1,
             "original": "我何以能使其臣齊語",
-            "translation": "Каким образом я могу заставить его подданных говорить по-ци? "
+            "translation": "How can I make his subjects speak Qi?"
         },
         {
             "number": 2,
             "original": "此人皆楚國人也",
-            "translation": "Все эти люди — уроженцы царства Чу."
+            "translation": "These people are all natives of the state of Chu."
         },
         {
             "number": 3,
             "original": "爾欲知之乎",
-            "translation": "Ты хочешь знать это?"
+            "translation": "Do you want to know this?"
         },
         {
             "number": 4,
             "original": "欲其子为善者求之",
-            "translation": "Этого требует тот, кто хочет, чтобы его дети творили добро."
+            "translation": "This is what one who wishes his children to do good seeks."
         }
     ]
 };

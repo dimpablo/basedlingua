@@ -6,61 +6,61 @@ var SentenceData = {
       "number": 1,
       "original": "東晉陽羨許彥於綏安山行遇一書生，年十七八，臥路側，云腳痛，求寄鵝籠中。",
       "transliteration": "",
-      "translation": "Во времена Восточной Цзинь человек из Янсяня, Сюй Янь, шел около горы Суйан и встретил юношу лет семнадцати-восемнадцати, лежавшего у дороги; тот сказал, что у него болят ноги, и попросил посадить его в гусиную клетку."
+      "translation": "During the Eastern Jin dynasty, Xu Yan from Yangxian was walking near Mount Sui'an when he met a young scholar about seventeen or eighteen years old lying by the roadside; the young man said his feet hurt and asked to be put in a goose cage."
     },
     {
       "number": 2,
       "original": "彥以為戲言，書生便入籠，籠亦不更廣，書生亦不更小，宛然與雙鵝並坐，鵝亦不驚。彥負籠而去，都不覺重，前息樹下。",
       "transliteration": "",
-      "translation": "Сюй Янь подумал, что это шутка, но юноша тут же вошел в клетку — клетка не стала просторнее, а юноша — меньше; он спокойно уселся рядом с двумя гусями, и те не испугались. Сюй Янь взвалил клетку на спину и пошел, не чувствуя тяжести, затем остановился отдохнуть под деревом."
+      "translation": "Xu Yan thought it was a joke, but the young man immediately entered the cage - the cage didn't become any larger, nor did the young man become smaller; he sat peacefully next to two geese, and they weren't frightened. Xu Yan carried the cage on his back and left, not feeling its weight at all, then stopped to rest under a tree."
     },
     {
       "number": 3,
       "original": "書生乃出籠，謂彥曰：「欲為君薄設。」彥曰：「甚善。」乃於口中吐一銅盤奩子，奩子中具諸饌殽，海陸珍羞方丈，其器皿皆是銅物，氣味芳美，世所罕見。酒數行，乃謂彥曰：",
       "transliteration": "",
-      "translation": "Юноша вышел из клетки и сказал Сюй Яню: «Хочу устроить для вас скромное угощение». — «Отлично», — ответил Сюй Янь. Тогда юноша вынул изо рта бронзовое блюдо и ларец, в котором были всевозможные яства — деликатесы с моря и суши, покрывавшие целый стол; вся посуда была бронзовой, кушанья — ароматными и восхитительными на вкус, таких редко где увидишь. Выпив несколько чаш, юноша сказал Сюй Яню:"
+      "translation": "The young man came out of the cage and said to Xu Yan: \"I want to arrange a modest feast for you.\" \"Excellent,\" said Xu Yan. The young man then took a bronze tray and a jewelry box from his mouth, in which were all kinds of delicacies - rare dishes from sea and land covering a whole table; all the tableware was bronze, the food fragrant and delicious, rarely seen anywhere. After drinking several cups, the young man said to Xu Yan:"
     },
     {
       "number": 4,
       "original": "「向將一婦人自隨，今欲暫邀之。」彥曰：「甚善。」又於口中吐一女子，年可十五六，衣服綺麗，容貌絕倫，共坐宴。俄而書生醉臥。",
       "transliteration": "",
-      "translation": "«Со мной была одна женщина — сейчас хочу ненадолго её позвать». — «Отлично», — сказал Сюй Янь. Юноша снова вынул изо рта девушку лет пятнадцати-шестнадцати, в роскошных одеждах, несравненной красоты. Все вместе сели за трапезу. Вскоре юноша опьянел и заснул."
+      "translation": "\"I had a woman with me - now I want to invite her for a moment.\" \"Excellent,\" said Xu Yan. The young man again took a girl from his mouth, about fifteen or sixteen years old, in gorgeous clothes, of incomparable beauty. They all sat down for the feast together. Soon the young man got drunk and fell asleep."
     },
     {
       "number": 5,
       "original": "此女謂彥曰：「雖與書生結妻，而實懷外心，向亦竊將一男子同來。書生既眠，暫喚之，願君勿言。」彥曰：「甚善。」女子於口中吐出一男子，年可二十三四，亦穎悟可愛，仍與彥叙寒温。",
       "transliteration": "",
-      "translation": "Девушка сказала Сюй Яню: «Хотя я и жена юноши, сердцем я к другому. Тайком я привела с собой мужчину. Теперь, когда юноша спит, позову его — прошу, не выдавайте меня». — «Хорошо», — сказал Сюй Янь. Девушка вынула изо рта юношу лет двадцати трех-четырех, умного и милого, который стал беседовать с Сюй Янем о всяком."
+      "translation": "The girl said to Xu Yan: \"Although I am married to the young scholar, my heart belongs to another. I secretly brought a man with me. Now that the young scholar is asleep, I'll call him - please don't reveal me.\" \"Very good,\" said Xu Yan. The girl took a man from her mouth, about twenty-three or twenty-four years old, also intelligent and lovely, who began conversing with Xu Yan about various matters."
     },
     {
       "number": 6,
       "original": "書生臥欲覺，女子口中吐一錦行障，書生乃留女子共臥。男子謂彥曰：「此女子雖有情心，亦不盡。向復竊將女人同行，今欲暫見之，願君勿泄言。」彥曰：「善。」",
       "transliteration": "",
-      "translation": "Когда юноша (муж) начал просыпаться, девушка вынула изо рта парчовый занавес — и юноша остался с ней спать. Мужчина сказал Сюй Яню: «Эта девушка хоть и любит меня, но не всей душой. Я тоже тайком привел с собой женщину — хочу сейчас её позвать, только не выдавайте». — «Хорошо», — сказал Сюй Янь."
+      "translation": "When the young scholar (husband) began to wake up, the girl took a brocade screen from her mouth - and the young scholar stayed to sleep with her. The man said to Xu Yan: \"Although this girl has feelings for me, not entirely. I also secretly brought a woman with me - I want to see her now, just don't reveal it.\" \"Good,\" said Xu Yan."
     },
     {
       "number": 7,
       "original": "男子又於口中吐一女子，年二十許，共宴酌戲調甚久。聞書生動聲，男曰：「二人眠已覺。」因取所吐女子還納口中。",
       "transliteration": "",
-      "translation": "Мужчина снова вынул изо рта девушку лет двадцати, и они вместе пировали, пили и шутили довольно долго. Услышав, что шевелится юноша (муж), мужчина сказал: «Оба просыпаются», — и вернул вынутую девушку себе в рот."
+      "translation": "The man again took a girl from his mouth, about twenty years old, and they feasted, drank, and joked for quite a long time. Hearing the young scholar (husband) stir, the man said: \"Both are waking up,\" and returned the girl he had taken out back into his mouth."
     },
     {
       "number": 8,
       "original": "須臾，書生處女子乃出，謂彥曰：「書生欲起。」更吞向男子，獨對彥坐。",
       "transliteration": "",
-      "translation": "Вскоре девушка, бывшая с юношей, вышла и сказала Сюй Яню: «Юноша встает». Затем она проглотила того мужчину и осталась сидеть одна напротив Сюй Яня."
+      "translation": "Soon, the girl who was with the young scholar came out and said to Xu Yan: \"The young scholar is getting up.\" She then swallowed that man and sat alone opposite Xu Yan."
     },
     {
       "number": 9,
       "original": "書生然後謂彥曰：「暫眠遂久，君獨坐當悒悒耶？日已晚，便與君别。」還復吞此女子，諸銅器悉納口中，留大銅盤可廣二尺餘，與彥别曰：「無以藉君，與君相憶也。」",
       "transliteration": "",
-      "translation": "Затем юноша сказал Сюй Яню: «Ненадолго задумался — и так долго проспал. Вам, наверное, было скучно сидеть одному? Уже поздно — пора прощаться». Он снова проглотил девушку, всю бронзовую посуду убрал в рот, оставив только большое бронзовое блюдо шириной более двух чи, и, прощаясь, сказал: «Нечем вас одарить — пусть это будет вам на память обо мне»."
+      "translation": "Then the young scholar said to Xu Yan: \"I meant to nap for a moment but ended up sleeping so long. You must have been bored sitting alone? It's getting late - time to say goodbye.\" He then swallowed the girl again, put all the bronze tableware back in his mouth, leaving only a large bronze tray about two chi wide, and said goodbye to Xu Yan: \"I have nothing to give you - let this remind you of me.\""
     },
     {
       "number": 10,
       "original": "後太元中，彥為蘭臺令史，以此銅盤餉張散。散看其銘題，云是漢永平三年所作也。",
       "transliteration": "",
-      "translation": "Позднее, в эпоху Тайюань, Сюй Янь, став ланьтайским линши, подарил это блюдо Чжан Саню. Тот осмотрел надпись на нем — оказалось, оно сделано в третий год Юнпина династии Хань."
+      "translation": "Later, during the Taiyuan era, Xu Yan became a Lantai lingshi and gave this bronze tray to Zhang San. San examined the inscription on it - it turned out to have been made in the third year of Yongping during the Han dynasty."
     }
   ]
-}
+};

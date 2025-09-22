@@ -4,17 +4,17 @@ var extra = {
         {
             "number": 1,
             "original": "曾见笑於此小竖子",
-            "translation": "Я был посмеян этим маленьким подлецом."
+            "translation": "I was mocked by this little scoundrel."
         },
         {
             "number": 2,
             "original": "奈欲以邑予趙者何",
-            "translation": "Как быть с теми, кто считает, что нужно отдать города царству Чжао?"
+            "translation": "What about those who think we should give cities to the state of Zhao?"
         },
         {
             "number": 3,
             "original": "左右徒召可使者耳",
-            "translation": "Окружающие просто призывают тех, кого можно послать."
+            "translation": "The attendants just summon those who can be sent."
         }
     ]
 };

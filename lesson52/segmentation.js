@@ -6,349 +6,349 @@ var SentenceData = {
       "number": 1,
       "original": "我自不驅卿",
       "transliteration": "",
-      "translation": "«Я сам тебя из дома не прогнал бы,"
+      "translation": "«I myself would not drive you away,"
     },
     {
       "number": 2,
       "original": "逼迫有阿母",
       "transliteration": "",
-      "translation": "Но принуждает матушка меня."
+      "translation": "But my mother is forcing me."
     },
     {
       "number": 3,
       "original": "卿但暫還家",
       "transliteration": "",
-      "translation": "Ты возвратись в свою семью на время,"
+      "translation": "You just return to your family for now,"
     },
     {
       "number": 4,
       "original": "吾今且報府",
       "transliteration": "",
-      "translation": "Как я на время ухожу в приказ."
+      "translation": "As I'm going to the office for a while."
     },
     {
       "number": 5,
       "original": "不久當歸還",
       "transliteration": "",
-      "translation": "Недолго ты одна пробудешь дома:"
+      "translation": "You won't be alone at home for long:"
     },
     {
       "number": 6,
       "original": "還必相迎取",
       "transliteration": "",
-      "translation": "Уладим все и будем вместе жить!"
+      "translation": "We'll settle everything and live together!"
     },
     {
       "number": 7,
       "original": "以此下心意",
       "transliteration": "",
-      "translation": "Теперь придется потерпеть немного,"
+      "translation": "Now we'll have to endure a little,"
     },
     {
       "number": 8,
       "original": "慎勿違我語",
       "transliteration": "",
-      "translation": "Прошу тебя исполнить мой совет»."
+      "translation": "I ask you to follow my advice.»"
     },
     {
       "number": 9,
       "original": "新婦謂府吏",
       "transliteration": "",
-      "translation": "Ему жена-красавица сказала:"
+      "translation": "His beautiful wife said to him:"
     },
     {
       "number": 10,
       "original": "勿復重紛紜",
       "transliteration": "",
-      "translation": "«К чему опять запутывать меня!"
+      "translation": "«Why confuse me again!"
     },
     {
       "number": 11,
       "original": "往昔初陽歳",
       "transliteration": "",
-      "translation": "В луне одиннадцатой дом покинув,"
+      "translation": "In the eleventh lunar year, when I left"
     },
     {
       "number": 12,
       "original": "謝家來貴門",
       "transliteration": "",
-      "translation": "Вошла когда-то я в той знатный двор."
+      "translation": "My home, I entered this noble household."
     },
     {
       "number": 13,
       "original": "奉事循公姥",
       "transliteration": "",
-      "translation": "Старалась быть в согласье со свекровью"
+      "translation": "I tried to be in harmony with my mother-in-law"
     },
     {
       "number": 14,
       "original": "進止敢自專",
       "transliteration": "",
-      "translation": "И самовольно не решалась жить."
+      "translation": "And didn't dare to act on my own."
     },
     {
       "number": 15,
       "original": "晝夜勤作息",
       "transliteration": "",
-      "translation": "Трудилась честно днем и даже ночью"
+      "translation": "I worked diligently day and night"
     },
     {
       "number": 16,
       "original": "伶俜縈苦辛",
       "transliteration": "",
-      "translation": "И в горечи своих трудов жила."
+      "translation": "And lived in the bitterness of my labors."
     },
     {
       "number": 17,
       "original": "謂言無罪過",
       "transliteration": "",
-      "translation": "Не совершала никаких проступков,"
+      "translation": "I committed no faults,"
     },
     {
       "number": 18,
       "original": "供養卒大恩",
       "transliteration": "",
-      "translation": "Ухаживала честно за свекровью,"
+      "translation": "I cared for my mother-in-law honestly,"
     },
     {
       "number": 19,
       "original": "仍更被驅遣",
       "transliteration": "",
-      "translation": "Имела я ее расположенье."
+      "translation": "And had her favor."
     },
     {
       "number": 20,
       "original": "何言復來還",
       "transliteration": "",
-      "translation": "И если все же выгонят меня,"
+      "translation": "And if I'm driven away anyway,"
     },
     {
       "number": 21,
       "original": "腰若流紈素",
       "transliteration": "",
-      "translation": "То можно ль говорить о возвращенье?"
+      "translation": "Can we still talk about returning?"
     },
     {
       "number": 22,
       "original": "耳著明月璫",
       "transliteration": "",
-      "translation": "Есть куртка вышитая у меня,"
+      "translation": "I have an embroidered jacket,"
     },
     {
       "number": 23,
       "original": "指如削葱根",
       "transliteration": "",
-      "translation": "На ней сверкают нити золотые."
+      "translation": "On which golden threads shimmer."
     },
     {
       "number": 24,
       "original": "口如含珠丹",
       "transliteration": "",
-      "translation": "Из красной ткани брачный полог мой,"
+      "translation": "My wedding canopy is made of red cloth,"
     },
     {
       "number": 25,
       "original": "纖纖作細步",
       "transliteration": "",
-      "translation": "А по углам курятся благовонья."
+      "translation": "And incense burns at the corners."
     },
     {
       "number": 26,
       "original": "精妙世無雙",
       "transliteration": "",
-      "translation": "Шесть-семь десятков сундуков моих"
+      "translation": "Six or seven dozen of my chests"
     },
     {
       "number": 27,
       "original": "上堂拜阿母",
       "transliteration": "",
-      "translation": "С резным орнаментом слоновой кости"
+      "translation": "Are inlaid with ivory ornaments"
     },
     {
       "number": 28,
       "original": "阿母怒不止",
       "transliteration": "",
-      "translation": "Повиты пестрой шелковой тесьмой."
+      "translation": "And bound with colorful silk ribbons."
     },
     {
       "number": 29,
       "original": "昔作女兒時",
       "transliteration": "",
-      "translation": "Различнейшие вещи в них хранятся,"
+      "translation": "Various things are stored in them,"
     },
     {
       "number": 30,
       "original": "妾有繡腰襦",
       "transliteration": "",
-      "translation": "Различное имущество лежит."
+      "translation": "Different possessions lie there."
     },
     {
       "number": 31,
       "original": "葳蕤自生光",
       "transliteration": "",
-      "translation": "У недостойной вещи очень грубы,"
+      "translation": "For unworthy things are very crude,"
     },
     {
       "number": 32,
       "original": "紅羅複斗帳",
       "transliteration": "",
-      "translation": "И мало их для будущей жены,"
+      "translation": "And there's little of them for the future wife,"
     },
     {
       "number": 33,
       "original": "四角垂香囊",
       "transliteration": "",
-      "translation": "Однако вы их все же подарите."
+      "translation": "However, you should still give them away."
     },
     {
       "number": 34,
       "original": "箱簾六七十",
       "transliteration": "",
-      "translation": "Не будет впредь у нас сердечных встреч."
+      "translation": "There will be no more heartfelt meetings between us."
     },
     {
       "number": 35,
       "original": "緑碧青絲繩",
       "transliteration": "",
-      "translation": "Я вам желаю мира и покоя,"
+      "translation": "I wish you peace and tranquility,"
     },
     {
       "number": 36,
       "original": "物物各自異",
       "transliteration": "",
-      "translation": "Желаю нам друг друга не забыть!»"
+      "translation": "I hope we won't forget each other!»"
     },
     {
       "number": 37,
       "original": "種種在其中",
       "transliteration": "",
-      "translation": "Пропел петух, вот-вот рассвет наступит,"
+      "translation": "The rooster crowed, dawn was about to break,"
     },
     {
       "number": 38,
       "original": "人賜物亦鄙",
       "transliteration": "",
-      "translation": "Жена встает, спешит застлать постель,"
+      "translation": "The wife got up, hurried to make the bed,"
     },
     {
       "number": 39,
       "original": "不足迎後人",
       "transliteration": "",
-      "translation": "Расшитую одежду надевает,"
+      "translation": "Put on her embroidered clothes,"
     },
     {
       "number": 40,
       "original": "留待作遣施",
       "transliteration": "",
-      "translation": "Встречая утра раннего приход."
+      "translation": "Meeting the early morning arrival."
     },
     {
       "number": 41,
       "original": "於今無會因",
       "transliteration": "",
-      "translation": "Обула ноги в шелковые туфли,"
+      "translation": "She put on silk shoes on her feet,"
     },
     {
       "number": 42,
       "original": "時時為安慰",
       "transliteration": "",
-      "translation": "Прическу сделала, в нее воткнув"
+      "translation": "Did her hair, sticking in"
     },
     {
       "number": 43,
       "original": "久久莫相忘",
       "transliteration": "",
-      "translation": "Сверкающие яшмовые гребни."
+      "translation": "Shimmering tortoiseshell combs."
     },
     {
       "number": 44,
       "original": "雞鳴外欲曙",
       "transliteration": "",
-      "translation": "Одела стан в блестящий белый шелк"
+      "translation": "She girded her waist with gleaming white silk"
     },
     {
       "number": 45,
       "original": "新婦起嚴妝",
       "transliteration": "",
-      "translation": "И вдела серьги ясные, как луны."
+      "translation": "And inserted bright earrings like moons."
     },
     {
       "number": 46,
       "original": "著我繡裌裙",
       "transliteration": "",
-      "translation": "Похожи белые персты ее"
+      "translation": "Her white fingers are like"
     },
     {
       "number": 47,
       "original": "事事四五通",
       "transliteration": "",
-      "translation": "На белый лук, очищенный от шкурки."
+      "translation": "White onions, peeled of their skin."
     },
     {
       "number": 48,
       "original": "足下躡絲履",
       "transliteration": "",
-      "translation": "Алеют, как рубин, ее уста,"
+      "translation": "Her lips are red like rubies,"
     },
     {
       "number": 49,
       "original": "頭上玳瑁光",
       "transliteration": "",
-      "translation": "Ступает деликатно, осторожно."
+      "translation": "She steps delicately, cautiously."
     },
     {
       "number": 50,
       "original": "生小出野里",
       "transliteration": "",
-      "translation": "Нет в мире равных ей по красоте!"
+      "translation": "There's no one equal to her in beauty!"
     },
     {
       "number": 51,
       "original": "本自無教訓",
       "transliteration": "",
-      "translation": "Идет она проститься со свекровью,"
+      "translation": "She goes to say goodbye to her mother-in-law,"
     },
     {
       "number": 52,
       "original": "兼愧貴家子",
       "transliteration": "",
-      "translation": "Та слушает, но гневом вся полна:"
+      "translation": "Who listens but is full of anger:"
     },
     {
       "number": 53,
       "original": "受母錢帛多",
       "transliteration": "",
-      "translation": "«Когда была я маленьким ребенком,"
+      "translation": "«When I was a little child,"
     },
     {
       "number": 54,
       "original": "不堪母驅使",
       "transliteration": "",
-      "translation": "То в отдаленной местности росла,"
+      "translation": "I grew up in a remote area,"
     },
     {
       "number": 55,
       "original": "今日還家去",
       "transliteration": "",
-      "translation": "Не получая нужных наставлений."
+      "translation": "Without receiving proper guidance."
     },
     {
       "number": 56,
       "original": "念母勞家裏",
       "transliteration": "",
-      "translation": "Стыжусь: в такой прославленной семье"
+      "translation": "I'm ashamed: in such a distinguished family"
     },
     {
       "number": 57,
       "original": "却與小姑别",
       "transliteration": "",
-      "translation": "Не пара я для знатного потомка!"
+      "translation": "I'm not a match for a noble descendant!"
     },
     {
       "number": 58,
       "original": "涙落連珠子",
       "transliteration": "",
-      "translation": "И слезы падают жемчужной нитью."
+      "translation": "And tears fall like a string of pearls."
     }
   ]
 };

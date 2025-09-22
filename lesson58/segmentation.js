@@ -6,133 +6,133 @@ var SentenceData = {
       "number": 1,
       "original": "晉太原中武陵人捕魚為業緣溪行忘",
       "transliteration": "",
-      "translation": "При династии Цзинь, в период правления Тайюань, уроженец Улина промышлял рыбной ловлей. Бредя вдоль ручья, он не обратил внимания на то, как далеко зашел."
+      "translation": "During the Jin dynasty, in the Taiyuan period, a native of Wuling made his living by fishing. Walking along a stream, he didn't notice how far he had gone."
     },
     {
       "number": 2,
       "original": "路之遠近忽逢桃花林夾岸數百步中",
       "transliteration": "",
-      "translation": "Вдруг перед ним — персиковая роща, раскинувшаяся на обоих берегах и занимавшая пространство в несколько сотен шагов."
+      "translation": "Suddenly before him was a peach grove stretching along both banks for several hundred paces."
     },
     {
       "number": 3,
       "original": "無雜樹芳草鮮美落英繽紛漁人甚異",
       "transliteration": "",
-      "translation": "Других деревьев в роще не было, росли прекрасные душистые травы, а опавшие лепестки устилали землю. Очень удивился рыбак"
+      "translation": "There were no other trees in the grove, only beautiful fragrant grasses grew there, and fallen petals carpeted the ground. The fisherman was very surprised"
     },
     {
       "number": 4,
       "original": "之復前行欲窮其林林盡水源便見一",
       "transliteration": "",
-      "translation": "и пошел вперед, намереваясь дойти до конца рощи. Кончалась роща у истоков ручья. И тут он увидел гору, а в ней — небольшое отверстие,"
+      "translation": "and went forward, intending to reach the end of the grove. The grove ended at the source of the stream. And there he saw a mountain with a small opening,"
     },
     {
       "number": 5,
       "original": "山山有小口髣髴若有光便捨船從口",
       "transliteration": "",
-      "translation": "где как будто бы мерцал огонек. Оставив лодку, он влез в отверстие."
+      "translation": "where a light seemed to flicker. Leaving his boat, he entered through the opening."
     },
     {
       "number": 6,
       "original": "入初極狹才通人復行數十步豁然開",
       "transliteration": "",
-      "translation": "Сначала оно было очень узким, и человек с трудом мог пробраться внутрь. Но стоило пройти несколько десятков шагов — и вот блеснул свет, и теснота расступилась."
+      "translation": "At first it was very narrow, and a person could barely squeeze through. But after walking several dozen steps, light appeared and the narrowness opened up."
     },
     {
       "number": 7,
       "original": "朗土地平曠居舍儼然有良田美池桑",
       "transliteration": "",
-      "translation": "Земля здесь была ровна и широка, на ней — в стройном порядке жилища, великолепные поля и красивые пруды, тутовые деревья и заросли бамбука."
+      "translation": "The land here was level and spacious, with houses arranged in neat order, excellent fields and beautiful ponds, mulberry trees and bamboo groves."
     },
     {
       "number": 8,
       "original": "竹之屬阡陌交通雞犬相聞其中往來",
       "transliteration": "",
-      "translation": "Поля пересекали межи, слышался лай собак и кудахтанье кур. Мужчины и женщины, занятые работой на полях,"
+      "translation": "Paths crossed the fields, and the barking of dogs and crowing of chickens could be heard. Men and women busy working in the fields"
     },
     {
       "number": 9,
       "original": "種作男女衣著悉如外人黃髮垂髫並",
       "transliteration": "",
-      "translation": "были одеты словно чужеземцы. И старики, и малолетние дети"
+      "translation": "were dressed like foreigners. Both the elderly and young children"
     },
     {
       "number": 10,
       "original": "怡然自樂見漁人乃大驚問從何來具",
       "transliteration": "",
-      "translation": "были исполнены довольства и радости. Увидев рыбака, они были поражены и стали спрашивать, откуда он. Рыбак подробно отвечал."
+      "translation": "were filled with contentment and joy. Seeing the fisherman, they were amazed and asked where he came from. The fisherman answered in detail."
     },
     {
       "number": 11,
       "original": "答之便要還家設酒殺雞作食村中聞",
       "transliteration": "",
-      "translation": "Тогда его пригласили в дом, выставили вина, зарезали курицу, стали готовить угощение. В деревне услышали,"
+      "translation": "Then they invited him to their homes, served wine, killed a chicken, and prepared food. In the village they heard"
     },
     {
       "number": 12,
       "original": "有此人咸來問訊自云先世避秦時亂",
       "transliteration": "",
-      "translation": "что пришел этот человек, и все высыпали с расспросами. О себе рассказали, что некогда, спасаясь от смуты циньского времени,"
+      "translation": "that this person had arrived, and everyone came out with questions. They told him about themselves, saying that long ago, to escape the chaos of the Qin era,"
     },
     {
       "number": 13,
       "original": "率妻子邑人來此絕境不復出焉遂與",
       "transliteration": "",
-      "translation": "пришли в этот заброшенный уголок земли, взяв с собой жен, детей и односельчан. После этого они уже больше не выходили отсюда,"
+      "translation": "they came to this desolate corner of the earth, bringing their wives, children, and fellow villagers. After that they never left again,"
     },
     {
       "number": 14,
       "original": "外人間隔問今是何世乃不知有漢無",
       "transliteration": "",
-      "translation": "и связь с внешним миром прервалась. Спросили, что сейчас за эпоха. Оказалось, что не знают они ничего о Хань,"
+      "translation": "and contact with the outside world was severed. They asked what era it was now. It turned out they knew nothing about Han,"
     },
     {
       "number": 15,
       "original": "論魏晉此人一一為具言所聞皆歎惋",
       "transliteration": "",
-      "translation": "а уж тем более о Вэй и Цзинь. Этот человек все подробно рассказал им, и те, услышав, вздыхали и сожалели."
+      "translation": "let alone Wei and Jin. This person told them everything in detail, and they, hearing it, sighed and lamented."
     },
     {
       "number": 16,
       "original": "餘人各復延至其家皆出酒食停數日",
       "transliteration": "",
-      "translation": "Прочие люди продолжали приходить и приглашать его к себе в дом, угощая вином и закуской. Так он прожил там несколько дней,"
+      "translation": "The other people continued to come and invite him to their homes, treating him with wine and food. So he stayed there for several days,"
     },
     {
       "number": 17,
       "original": "辭去此中人語云不足為外人道也既",
       "transliteration": "",
-      "translation": "а затем распрощался и ушел. «Не стоит говорить об этом людям там», — сказали ему."
+      "translation": "and then bid farewell and left. \"Don't tell people out there about this,\" they said to him."
     },
     {
       "number": 18,
       "original": "出得其船便扶向路處處誌之及郡下",
       "transliteration": "",
-      "translation": "Вышел рыбак, нашел лодку и стал делать по дороге условные знаки, отмечая путь. Прибыв в окружной город,"
+      "translation": "The fisherman came out, found his boat, and began making landmarks along the road, marking the path. Arriving in the county town,"
     },
     {
       "number": 19,
       "original": "詣太守説如此太守即遣人隨其往尋",
       "transliteration": "",
-      "translation": "явился к начальнику и рассказал, как было дело. И тогда начальник округа послал людей, чтобы они вместе с ним пошли по оставленным им меткам."
+      "translation": "he went to the magistrate and told him everything. The magistrate then sent people to go with him to follow the marks he had left."
     },
     {
       "number": 20,
       "original": "向所誌遂迷不復得路南陽劉子驥高",
       "transliteration": "",
-      "translation": "Но они заблудились и не нашли дороги. Лю Цзыцзи из Наньяна, достойный муж,"
+      "translation": "But they got lost and couldn't find the way. Liu Ziji from Nanyang, a noble man,"
     },
     {
       "number": 21,
       "original": "尚士也聞之欣然現往未果尋病終後",
       "transliteration": "",
-      "translation": "узнав об этом, воодушевленный, решил отправиться туда. Но ничего не вышло: он заболел и умер."
+      "translation": "hearing about this, was enthusiastic and decided to go there. But nothing came of it: he fell ill and died."
     },
     {
       "number": 22,
       "original": "遂無問津者",
       "transliteration": "",
-      "translation": "А потом уж не было никого, кто попытался бы найти туда дорогу."
+      "translation": "And afterwards no one tried to find the way there."
     }
   ]
-}
+};
