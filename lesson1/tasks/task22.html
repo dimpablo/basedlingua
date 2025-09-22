@@ -1,114 +1,27 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="../../tasks.css">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Сопоставь</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Оригинальный base href для корректной работы относительных путей -->
+    <base href="https://dimpablo.github.io/oldcn/lesson1/tasks/task22">
 </head>
 <body>
 
-  <h2>Сопоставь иероглиф и значение</h2>
-  <p class="instruction">Выберите значение каждого иероглифа</p>
+<h2>Match the hieroglyph and the meaning</h2>
+<p class="instruction">Choose the meaning of each hieroglyph</p>
+<div id="pairs-container"><div class="pair"><label>貞 →</label> <select id="char_貞">
+<option value="">— select —</option><option value="гадать">guess</option><option value="3-й небесный ствол">3rd Heavenly Stem</option><option value="дождь">rain</option><option value="задавать вопрос оракулу">ask the oracle a question</option><option value="и в самом деле">and indeed</option><option value="сказать, произнести">say, pronounce</option><option value="истолковывать">interpret</option><option value="правитель">ruler</option></select></div><div class="pair"><label>王 →</label> <select id="char_王">
+<option value="">— select —</option><option value="3-й небесный ствол">3rd Heavenly Stem</option><option value="дождь">rain</option><option value="задавать вопрос оракулу">ask the oracle a question</option><option value="сказать, произнести">say, pronounce</option><option value="правитель">ruler</option><option value="гадать">guess</option><option value="истолковывать">interpret</option><option value="и в самом деле">and indeed</option></select></div><div class="pair"><label>占→</label> <select id="char_占">
+<option value="">— select —</option><option value="истолковывать">interpret</option><option value="3-й небесный ствол">3rd Heavenly Stem</option><option value="сказать, произнести">say, pronounce</option><option value="гадать">guess</option><option value="дождь">rain</option><option value="и в самом деле">and indeed</option><option value="задавать вопрос оракулу">ask the oracle a question</option><option value="правитель">ruler</option></select></div><div class="pair"><label>卜 →</label> <select id="char_卜">
+<option value="">— select —</option><option value="дождь">rain</option><option value="3-й небесный ствол">3rd Heavenly Stem</option><option value="правитель">ruler</option><option value="сказать, произнести">say, pronounce</option><option value="и в самом деле">and indeed</option><option value="гадать">guess</option><option value="задавать вопрос оракулу">ask the oracle a question</option><option value="истолковывать">interpret</option></select></div><div class="pair"><label>曰 →</label> <select id="char_曰">
+<option value="">— select —</option><option value="и в самом деле">and indeed</option><option value="3-й небесный ствол">3rd Heavenly Stem</option><option value="задавать вопрос оракулу">ask the oracle a question</option><option value="дождь">rain</option><option value="гадать">guess</option><option value="истолковывать">interpret</option><option value="правитель">ruler</option><option value="сказать, произнести">say, pronounce</option></select></div><div class="pair"><label>丙 →</label> <select id="char_丙">
+<option value="">— select —</option><option value="и в самом деле">and indeed</option><option value="задавать вопрос оракулу">ask the oracle a question</option><option value="истолковывать">interpret</option><option value="сказать, произнести">say, pronounce</option><option value="3-й небесный ствол">3rd Heavenly Stem</option><option value="дождь">rain</option><option value="гадать">guess</option><option value="правитель">ruler</option></select></div><div class="pair"><label>允 →</label> <select id="char_允">
+<option value="">— select —</option><option value="задавать вопрос оракулу">ask the oracle a question</option><option value="и в самом деле">and indeed</option><option value="гадать">guess</option><option value="сказать, произнести">say, pronounce</option><option value="3-й небесный ствол">3rd Heavenly Stem</option><option value="истолковывать">interpret</option><option value="дождь">rain</option><option value="правитель">ruler</option></select></div><div class="pair"><label>雨 →</label> <select id="char_雨">
+<option value="">— select —</option><option value="задавать вопрос оракулу">ask the oracle a question</option><option value="истолковывать">interpret</option><option value="и в самом деле">and indeed</option><option value="3-й небесный ствол">3rd Heavenly Stem</option><option value="сказать, произнести">say, pronounce</option><option value="дождь">rain</option><option value="гадать">guess</option><option value="правитель">ruler</option></select></div></div><button onclick="check()">Check</button>
+<p id="result"></p>
 
-  <div id="pairs-container">
-    <!-- Пары добавятся динамически -->
-  </div>
 
-  <button onclick="check()">Проверить</button>
-  <p id="result"></p>
 
-  <script>
-    const wordBank = [
-      { char: "丙", correct: "3-й небесный ствол" },
-      { char: "卜", correct: "гадать" },
-      { char: "雨", correct: "дождь" },
-      { char: "王", correct: "правитель" },
-      { char: "貞", correct: "задавать вопрос оракулу" },
-      { char: "曰", correct: "сказать, произнести" },
-      { char: "允", correct: "и в самом деле" },
-      { char: "占", correct: "истолковывать" }
-    ];
-
-    const allValues = wordBank.map(item => item.correct);
-
-    function shuffleArray(array) {
-      const arr = [...array];
-      for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-      }
-      return arr;
-    }
-
-    function renderPairs() {
-      const container = document.getElementById("pairs-container");
-      container.innerHTML = "";
-
-      const shuffled = shuffleArray(wordBank);
-
-      shuffled.forEach(item => {
-        const pair = document.createElement("div");
-        pair.className = "pair";
-
-        const options = shuffleArray([...allValues]);
-
-        let selectHTML = `<select id="char_${item.char}">
-          <option value="">— выберите —</option>`;
-        
-        options.forEach(value => {
-          selectHTML += `<option value="${value}">${value}</option>`;
-        });
-        
-        selectHTML += `</select>`;
-
-        pair.innerHTML = `<label>${item.char} →</label> ${selectHTML}`;
-        container.appendChild(pair);
-      });
-    }
-
-    function check() {
-      let allFilled = true;
-      let correctCount = 0;
-
-      wordBank.forEach(item => {
-        const select = document.getElementById(`char_${item.char}`);
-        if (!select || !select.value) allFilled = false;
-        if (select?.value === item.correct) correctCount++;
-      });
-
-      const resultEl = document.getElementById("result");
-
-      if (!allFilled) {
-        resultEl.textContent = "Заполните все.";
-        resultEl.className = "error";
-        sendResult(false, "Не все поля заполнены");
-        return;
-      }
-
-      if (correctCount === wordBank.length) {
-        resultEl.textContent = "✅ Все верно!";
-        resultEl.className = "success";
-        sendResult(true);
-      } else {
-        const hint = "Подсказка: 卜 — гадать, 貞 — вопрос, 允 — действительно.";
-        resultEl.textContent = "❌ " + hint;
-        resultEl.className = "error";
-        sendResult(false, "Ошибка в сопоставлении");
-      }
-    }
-
-    function sendResult(success, message) {
-      window.parent.postMessage({
-        type: "TASK_RESULT",
-        success,
-        message: message || (success ? "Все верно" : "Ошибка")
-      }, "*");
-    }
-
-    window.onload = renderPairs;
-    window.parent.postMessage({ type: "TASK_EXISTS", valid: true }, "*");
-  </script>
 </body>
 </html>
-

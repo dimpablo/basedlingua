@@ -4,17 +4,17 @@ var extra = {
         {
             "number": 1,
             "original": "仁人之於弟也何如焉",
-            "translation": "Как гуманный человек относится к младшим братьям?"
+            "translation": "How does a benevolent person treat younger brothers?"
         },
         {
             "number": 2,
             "original": "民之於河東也不欲移焉",
-            "translation": "Народ не хочет переселяться в Хэдун."
+            "translation": "The people do not want to relocate to Hedong."
         },
         {
             "number": 3,
             "original": "鄰國之政寡人將察之也",
-            "translation": "В дальнейшем я изучу систему управления соседних царств."
+            "translation": "In the future, I will study the governance system of neighboring states."
         }
     ]
 };

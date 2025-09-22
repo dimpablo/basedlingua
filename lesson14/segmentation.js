@@ -6,109 +6,109 @@ var SentenceData = {
       "number": 1,
       "original": "唯九月初吉戊申",
       "transliteration": "wéi jiǔ yuè chū jí wù shēn",
-      "translation": "В девятом месяце, в первый счастливый день у-шэнь,"
+      "translation": "In the ninth month, on the first auspicious day, wù-shēn,"
     },
     {
       "number": 2,
       "original": "白氏曰不其",
       "transliteration": "bái shì yuē bù qí",
-      "translation": "Бо-ши сказал: «Буци!"
+      "translation": "Lord Bái said: 'Bùqí!"
     },
     {
       "number": 3,
       "original": "馭方玁狁廣伐西俞",
       "transliteration": "yù fāng xiǎn yǔn guǎng fá xī yú",
-      "translation": "Племя сяньюнь, использующее в сражении боевые колесницы, с разных сторон напало на Сиюй."
+      "translation": "The Xiǎnyǔn tribe, using war chariots, attacked Xīyú from all sides."
     },
     {
       "number": 4,
       "original": "王令我羞追于西",
       "transliteration": "wáng lìng wǒ xiū zhuī yú xī",
-      "translation": "Правитель приказал нам отогнать его на запад."
+      "translation": "The king ordered us to drive them westward."
     },
     {
       "number": 5,
       "original": "余來歸獻禽",
       "transliteration": "yú lái guī xiàn qín",
-      "translation": "Я возвращаюсь для церемонии передачи пленных."
+      "translation": "I return to present the captured game."
     },
     {
       "number": 6,
       "original": "余命汝御追于洛",
       "transliteration": "yú mìng rǔ yù zhuī yú luò",
-      "translation": "Я приказываю тебе гнать врага к реке Ло."
+      "translation": "I order you to pursue the enemy to the Luo river."
     },
     {
       "number": 7,
       "original": "汝以我車宕伐玁狁于高陵",
       "transliteration": "rǔ yǐ wǒ chē dàng fá xiǎn yǔn yú gāo líng",
-      "translation": "Сразись с сяньюнь на наших колесницах в Гаолине."
+      "translation": "Fight the Xiǎnyǔn with our chariots at Gaoling."
     },
     {
       "number": 8,
       "original": "汝多折首執訊",
       "transliteration": "rǔ duō zhé shǒu zhí xùn",
-      "translation": "Побольше обезглавь врагов и захвати пленных!"
+      "translation": "Behead many enemies and capture prisoners!"
     },
     {
       "number": 9,
       "original": "戎大同永追汝",
       "transliteration": "róng dà tóng yǒng zhuī rǔ",
-      "translation": "Если враг объединёнными силами будет теснить тебя,"
+      "translation": "If the enemy unites their forces to pursue you,"
     },
     {
       "number": 10,
       "original": "汝及戎大敦伐",
       "transliteration": "rǔ jí róng dà dūn fá",
-      "translation": "сблизься с врагом и дай ему настоящий бой!"
+      "translation": "close in on the enemy and give them a real fight!"
     },
     {
       "number": 11,
       "original": "汝休弗以我車陷于艱",
       "transliteration": "rǔ xiū fú yǐ wǒ chē xiàn yú jiān",
-      "translation": "Только сделай одолжение, не попади в беду с нашими колесницами."
+      "translation": "Just do me a favor, don't get into trouble with our chariots."
     },
     {
       "number": 12,
       "original": "汝多禽折首執訊",
       "transliteration": "rǔ duō qín zhé shǒu zhí xùn",
-      "translation": "Больше захвати, обезглавь, возьми живыми!"
+      "translation": "Capture more, behead more, take prisoners!"
     },
     {
       "number": 13,
       "original": "白氏曰不其汝小子",
       "transliteration": "bái shì yuē bù qí rǔ xiǎo zǐ",
-      "translation": "Бо-ши сказал: «Буци! Ты молод,"
+      "translation": "Lord Bái said: 'Bùqí! You are young,"
     },
     {
       "number": 14,
       "original": "汝肇誨于戎工",
       "transliteration": "rǔ zhào huì yú róng gōng",
-      "translation": "и только начинаешь постигать военное искусство."
+      "translation": "and only beginning to learn the art of war."
     },
     {
       "number": 15,
       "original": "賜汝弓一矢束臣五家田十田",
       "transliteration": "cì rǔ gōng yī shǐ shù chén wǔ jiā tián shí tián",
-      "translation": "Дарю тебе лук, пучок стрел, пять семей подданных, десять полей."
+      "translation": "I bestow upon you a bow, a bundle of arrows, five families of subjects, ten fields."
     },
     {
       "number": 16,
       "original": "用永乃事",
       "transliteration": "yòng yǒng nǎi shì",
-      "translation": "Воспользуйся этим, чтобы быть настойчивым в своей службе»."
+      "translation": "Use this to be persistent in your service.'"
     },
     {
       "number": 17,
       "original": "不其拜稽首",
       "transliteration": "bù qí bài qǐ shǒu",
-      "translation": "Я, Буци, почтительно сложил руки, поклонился до земли,"
+      "translation": "I, Bùqí, respectfully clasped my hands and bowed to the ground,"
     },
     {
       "number": 18,
       "original": "休用作朕皇祖公白孟姬尊簋",
       "transliteration": "xiū yòng zuò zhèn huáng zǔ gōng bái mèng jī zūn guǐ",
-      "translation": "и воспользовался случаем, чтобы изготовить ритуальный сосуд в честь моего величественного предка Гун-бо и его супруги Мэн-цзи."
+      "translation": "and took the opportunity to make a ritual vessel in honor of my revered ancestor Duke Bái and his wife Lady Mèngjī."
     }
   ]
 }

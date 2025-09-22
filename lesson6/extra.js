@@ -4,22 +4,22 @@ var extra = {
         {
             "number": 1,
             "original": "辛眔壬王往于田",
-            "translation": "В день синь и жэнь правитель отправится на охоту."
+            "translation": "On the xīn and rén days, the ruler will go hunting."
         },
         {
             "number": 2,
             "original": "一月我伐羌方眔基方",
-            "translation": "В первом месяце мы пойдём походом на племена Цян-фан и Цзи-фан."
+            "translation": "In the first month, we will march against the Qiāng tribe and the Jī tribe."
         },
         {
             "number": 3,
             "original": "冓眔永允獲一鹿",
-            "translation": "Гоу и Юн и в самом деле поймали одного оленя."
+            "translation": "Gòu and Yǒng indeed captured one deer."
         },
         {
             "number": 4,
             "original": "弗其及今二月雨",
-            "translation": "До нынешнего второго месяца не будет дождя."
+            "translation": "There will be no rain until this second month."
         }
     ]
 };

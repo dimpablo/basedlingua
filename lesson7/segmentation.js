@@ -6,79 +6,79 @@ var SentenceData = {
             "number": 1,
             "original": "貞王從洗震",
             "transliteration": "zhēn wáng cóng xǐ zhèn",
-            "translation": "Вопрос: «Ван последует за Си Чжэнем?»"
+            "translation": "The question: 'Will the king follow Xi Zhen?'"
         },
         {
             "number": 2,
             "original": "王勿從洗震",
             "transliteration": "wáng wù cóng xǐ zhèn",
-            "translation": "Ван не должен следовать за Си Чжэнем?"
+            "translation": "Should the king not follow Xi Zhen?"
         },
         {
             "number": 3,
             "original": "貞王勿從望乘伐下危",
             "transliteration": "zhēn wáng wù cóng wàng chéng fá xià wēi",
-            "translation": "Вопрос: «Ван не должен следовать за Ван Чэном в походе против Сявэй?»"
+            "translation": "The question: 'Should the king not follow Wang Cheng in the campaign against Xiawei?'"
         },
         {
             "number": 4,
             "original": "王勿令婦好從侯高伐夷",
             "transliteration": "wáng wù lìng fù hǎo cóng hóu gāo fá yí",
-            "translation": "Ван не должен приказывать невестке Хао следовать за хоу Гао в походе против племени И?"
+            "translation": "Should the king not order Lady Hao to follow Hou Gao in the campaign against the Yi tribe?"
         },
         {
             "number": 5,
             "original": "王令婦好從侯高",
             "transliteration": "wáng lìng fù hǎo cóng hóu gāo",
-            "translation": "Ван прикажет невестке Хао следовать за хоу Гао?"
+            "translation": "Will the king order Lady Hao to follow Hou Gao?"
         },
         {
             "number": 6,
             "original": "王勿令畢以衆伐工方",
             "transliteration": "wáng wù lìng bì yǐ zhòng fá gōng fāng",
-            "translation": "Ван не должен приказывать Би вести Чжун в поход против племени Гун-фан?"
+            "translation": "Should the king not order Bi to lead the army in a campaign against the Gong tribe?"
         },
         {
             "number": 7,
             "original": "令羽眔雞以尹從洗震叶王使",
             "transliteration": "lìng yǔ dà jī yǐ yǐn cóng xǐ zhèn yè wáng shǐ",
-            "translation": "Приказать Юй и Цзи повести за собой Инь и последовать за Си Чжэнем для выполнения поручения вана?"
+            "translation": "Should we order Yu and Ji to lead Yin and follow Xi Zhen to fulfill the king's mission?"
         },
         {
             "number": 8,
             "original": "令冓從倉侯寇周",
             "transliteration": "lìng gòu cóng cāng hóu kòu zhōu",
-            "translation": "Приказать Гоу последовать за Цан-хоу и разграбить Чжоу?"
+            "translation": "Should we order Gou to follow Cang Hou and raid Zhou?"
         },
         {
             "number": 9,
             "original": "丁酉卜㱿貞今春王登人五千征土方",
             "transliteration": "dīng yǒu bǔ què zhēn jīn chūn wáng dēng rén wǔ qiān zhēng tǔ fāng",
-            "translation": "В день дин-ю гадатель Цзюэ задал вопрос: «Соберет ли правитель нынешней весной пять тысяч человек для похода на племя Ту-фан?»"
+            "translation": "On the dīng-yǒu day, diviner Què asked: 'Will the king gather five thousand people this spring for a campaign against the Tu tribe?'"
         },
         {
             "number": 10,
             "original": "登人三千呼伐工方",
             "transliteration": "dēng rén sān qiān hū fá gōng fāng",
-            "translation": "Собрать три тысячи человек и повелеть им пойти походом на племя Гун-фан?"
+            "translation": "Gather three thousand people and command them to campaign against the Gong tribe?"
         },
         {
             "number": 11,
             "original": "勿登人三千呼伐工方",
             "transliteration": "wù dēng rén sān qiān hū fá gōng fāng",
-            "translation": "Не следует собирать три тысячи человек и приказывать им идти в поход на племя Гун-фан?"
+            "translation": "Should we not gather three thousand people and command them to campaign against the Gong tribe?"
         },
         {
             "number": 12,
             "original": "辛巳卜貞登婦妌三千",
             "transliteration": "xīn sì bǔ zhēn dēng fù jǐng sān qiān",
-            "translation": "В день синь-сы гадатель задал вопрос: «Собрать ли три тысячи человек [из племени] невестки Цзин?»"
+            "translation": "On the xīn-sì day, the diviner asked: 'Should we gather three thousand people from Lady Jing's [tribe]?'"
         },
         {
             "number": 13,
             "original": "登旅一萬呼伐",
             "transliteration": "dēng lǚ yī wàn hū fá",
-            "translation": "Собрать десять тысяч человек из племени Люй и приказать идти в поход?"
+            "translation": "Gather ten thousand people from the Lü tribe and command them to go to war?"
         }
     ]
 };

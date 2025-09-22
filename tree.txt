@@ -110,7 +110,6 @@
 ├── all_tasks_combined.txt
 ├── archaic.html
 ├── chat.html
-├── chat_test.html
 ├── community.html
 ├── const2var.sh
 ├── dict_human.txt
@@ -1626,11 +1625,256 @@
 ├── segmentation.js
 ├── singleline.sh
 ├── tasks.css
+├── theory.sh
 ├── translateall.html
+├── translated_tasks
+│   ├── lesson1
+│   │   ├── task10_en.html
+│   │   ├── task11_en.html
+│   │   ├── task12_en.html
+│   │   ├── task13_en.html
+│   │   ├── task14_en.html
+│   │   ├── task15_en.html
+│   │   ├── task16_en.html
+│   │   ├── task17_en.html
+│   │   ├── task18_en.html
+│   │   ├── task19_en.html
+│   │   ├── task20_en.html
+│   │   ├── task21_en.html
+│   │   ├── task22_en.html
+│   │   ├── task2_en.html
+│   │   ├── task3_en.html
+│   │   ├── task4_en.html
+│   │   ├── task5_en.html
+│   │   ├── task6_en.html
+│   │   ├── task7_en.html
+│   │   ├── task8_en.html
+│   │   └── task9_en.html
+│   ├── lesson10
+│   │   ├── task10_en.html
+│   │   ├── task11_en.html
+│   │   ├── task12_en.html
+│   │   ├── task13_en.html
+│   │   ├── task14_en.html
+│   │   ├── task15_en.html
+│   │   ├── task16_en.html
+│   │   ├── task17_en.html
+│   │   ├── task18_en.html
+│   │   ├── task19_en.html
+│   │   ├── task20_en.html
+│   │   ├── task21_en.html
+│   │   ├── task22_en.html
+│   │   ├── task23_en.html
+│   │   ├── task24_en.html
+│   │   ├── task2_en.html
+│   │   ├── task3_en.html
+│   │   ├── task4_en.html
+│   │   ├── task5_en.html
+│   │   ├── task6_en.html
+│   │   ├── task7_en.html
+│   │   ├── task8_en.html
+│   │   └── task9_en.html
+│   ├── lesson2
+│   │   ├── task10_en.html
+│   │   ├── task11_en.html
+│   │   ├── task12_en.html
+│   │   ├── task13_en.html
+│   │   ├── task14_en.html
+│   │   ├── task15_en.html
+│   │   ├── task16_en.html
+│   │   ├── task17_en.html
+│   │   ├── task18_en.html
+│   │   ├── task19_en.html
+│   │   ├── task20_en.html
+│   │   ├── task21_en.html
+│   │   ├── task22_en.html
+│   │   ├── task23_en.html
+│   │   ├── task24_en.html
+│   │   ├── task25_en.html
+│   │   ├── task26_en.html
+│   │   ├── task27_en.html
+│   │   ├── task28_en.html
+│   │   ├── task2_en.html
+│   │   ├── task3_en.html
+│   │   ├── task4_en.html
+│   │   ├── task5_en.html
+│   │   ├── task6_en.html
+│   │   ├── task7_en.html
+│   │   ├── task8_en.html
+│   │   └── task9_en.html
+│   ├── lesson3
+│   │   ├── task10_en.html
+│   │   ├── task11_en.html
+│   │   ├── task12_en.html
+│   │   ├── task13_en.html
+│   │   ├── task14_en.html
+│   │   ├── task15_en.html
+│   │   ├── task16_en.html
+│   │   ├── task17_en.html
+│   │   ├── task18_en.html
+│   │   ├── task19_en.html
+│   │   ├── task20_en.html
+│   │   ├── task21_en.html
+│   │   ├── task22_en.html
+│   │   ├── task23_en.html
+│   │   ├── task24_en.html
+│   │   ├── task25_en.html
+│   │   ├── task26_en.html
+│   │   ├── task28_en.html
+│   │   ├── task29_en.html
+│   │   ├── task2_en.html
+│   │   ├── task30_en.html
+│   │   ├── task31_en.html
+│   │   ├── task32_en.html
+│   │   ├── task3_en.html
+│   │   ├── task4_en.html
+│   │   ├── task5_en.html
+│   │   ├── task6_en.html
+│   │   ├── task7_en.html
+│   │   ├── task8_en.html
+│   │   └── task9_en.html
+│   ├── lesson4
+│   │   ├── task10_en.html
+│   │   ├── task11_en.html
+│   │   ├── task12_en.html
+│   │   ├── task13_en.html
+│   │   ├── task14_en.html
+│   │   ├── task15_en.html
+│   │   ├── task16_en.html
+│   │   ├── task17_en.html
+│   │   ├── task18_en.html
+│   │   ├── task19_en.html
+│   │   ├── task20_en.html
+│   │   ├── task21_en.html
+│   │   ├── task22_en.html
+│   │   ├── task23_en.html
+│   │   ├── task24_en.html
+│   │   ├── task2_en.html
+│   │   ├── task3_en.html
+│   │   ├── task4_en.html
+│   │   ├── task5_en.html
+│   │   ├── task6_en.html
+│   │   ├── task7_en.html
+│   │   ├── task8_en.html
+│   │   └── task9_en.html
+│   ├── lesson5
+│   │   ├── task10_en.html
+│   │   ├── task11_en.html
+│   │   ├── task12_en.html
+│   │   ├── task13_en.html
+│   │   ├── task14_en.html
+│   │   ├── task15_en.html
+│   │   ├── task16_en.html
+│   │   ├── task17_en.html
+│   │   ├── task18_en.html
+│   │   ├── task19_en.html
+│   │   ├── task20_en.html
+│   │   ├── task21_en.html
+│   │   ├── task22_en.html
+│   │   ├── task23_en.html
+│   │   ├── task24_en.html
+│   │   ├── task2_en.html
+│   │   ├── task3_en.html
+│   │   ├── task4_en.html
+│   │   ├── task5_en.html
+│   │   ├── task6_en.html
+│   │   ├── task7_en.html
+│   │   ├── task8_en.html
+│   │   └── task9_en.html
+│   ├── lesson6
+│   │   ├── task10_en.html
+│   │   ├── task11_en.html
+│   │   ├── task12_en.html
+│   │   ├── task13_en.html
+│   │   ├── task14_en.html
+│   │   ├── task15_en.html
+│   │   ├── task16_en.html
+│   │   ├── task17_en.html
+│   │   ├── task18_en.html
+│   │   ├── task19_en.html
+│   │   ├── task20_en.html
+│   │   ├── task21_en.html
+│   │   ├── task22_en.html
+│   │   ├── task23_en.html
+│   │   ├── task24_en.html
+│   │   ├── task2_en.html
+│   │   ├── task3_en.html
+│   │   ├── task4_en.html
+│   │   ├── task5_en.html
+│   │   ├── task6_en.html
+│   │   ├── task7_en.html
+│   │   ├── task8_en.html
+│   │   └── task9_en.html
+│   ├── lesson7
+│   │   ├── task10_en.html
+│   │   ├── task11_en.html
+│   │   ├── task12_en.html
+│   │   ├── task13_en.html
+│   │   ├── task14_en.html
+│   │   ├── task15_en.html
+│   │   ├── task16_en.html
+│   │   ├── task17_en.html
+│   │   ├── task18_en.html
+│   │   ├── task19_en.html
+│   │   ├── task20_en.html
+│   │   ├── task21_en.html
+│   │   ├── task22_en.html
+│   │   ├── task23_en.html
+│   │   ├── task24_en.html
+│   │   ├── task25_en.html
+│   │   ├── task26_en.html
+│   │   ├── task2_en.html
+│   │   ├── task3_en.html
+│   │   ├── task4_en.html
+│   │   ├── task5_en.html
+│   │   ├── task6_en.html
+│   │   ├── task7_en.html
+│   │   ├── task8_en.html
+│   │   └── task9_en.html
+│   ├── lesson8
+│   │   ├── task10_en.html
+│   │   ├── task11_en.html
+│   │   ├── task12_en.html
+│   │   ├── task13_en.html
+│   │   ├── task14_en.html
+│   │   ├── task15_en.html
+│   │   ├── task16_en.html
+│   │   ├── task17_en.html
+│   │   ├── task18_en.html
+│   │   ├── task19_en.html
+│   │   ├── task20_en.html
+│   │   ├── task21_en.html
+│   │   ├── task22_en.html
+│   │   ├── task2_en.html
+│   │   ├── task3_en.html
+│   │   ├── task4_en.html
+│   │   ├── task5_en.html
+│   │   ├── task6_en.html
+│   │   ├── task7_en.html
+│   │   ├── task8_en.html
+│   │   └── task9_en.html
+│   └── lesson9
+│       ├── task10_en.html
+│       ├── task11_en.html
+│       ├── task12_en.html
+│       ├── task13_en.html
+│       ├── task14_en.html
+│       ├── task15_en.html
+│       ├── task16_en.html
+│       ├── task17_en.html
+│       ├── task18_en.html
+│       ├── task2_en.html
+│       ├── task3_en.html
+│       ├── task4_en.html
+│       ├── task5_en.html
+│       ├── task6_en.html
+│       ├── task7_en.html
+│       ├── task8_en.html
+│       └── task9_en.html
 ├── tree.txt
 ├── uploader.js
 ├── vocab.css
 ├── wenyan_full.json
 └── рекомендуемые шрифты
 
-295 directories, 1339 files
+306 directories, 1572 files

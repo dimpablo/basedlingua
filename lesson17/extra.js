@@ -1,20 +1,20 @@
-{
+var extra = {
     "lesson": 17,
     "sentences": [
         {
             "number": 1,
             "original": "朕子無克作邦",
-            "translation": "Никто из моих детей не сможет основать государство."
+            "translation": "None of my sons can establish a state."
         },
         {
             "number": 2,
             "original": "茲人無不歸自征",
-            "translation": "Среди этих людей не было никого, кто не вернулся бы из похода."
+            "translation": "Among these people, there was no one who did not return from the campaign."
         },
         {
             "number": 3,
             "original": "厥臣無不敢格于大廟",
-            "translation": "Все его подданные осмелились войти в большой храм."
+            "translation": "All of his subjects dared to enter the great temple."
         }
     ]
-}
+};

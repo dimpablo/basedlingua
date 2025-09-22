@@ -6,103 +6,103 @@ var SentenceData = {
             "number": 1,
             "original": "乙卯卜王貞余勿從洗震",
             "transliteration": "yǐ mǎo bǔ wáng zhēn yú wù cóng xǐ zhèn",
-            "translation": "В день и-мао гадали: правителю не нужно заставлять Си Чжэня следовать за собой?"
+            "translation": "On the yǐ-mǎo day, the king divined: 'Should I not follow Xi Zhen?'"
         },
         {
             "number": 2,
             "original": "丁丑卜㱿貞今春王從洗震",
             "transliteration": "dīng chǒu bǔ què zhēn jīn chūn wáng cóng xǐ zhèn",
-            "translation": "В день дин-чоу гадал Цюэ: прикажет ли этот весной правитель Си Чжэню следовать за собой?"
+            "translation": "On the dīng-chǒu day, diviner Què asked: 'Will the king follow Xi Zhen this spring?'"
         },
         {
             "number": 3,
             "original": "辛巳卜㱿貞王叀洗震從",
             "transliteration": "xīn sì bǔ què zhēn wáng huì xǐ zhèn cóng",
-            "translation": "В день синь-сы гадатель Цюэ задал вопрос: именно ли Си Чжэню прикажет правитель следовать за собой?"
+            "translation": "On the xīn-sì day, diviner Què asked: 'Will the king specifically have Xi Zhen follow?'"
         },
         {
             "number": 4,
             "original": "貞王勿唯洗震從",
             "transliteration": "zhēn wáng wù wéi xǐ zhèn cóng",
-            "translation": "Не Си Чжэню должен приказать правитель следовать за собой?"
+            "translation": "The question: 'Should the king not only have Xi Zhen follow?'"
         },
         {
             "number": 5,
             "original": "貞叀王從洗震",
             "transliteration": "zhēn huì wáng cóng xǐ zhèn",
-            "translation": "Правитель ли заставит Си Чжэня следовать за собой?"
+            "translation": "The question: 'Will the king specifically follow Xi Zhen?'"
         },
         {
             "number": 6,
             "original": "貞唯茲商有作禍",
             "transliteration": "zhēn wéi zī shāng yǒu zuò huò",
-            "translation": "Именно этому городу Шан будет причинено несчастье?"
+            "translation": "The question: 'Will only this Shang city suffer disaster?'"
         },
         {
             "number": 7,
             "original": "不唯茲商有作禍",
             "transliteration": "bù wéi zī shāng yǒu zuò huò",
-            "translation": "Или несчастье будет причинено не этому городу Шан?"
+            "translation": "Will not only this Shang city suffer disaster?"
         },
         {
             "number": 8,
             "original": "貞茲雨唯我禍",
             "transliteration": "zhēn zī yǔ wéi wǒ huò",
-            "translation": "Нам ли принесет несчастье этот дождь?"
+            "translation": "The question: 'Will this rain bring disaster only to us?'"
         },
         {
             "number": 9,
             "original": "貞茲雨不唯我禍",
             "transliteration": "zhēn zī yǔ bù wéi wǒ huò",
-            "translation": "Этот дождь принесет несчастье не нам?"
+            "translation": "The question: 'Will this rain not bring disaster only to us?'"
         },
         {
             "number": 10,
             "original": "茲雨唯禍",
             "transliteration": "zī yǔ wéi huò",
-            "translation": "Действительно ли несчастье принесет этот дождь?"
+            "translation": "Will this rain only bring disaster?"
         },
         {
             "number": 11,
             "original": "唯禍貞茲雨不唯禍我",
             "transliteration": "wéi huò zhēn zī yǔ bù wéi huò wǒ",
-            "translation": "Этот дождь не принесет нам несчастье?"
+            "translation": "The question: 'Will this rain not bring disaster to us?'"
         },
         {
             "number": 12,
             "original": "貞我使其烖方",
             "transliteration": "zhēn wǒ shǐ qí zāi fāng",
-            "translation": "Нанесет ли поражение племени наш посол?"
+            "translation": "The question: 'Will our envoy defeat the enemy tribe?'"
         },
         {
             "number": 13,
             "original": "王占曰唯戊烖",
             "transliteration": "wáng zhān yuē wéi wù zāi",
-            "translation": "Правитель прочел ответ: «Нанесет поражение в день у»."
+            "translation": "The king interpreted: 'Only on the wù day will there be defeat.'"
         },
         {
             "number": 14,
             "original": "今日王逐兕畢",
             "transliteration": "jīn rì wáng zhú sì bì",
-            "translation": "Сегодня правитель загоняет носорога — будет ли добыча?"
+            "translation": "Today the king hunts rhinoceros - will there be a catch?"
         },
         {
             "number": 15,
             "original": "自東西北逐肅鹿",
             "transliteration": "zì dōng xī běi zhú sù lù",
-            "translation": "Загонять оленей, находящихся в Су, с востока, запада, севера?"
+            "translation": "Hunt deer in Su from the east, west, and north?"
         },
         {
             "number": 16,
             "original": "王叀今日壬射貝鹿畢",
             "transliteration": "wáng huì jīn rì rén shè bèi lù bì",
-            "translation": "Именно ли сегодня, в день жэнь, следует правителю стрелять оленей, находящихся в Бэй?"
+            "translation": "Will the king specifically shoot deer in Bèi today on the rén day?"
         },
         {
             "number": 17,
             "original": "弜壬射弗畢",
             "transliteration": "jiàng rén shè fú bì",
-            "translation": "Будет ли добыча? Или стрелять их не в день жэнь? Добычи не будет?"
+            "translation": "Will there be a catch? Or will shooting not be completed on the rén day? There will be no catch?"
         }
     ]
 };

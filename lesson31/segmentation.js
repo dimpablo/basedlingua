@@ -6,49 +6,49 @@ var SentenceData = {
       "number": 1,
       "original": "孟子曰魚我所欲也熊掌亦我所欲也二者不可得兼捨魚而取熊掌者也",
       "transliteration": "mèng zǐ yuē yú wǒ suǒ yù yě xióng zhǎng yì wǒ suǒ yù yě èr zhě bù kě dé jiān shě yú ér qǔ xióng zhǎng zhě yě",
-      "translation": "Мэн-цзы сказал: «Я люблю рыбу. Медвежьи лапы я тоже люблю. Но если и то и другое нельзя получить одновременно, я отказываюсь от рыбы и выбираю медвежью лапу."
+      "translation": "Mencius said: 'I love fish. I also love bear's paws. But if both cannot be obtained simultaneously, I give up fish and choose bear's paws."
     },
     {
       "number": 2,
       "original": "生亦我所欲也義亦我所欲也二者不可得兼捨生而取義者也",
       "transliteration": "shēng yì wǒ suǒ yù yě yì yì wǒ suǒ yù yě èr zhě bù kě dé jiān shě shēng ér qǔ yì zhě yě",
-      "translation": "Кроме того, я люблю жизнь. Справедливость я тоже люблю. Если то и другое нельзя будет совместить, я откажусь от жизни и выберу справедливость."
+      "translation": "Moreover, I love life. I also love righteousness. If both cannot be combined, I will give up life and choose righteousness."
     },
     {
       "number": 3,
       "original": "生亦我所欲所欲有甚於生者故不為苟得也",
       "transliteration": "shēng yì wǒ suǒ yù suǒ yù yǒu shèn yú shēng zhě gù bù wéi gǒu dé yě",
-      "translation": "Жизнь я тоже люблю, но существует нечто, что я люблю больше, чем жизнь, поэтому я не стремлюсь сохранить ее любыми средствами."
+      "translation": "I love life too, but there is something I love more than life, so I do not seek to preserve it by any means."
     },
     {
       "number": 4,
       "original": "死亦我所惡所惡有甚於死者故患有所不辟也",
       "transliteration": "sǐ yì wǒ suǒ wù suǒ wù yǒu shèn yú sǐ zhě gù huàn yǒu suǒ bù bì yě",
-      "translation": "Смерть я тоже ненавижу, но существует нечто, что я ненавижу больше, чем смерть, поэтому есть опасности, которых я не избегаю."
+      "translation": "I also hate death, but there is something I hate more than death, so there are dangers I do not avoid."
     },
     {
       "number": 5,
       "original": "如使人之所欲莫甚於生則凡可以得生者何不用也",
       "transliteration": "rú shǐ rén zhī suǒ yù mò shèn yú shēng zé fán kě yǐ dé shēng zhě hé bù yòng yě",
-      "translation": "Если бы человек не любил ничего больше жизни, то отчего бы ему не прибегнуть к любому средству, с помощью которого он может сохранить жизнь?"
+      "translation": "If people loved nothing more than life, then why wouldn't they resort to any means by which they could preserve life?"
     },
     {
       "number": 6,
       "original": "使人之所惡莫甚於死者則凡可以辟患者何不為也",
       "transliteration": "shǐ rén zhī suǒ wù mò shèn yú sǐ zhě zé fán kě yǐ bì huàn zhě hé bù wéi yě",
-      "translation": "Если бы человек не ненавидел ничего больше смерти, то почему бы ему не совершить любой поступок, благодаря которому можно избежать опасности?"
+      "translation": "If people hated nothing more than death, then why wouldn't they commit any act by which they could avoid danger?"
     },
     {
       "number": 7,
       "original": "由是則生而有不用也由是可以辟患而有不為也",
       "transliteration": "yóu shì zé shēng ér yǒu bù yòng yě yóu shì kě yǐ bì huàn ér yǒu bù wéi yě",
-      "translation": "Но если это так, то люди живут и не используют любые возможности для сохранения жизни. Если это так, то люди могут избежать опасности, но иногда не стремятся к этому."
+      "translation": "But if this is so, then people live and do not use every opportunity to preserve life. If this is so, then people can avoid danger, but sometimes do not strive to do so."
     },
     {
       "number": 8,
       "original": "是故所欲有甚於生者所惡有甚於死者",
       "transliteration": "shì gù suǒ yù yǒu shèn yú shēng zhě suǒ wù yǒu shèn yú sǐ zhě",
-      "translation": "Поэтому существует нечто, что человек любит больше, чем жизнь, и ненавидит больше, чем смерть»."
+      "translation": "Therefore, there is something people love more than life and hate more than death.'"
     }
   ]
 }

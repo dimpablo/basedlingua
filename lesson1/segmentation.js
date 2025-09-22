@@ -6,61 +6,61 @@ var SentenceData = {
             "number": 1,
             "original": "丙寅卜爭貞雨",
             "transliteration": "bǐng yín bǔ zhēng zhēn yǔ",
-            "translation": "В день бин-инь гадатель Чжэн задал вопрос: «Будет дождь?»"
+            "translation": "On the bǐng-yín day, diviner Zhēng asked: 'Will it rain?'"
         },
         {
             "number": 2,
             "original": "貞曰其雨",
             "transliteration": "zhēn yuē qí yǔ",
-            "translation": "Вопрос: «Будет дождь?»"
+            "translation": "The question: 'Will it rain?'"
         },
         {
             "number": 3,
             "original": "貞癸亥不其雨",
             "transliteration": "zhēn guǐ hài bù qí yǔ",
-            "translation": "Вопрос: «В день гуй-хай не будет дождя?»"
+            "translation": "The question: 'Will there be no rain on the guǐ-hài day?'"
         },
         {
             "number": 4,
             "original": "允不雨",
             "transliteration": "yǔn bù yǔ",
-            "translation": "Дождя действительно не было."
+            "translation": "Indeed, there was no rain."
         },
         {
             "number": 5,
             "original": "貞不雨",
             "transliteration": "zhēn bù yǔ",
-            "translation": "Вопрос: «Не будет дождя?»"
+            "translation": "The question: 'Will it not rain?'"
         },
         {
             "number": 6,
             "original": "王占曰癸其雨",
             "transliteration": "wáng zhān yuē guǐ qí yǔ",
-            "translation": "Ван прочел ответ: «В день гуй будет дождь.»"
+            "translation": "The king interpreted: 'On the guǐ day, it will rain.'"
         },
         {
             "number": 7,
             "original": "癸丑允其雨",
             "transliteration": "guǐ chǒu yǔn qí yǔ",
-            "translation": "В день гуй-чоу действительно прошел дождь."
+            "translation": "On the guǐ-chǒu day, it indeed rained."
         },
         {
             "number": 8,
             "original": "己卯卜㱿貞雨",
             "transliteration": "jǐ mǎo bǔ què zhēn yǔ",
-            "translation": "В день цзи-мао гадатель Цзюэ задал вопрос: «Будет ли дождь?»"
+            "translation": "On the jǐ-mǎo day, diviner Què asked: 'Will it rain?'"
         },
         {
             "number": 9,
             "original": "王占曰雨",
             "transliteration": "wáng zhān yuē yǔ",
-            "translation": "Ван прочел ответ: «Будет.»"
+            "translation": "The king interpreted: 'It will rain.'"
         },
         {
             "number": 10,
             "original": "壬午允雨",
             "transliteration": "rén wǔ yǔn yǔ",
-            "translation": "В день жэнь-у действительно прошел дождь."
+            "translation": "On the rén-wǔ day, it indeed rained."
         }
     ]
 };

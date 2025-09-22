@@ -6,103 +6,103 @@ var SentenceData = {
       "number": 1,
       "original": "唯王十又一月既生霸丁亥",
       "transliteration": "wéi wáng shí yòu yī yuè jì shēng bà dīng hài",
-      "translation": "В одиннадцатом месяце, в первой декаде, в день дин-хай,"
+      "translation": "In the eleventh month, in the first decade, on the dīng-hài day,"
     },
     {
       "number": 2,
       "original": "榮季入右卯",
       "transliteration": "róng jì rù yòu mǎo",
-      "translation": "Жун-цзи вошёл, сопровождая Мао."
+      "translation": "Róng Jì entered, escorting Mǎo."
     },
     {
       "number": 3,
       "original": "立中廷",
       "transliteration": "lì zhōng tíng",
-      "translation": "Он остановился в среднем дворе."
+      "translation": "He stopped in the middle courtyard."
     },
     {
       "number": 4,
       "original": "榮伯呼令卯曰",
       "transliteration": "róng bó hū lìng mǎo yuē",
-      "translation": "Жун-бо велел отдать приказ Мао, гласивший следующее:"
+      "translation": "Róng Bó ordered Mǎo to be given a command, which said:"
     },
     {
       "number": 5,
       "original": "載乃先祖考死司榮公室",
       "transliteration": "zài nǎi xiān zǔ kǎo sǐ sī róng gōng shì",
-      "translation": "«В древности твои предки в течение всей жизни управляли домом Жун-гуна."
+      "translation": "'In ancient times, your ancestors managed the house of Róng Gōng for their entire lives."
     },
     {
       "number": 6,
       "original": "昔乃祖亦既令乃父死司豐人",
       "transliteration": "xī nǎi zǔ yì jì lìng nǎi fù sǐ sī fēng rén",
-      "translation": "Когда-то твой дед приказал твоему отцу пожизненно управлять людьми из Фэн."
+      "translation": "Long ago, your grandfather ordered your father to manage the people of Fēng for life."
     },
     {
       "number": 7,
       "original": "不弔取我家株用喪",
       "transliteration": "bù diào qǔ wǒ jiā zhū yòng sāng",
-      "translation": "Небо взяло к себе опору нашего дома, и по этому случаю мы носим траур."
+      "translation": "Heaven took away the support of our house, and because of this we wear mourning."
     },
     {
       "number": 8,
       "original": "今余非敢夢先公有進退",
       "transliteration": "jīn yú fēi gǎn mèng xiān gōng yǒu jìn tuì",
-      "translation": "Ныне я не осмеливаюсь даже думать о том, что покойные гуны в чем-то ошибались."
+      "translation": "Now I do not dare even think that the deceased gōngs were mistaken in anything."
     },
     {
       "number": 9,
       "original": "余懋稱先公官",
       "transliteration": "yú mào chēng xiān gōng guān",
-      "translation": "Я торжественно восхваляю должность, учреждённую покойными гунами!"
+      "translation": "I solemnly praise the position established by the deceased gōngs!"
     },
     {
       "number": 10,
       "original": "今余唯令汝死司豐宮豐人",
       "transliteration": "jīn yú wéi lìng rǔ sǐ sī fēng gōng fēng rén",
-      "translation": "Ныне я приказываю тебе пожизненно управлять дворцом в Фэн и людьми из Фэн."
+      "translation": "Now I order you to manage the palace in Fēng and the people of Fēng for life."
     },
     {
       "number": 11,
       "original": "汝毋敢不善",
       "transliteration": "rǔ wú gǎn bù shàn",
-      "translation": "Не смей совершать недобрые дела!"
+      "translation": "Do not dare to do evil deeds!"
     },
     {
       "number": 12,
       "original": "賜汝瓚璋四瑴一宗彝一",
       "transliteration": "cì rǔ zàn zhāng sì jué yī zōng yí yī",
-      "translation": "Дарю тебе четыре украшения из нефрита, одну пару яшмовых предметов, один жертвенный сосуд."
+      "translation": "I bestow upon you four jade ornaments, one pair of jasper objects, and one sacrificial vessel."
     },
     {
       "number": 13,
       "original": "賜汝馬十匹牛十",
       "transliteration": "cì rǔ mǎ shí pǐ niú shí",
-      "translation": "Дарю тебе десять лошадей и десять быков."
+      "translation": "I bestow upon you ten horses and ten oxen."
     },
     {
       "number": 14,
       "original": "賜于作一田",
       "transliteration": "cì yú zuò yī tián",
-      "translation": "Дарю тебе поле в Цзо."
+      "translation": "I bestow upon you a field in Zuò."
     },
     {
       "number": 15,
       "original": "卯拜手稽首敢對揚榮伯休",
       "transliteration": "mǎo bài shǒu qǐ shǒu gǎn duì yáng róng bó xiū",
-      "translation": "Мао почтительно сложил руки и поклонился до земли, осмелившись благодарить Жун-бо за подарок."
+      "translation": "Mǎo respectfully clasped his hands and bowed to the ground, daring to thank Róng Bó for the gift."
     },
     {
       "number": 16,
       "original": "用作寳尊簋",
       "transliteration": "yòng zuò bǎo zūn guǐ",
-      "translation": "По этому случаю он изготовил драгоценный жертвенный сосуд."
+      "translation": "For this occasion, he made a precious sacrificial vessel."
     },
     {
       "number": 17,
       "original": "卯其萬年子子孫孫永寳用",
       "transliteration": "mǎo qí wàn nián zǐ zǐ sūn sūn yǒng bǎo yòng",
-      "translation": "На протяжении десяти тысяч лет, в течение жизни сыновей и внуков, Мао будет вечно пользоваться им как драгоценностью."
+      "translation": "For ten thousand years, throughout the lives of sons and grandsons, Mǎo will forever treasure and use it."
     }
   ]
 }

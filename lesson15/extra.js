@@ -1,20 +1,20 @@
-{
+var extra = {
     "lesson": 15,
     "sentences": [
         {
             "number": 1,
             "original": "以茲尊彝对杨王子之休",
-            "translation": "Этим ритуальным сосудом отблагодари милость сына правителя."
+            "translation": "With this ritual vessel, I thank the prince's kindness."
         },
         {
             "number": 2,
             "original": "余夙夜帥型朕皇祖考",
-            "translation": "Я денно и нощно следую примеру своих достославных предков."
+            "translation": "I follow the example of my glorious ancestors day and night."
         },
         {
             "number": 3,
             "original": "乃父以茲車折首執訊",
-            "translation": "С помощью этой колесницы твой отец обезглавливал врага и захватывал пленных."
+            "translation": "With this chariot, your father beheaded enemies and captured prisoners."
         }
     ]
-}
+};

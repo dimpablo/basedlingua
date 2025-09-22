@@ -4,22 +4,22 @@ var extra = {
         {
             "number": 1,
             "original": "用兄來馬",
-            "translation": "Используй лошадь, которую прислал старший брат."
+            "translation": "Use the horse that the elder brother sent."
         },
         {
             "number": 2,
             "original": "我用茲月余以羌",
-            "translation": "Мы принесли в жертву цянов, которых я привёл в этом месяце."
+            "translation": "We sacrificed the Qiang people that I brought in this month."
         },
         {
             "number": 3,
             "original": "王求大示來歳我有黍年",
-            "translation": "Правитель просил великих предков о том, чтобы в следующем году у нас был урожай чумизы."
+            "translation": "The ruler prayed to the great ancestors that we would have a millet harvest next year."
         },
         {
             "number": 4,
             "original": "汝告乃父余在南",
-            "translation": "Сообщил ли ты своему отцу о том, что я нахожусь на юге?"
+            "translation": "Did you tell your father that I am in the south?"
         }
     ]
 };
