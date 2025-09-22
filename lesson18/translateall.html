@@ -950,7 +950,7 @@ async function loadFriendsForSelection() {
                 if (currentTask.type === 'toTranslation') {
                     hintText.textContent = currentTask.correctAnswer;
                 } else {
-                    // For Russian to Chinese translation, show characters separately
+                    // For English to Chinese translation, show characters separately
                     hintText.textContent = currentTask.correctAnswer.split('').join(' ');
                 }
                 hintContainer.classList.add('show');
@@ -976,13 +976,13 @@ async function loadFriendsForSelection() {
             const allSentences = [...SentenceData.sentences, ...extraSentences];
             const allOriginals = allSentences.map(s => s.original);
             const allTranslations = allSentences.map(s => s.translation);
-            function cleanRussian(text) {
+            function cleanEnglish(text) {
                 return text.replace(/[^\p{L}\p{N}\s]/gu, '').toLowerCase().trim();
             }
-            const allRussianWords = [];
+            const allEnglishWords = [];
             allTranslations.forEach(trans => {
-                const cleaned = cleanRussian(trans);
-                allRussianWords.push(...cleaned.split(' ').filter(word => word));
+                const cleaned = cleanEnglish(trans);
+                allEnglishWords.push(...cleaned.split(' ').filter(word => word));
             });
             const allChineseChars = [];
             allOriginals.forEach(orig => {
@@ -998,26 +998,26 @@ async function loadFriendsForSelection() {
             }
             let tasks = [];
             allSentences.forEach(sentence => {
-                const actualRussianWords = cleanRussian(sentence.translation).split(' ').filter(w => w);
+                const actualEnglishWords = cleanEnglish(sentence.translation).split(' ').filter(w => w);
                 const actualChineseChars = sentence.original.split('');
-                // --- For Chinese to Russian translation ---
+                // --- For Chinese to English translation ---
                 // Filter the common word pool: only those NOT in the actual answer
-                const availableRussianDecoys = allRussianWords.filter(word => !actualRussianWords.includes(word));
+                const availableEnglishDecoys = allEnglishWords.filter(word => !actualEnglishWords.includes(word));
                 // Remove duplicates from the decoy pool
-                const uniqueRussianDecoys = [...new Set(availableRussianDecoys)];
+                const uniqueEnglishDecoys = [...new Set(availableEnglishDecoys)];
                 // Shuffle
-                const shuffledRussianDecoys = shuffleArray(uniqueRussianDecoys);
+                const shuffledEnglishDecoys = shuffleArray(uniqueEnglishDecoys);
                 // Take a random number from 1 to 5, but not more than available
-                const russianDecoyCount = Math.min(getRandomDecoyCount(), shuffledRussianDecoys.length);
-                const russianDecoys = shuffledRussianDecoys.slice(0, russianDecoyCount);
+                const russianDecoyCount = Math.min(getRandomDecoyCount(), shuffledEnglishDecoys.length);
+                const russianDecoys = shuffledEnglishDecoys.slice(0, russianDecoyCount);
                 tasks.push({
                     type: 'toTranslation',
                     source: sentence.original,
-                    correctAnswer: cleanRussian(sentence.translation),
-                    words: shuffleArray([...actualRussianWords, ...russianDecoys]),
-                    direction: 'from Chinese to Russian'
+                    correctAnswer: cleanEnglish(sentence.translation),
+                    words: shuffleArray([...actualEnglishWords, ...russianDecoys]),
+                    direction: 'from Chinese to English'
                 });
-                // --- For Russian to Chinese translation ---
+                // --- For English to Chinese translation ---
                 const availableChineseDecoys = allChineseChars.filter(char => !actualChineseChars.includes(char));
                 const uniqueChineseDecoys = [...new Set(availableChineseDecoys)];
                 const shuffledChineseDecoys = shuffleArray(uniqueChineseDecoys);
@@ -1028,7 +1028,7 @@ async function loadFriendsForSelection() {
                     source: sentence.translation,
                     correctAnswer: sentence.original,
                     words: shuffleArray([...actualChineseChars, ...chineseDecoys]),
-                    direction: 'from Russian to Chinese'
+                    direction: 'from English to Chinese'
                 });
             });
             tasks = shuffleArray(tasks);
@@ -1109,7 +1109,7 @@ async function loadFriendsForSelection() {
                         await updateUserPoints(5); // Award 5 points
                         showSuccess();
                     }
-                    // Similarly for Russian to Chinese translation
+                    // Similarly for English to Chinese translation
                     // else if (currentAnswer.length >= task.correctAnswer.length) {
                     //    // Tolerant - No reaction
                     // }
