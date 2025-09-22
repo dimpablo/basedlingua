@@ -1,271 +1,145 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Иероглифика</title>
-  <style>
-    html, body {
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      padding: 10px;
-      gap: 8px;
-      width: 100%;
-    }
-
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 16px;
-      color: #555;
-      flex-shrink: 0;
-    }
-
-    .scale-controls {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .scale-btn {
-      width: 28px;
-      height: 28px;
-      font-size: 18px;
-      line-height: 28px;
-      text-align: center;
-      background-color: #e0e0e0;
-      border-radius: 50%;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .scale-value {
-      min-width: 36px;
-      text-align: center;
-      font-weight: bold;
-    }
-
-    #progress-container {
-      width: 100%;
-      height: 6px;
-      background-color: #e0e0e0;
-      border-radius: 3px;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-
-    #progress-bar {
-      height: 100%;
-      width: 0%;
-      background-color: #4caf50;
-      transition: width 0.4s ease;
-      border-radius: 3px;
-    }
-
-    #task-container {
-      flex: 1;
-      width: 100%;
-      border: none;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease;
-      min-height: 0;
-      max-height: calc(100vh - 150px);
-    }
-
-    #task-container.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    #task-frame {
-      width: 100%;
-      height: 100%;
-      border: none;
-      transform-origin: center top;
-      transform: scale(1);
-      transition: transform 0.2s ease;
-      overflow: auto;
-    }
-
-    .controls {
-      padding: 12px 0;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-shrink: 0;
-    }
-
-    button {
-      padding: 14px 24px;
-      font-size: 18px;
-      font-weight: 600;
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      cursor: pointer;
-      transition: background-color 0.2s ease, transform 0.1s ease;
-      width: calc(50% - 6px);
-      max-width: 200px;
-    }
-
-    button:active {
-      transform: scale(0.98);
-    }
-
-    #next-btn {
-      color: white;
-      background-color: #1976d2;
-    }
-
-    #next-btn:disabled {
-      background-color: #cccccc;
-      cursor: not-allowed;
-    }
-
-    #skip-btn {
-      color: white;
-      background-color: #6c757d;
-    }
-
-    #status {
-      font-size: 16px;
-      text-align: center;
-      color: #555;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      padding: 0 8px;
-    }
-
-    @media (max-width: 768px) {
-      #task-container {
-        max-height: calc(100vh - 180px);
-      }
-      
-      .controls {
-        padding: 8px 0;
-      }
-      
-      button {
-        padding: 12px 16px;
-        font-size: 16px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese Character Quiz</title>
+    <script src="../dictionary.js"></script>
+    <link rel="stylesheet" type="text/css" href="../vocab.css">
 </head>
 <body>
-  <div class="header">
-    <div id="status">🔤 Готов к уроку</div>
-    <div class="scale-controls">
-      <div class="scale-btn" id="zoom-out">−</div>
-      <div class="scale-value" id="scale-value">1.0</div>
-      <div class="scale-btn" id="zoom-in">+</div>
+    <div class="container">
+        <h1>Match the Characters</h1>
+        
+        <div class="controls">
+            <div id="status" class="status">Match the characters</div>
+        </div>
+        
+        <div class="matching-container">
+            <div class="column" id="leftColumn"></div>
+            <div class="column" id="rightColumn"></div>
+        </div>
+        
+        <div class="progress">
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
+        
+        <button id="nextBtn" class="btn">Next Task</button>
+        
+        <div class="feedback correct-feedback" id="correctFeedback">✓ Correct! +1 point</div>
+        <div class="feedback incorrect-feedback" id="incorrectFeedback">✗ Incorrect -1 point</div>
     </div>
-  </div>
 
-  <div id="progress-container">
-    <div id="progress-bar"></div>
-  </div>
+    <script>
+        // === LESSON SETUP ===
+        const LESSON =  parseInt((window.location.pathname.match(/\/lesson(\d+)(?:\/|$)/) || [])[1] || '1');
+        
+        // === UI SOUND SYSTEM ===
+        const uiSounds = {
+            click: null,
+            hover: null,
+            success: null,
+            error: null,
+            next: null,
+            complete: null
+        };
 
-  <div id="task-container">
-    <iframe id="task-frame" src="about:blank" frameborder="0" allowfullscreen></iframe>
-  </div>
+        // Function to preload a single sound
+        function preloadSound(path) {
+            return new Promise((resolve, reject) => {
+                const audio = new Audio();
+                audio.src = path;
+                audio.preload = 'auto';
+                audio.addEventListener('canplaythrough', () => resolve(audio));
+                audio.addEventListener('error', reject);
+            });
+        }
 
-  <div class="controls">
-    <button id="next-btn">▶️ Старт!</button>
-    <button id="skip-btn" style="display: none;">⏭️ Пропустить</button>
-  </div>
+        // Function to preload all UI sounds
+        async function preloadUISounds() {
+            try {
+                // Relative path to Wav folder
+                const basePath = '../Wav/';
 
-  <script src="./../dictionary.js"></script>
+                // Preload sounds
+                uiSounds.click = await preloadSound(basePath + 'Click_Standard_00.wav');
+                uiSounds.hover = await preloadSound(basePath + 'Click_Soft_00.wav');
+                uiSounds.success = await preloadSound(basePath + 'Click_Electronic/Click_Electronic_05.wav');
+                uiSounds.error = await preloadSound(basePath + 'Click_Heavy_00.wav');
+                uiSounds.next = await preloadSound(basePath + 'Slide_Sharp_00.wav');
+                uiSounds.complete = await preloadSound(basePath + 'Click_Mechanical_01.wav');
 
-<script>
-  // === НАСТРОЙКА УРОКА ===
-  const LESSON =  parseInt((window.location.pathname.match(/\/lesson(\d+)(?:\/|$)/) || [])[1] || '1');
+                console.log('All UI sounds loaded successfully');
+            } catch (error) {
+                console.warn('Failed to load some UI sounds:', error);
+            }
+        }
 
-  if (typeof charData === 'undefined') {
-    console.error('❌ Не загружен dictionary.js');
-    alert('Ошибка: не удалось загрузить словарь иероглифов.');
-    throw new Error('charData not found');
-  }
+        // Function to play sound
+        function playSound(sound, volume = 0.3) {
+            if (sound) {
+                // Create a clone for multiple plays
+                const soundClone = sound.cloneNode();
+                soundClone.volume = volume;
+                soundClone.play().catch(e => {
+                    console.warn('Failed to play sound:', e);
+                });
+            }
+        }
 
-  const lessonwords = Object.keys(charData).filter(key => {
-    const data = charData[key];
-    return data.lesson === LESSON && key.length === 1; // только одиночные иероглифы
-  });
+        // === FIREBASE INIT ===
+        let db = null;
+        let auth = null;
+        let currentUser = null;
+        let updateDocRef = null;
+        let docRef = null;
+        let getDocRef = null;
 
-  if (lessonwords.length === 0) {
-    console.error(`❌ Нет иероглифов для урока ${LESSON}`);
-    alert(`Нет иероглифов для урока ${LESSON}`);
-  }
+        async function initFirebase() {
+            try {
+                const [{ initializeApp }, { getAuth, onAuthStateChanged }, { getFirestore }, { updateDoc, doc, getDoc }] = await Promise.all([
+                    import('https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js    '),
+                    import('https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js    '),
+                    import('https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js    '),
+                    import('https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js    ')
+                ]);
 
-  function shuffleArray(array) {
-    const arr = [...array];
-    for (let i = arr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    return arr;
-  }
+                const firebaseConfig = {
+                    apiKey: "AIzaSyBvyxPtx5PICYk60HUCERw5Cxh1TyCcZCY",
+                    authDomain: "antient-9bff0.firebaseapp.com",
+                    projectId: "antient-9bff0",
+                    storageBucket: "antient-9bff0.firebasestorage.app",
+                    messagingSenderId: "311792589414",
+                    appId: "1:311792589414:web:5fff3154735007c2006ba7",
+                    measurementId: "G-W4ZQXWRTKK"
+                };
 
-  const shuffledLesson = shuffleArray(lessonwords);
-  const totalTasks = shuffledLesson.length;
-  let currentTaskIndex = 0;
+                const app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+                db = getFirestore(app);
+                updateDocRef = updateDoc;
+                docRef = doc;
+                getDocRef = getDoc;
 
-  let currentScale = 1.0;
-  const minScale = 0.25;
-  const maxScale = 2.0;
-  const scaleStep = 0.1;
+                onAuthStateChanged(auth, (user) => {
+                    currentUser = user;
+                    console.log('🔐 User:', user ? user.displayName : 'not logged in');
+                });
+            } catch (e) {
+                console.error("❌ Firebase initialization error:", e);
+            }
+        }
 
-  const iframe = document.getElementById("task-frame");
-  const statusEl = document.getElementById("status");
-  const nextBtn = document.getElementById("next-btn");
-  const skipBtn = document.getElementById("skip-btn");
-  const progressBar = document.getElementById("progress-bar");
-  const scaleValueEl = document.getElementById("scale-value");
-  const zoomInBtn = document.getElementById("zoom-in");
-  const zoomOutBtn = document.getElementById("zoom-out");
-
-  function setScale(scale) {
-    currentScale = Math.max(minScale, Math.min(maxScale, Math.round(scale * 10) / 10));
-    iframe.style.transform = `scale(${currentScale})`;
-    scaleValueEl.textContent = currentScale.toFixed(1);
-  }
-
-  zoomInBtn.addEventListener("click", () => setScale(currentScale + scaleStep));
-  zoomOutBtn.addEventListener("click", () => setScale(currentScale - scaleStep));
-
-  function playHanziSound(hanzi) {
+        // === PRONUNCIATION AUDIO ===
+function playHanziSound(hanzi) {
     const data = charData[hanzi];
     if (!data || !data.pinyin) return;
 
     let cleanPinyin = data.pinyin
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/ü/g, 'u')
-      .replace(/v/g, 'u');
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/ü/g, 'u')
+        .replace(/v/g, 'u');
 
     let tone = '1';
     if (data.pinyin.includes('ā')) tone = '1';
@@ -274,167 +148,348 @@
     else if (data.pinyin.includes('à')) tone = '4';
 
     const pinyinKey = cleanPinyin + tone;
-    const url = `https://data.dong-chinese.com/pinyin/b/${pinyinKey}.mp3`;
+    const url = `https://data.dong-chinese.com/pinyin/b/  ${pinyinKey}.mp3`;
+
+    // Create audio object
     const audio = new Audio(url);
 
+    // 🚀 Use play() inside click handler
+    // Ensures playback is user-initiated
     audio.play().catch(e => {
-      console.warn(`🔇 Нет звука для ${hanzi}`);
+        console.warn(`🔇 No sound for ${hanzi}`, e.message);
     });
-  }
-
-
-// --- 🔥 Исправленная инициализация Firebase ---
-let db = null;
-let auth = null;
-let currentUser = null;
-let updateDocRef = null;
-let docRef = null;
-
-async function initFirebase() {
-  try {
-    const [{ initializeApp }, { getAuth, onAuthStateChanged }, { getFirestore }, { updateDoc, doc }] = await Promise.all([
-      import('https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js'),
-      import('https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js'),
-      import('https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js'),
-      import('https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js')
-    ]);
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyBvyxPtx5PICYk60HUCERw5Cxh1TyCcZCY",
-      authDomain: "antient-9bff0.firebaseapp.com",
-      projectId: "antient-9bff0",
-      storageBucket: "antient-9bff0.firebasestorage.app",
-      messagingSenderId: "311792589414",
-      appId: "1:311792589414:web:5fff3154735007c2006ba7",
-      measurementId: "G-W4ZQXWRTKK"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    auth = getAuth(app);
-    db = getFirestore(app);
-    updateDocRef = updateDoc;
-    docRef = doc;
-
-    onAuthStateChanged(auth, (user) => {
-      currentUser = user;
-      console.log('🔐 Пользователь:', user ? user.displayName : 'не авторизован');
-    });
-  } catch (e) {
-    console.error("❌ Ошибка инициализации Firebase:", e);
-  }
 }
+        // === POINT SYSTEM ===
+        async function updateUserPoints(pointsChange) {
+            if (!db || !currentUser || !updateDocRef || !docRef || !getDocRef) {
+                console.warn("Firebase not initialized, points not saved");
+                return;
+            }
 
-// Запускаем Firebase
-initFirebase();
+            try {
+                const userRef = docRef(db, 'users', currentUser.uid);
+                
+                // Get current user points
+                const userDoc = await getDocRef(userRef);
+                let currentPoints = 0;
+                
+                if (userDoc.exists()) {
+                    currentPoints = userDoc.data().points || 0;
+                }
+                
+                // Update points
+                const newPoints = currentPoints + pointsChange;
+                
+                await updateDocRef(userRef, {
+                    points: newPoints
+                });
+                
+                currentUser.points = newPoints;
+                console.log(`[Points] Change: ${pointsChange}. Now: ${newPoints}`);
+            } catch (e) {
+                console.error("❌ Failed to save points to Firestore:", e);
+            }
+        }
 
-// --- 🔥 Обработка баллов ---
-window.addEventListener("message", async function(event) {
-  if (event.data.type === "TASK_RESULT") {
-    const { success, message, points = 0 } = event.data;
+        // === QUIZ LOGIC ===
+        let selectedLeft = null;
+        let selectedRight = null;
+        let matchedPairs = 0;
+        let totalPairs = 0;
+        let leftItems = [];
+        let rightItems = [];
+        let allLessonChars = [];
+        
+        // Track progress per character
+        let charProgress = {};
+        let currentTaskType = ''; // 'pinyin' or 'meaning'
+        let currentChars = [];
 
-    console.log(`[Баллы] Получено: ${points} | Сообщение: ${message}`);
-
-    if (success && points !== 0 && db && currentUser && updateDocRef && docRef) {
-      try {
-        const userRef = docRef(db, 'users', currentUser.uid);
-        await updateDocRef(userRef, {
-          points: (currentUser.points || 0) + points
+        // Initialization
+        document.addEventListener('DOMContentLoaded', async function() {
+            await initFirebase();
+            await preloadUISounds(); // Wait for sounds to load
+            
+            // Get all lesson characters
+            allLessonChars = Object.keys(charData).filter(char => 
+                charData[char].lesson === LESSON
+            );
+            
+            totalPairs = allLessonChars.length * 2; // Each character tested twice
+            
+            // Initialize progress for each character
+            allLessonChars.forEach(char => {
+                charProgress[char] = {
+                    pinyin: false,
+                    meaning: false
+                };
+            });
+            
+            loadTask();
+            
+            document.getElementById('nextBtn').addEventListener('click', function() {
+                playSound(uiSounds.next); // Sound when going to next task
+                loadTask();
+            });
+            
+            // Add hover effects to buttons
+            document.querySelectorAll('.btn').forEach(button => {
+                button.addEventListener('mouseenter', () => {
+                    playSound(uiSounds.hover); // Hover sound
+                });
+            });
         });
-        // Обновляем локально
-        if (currentUser.points === undefined) currentUser.points = 0;
-        currentUser.points += points;
-        console.log(`[Баллы] Сохранено. Теперь: ${currentUser.points}`);
-      } catch (e) {
-        console.error("❌ Не удалось сохранить баллы в Firestore:", e);
-      }
-    }
-
-    if (success) {
-      statusEl.textContent = "✅ Готово! Можно дальше";
-      nextBtn.disabled = false;
-    }
-  }
-});
-
-  function loadNextTask() {
-    if (currentTaskIndex >= totalTasks) return;
-
-    const hanzi = shuffledLesson[currentTaskIndex];
-    const data = charData[hanzi] || {};
-
-    const url = `tasks/task1.html?_=${Date.now()}#${encodeURIComponent(hanzi)}`;
-
-    const meaningDisplay = (data.meaning?.length > 50)
-      ? data.meaning.slice(0, 47) + '...'
-      : data.meaning || 'значение не найдено';
-
-    statusEl.textContent = `${hanzi} • ${data.pinyin || '—'} • ${meaningDisplay}`;
-    statusEl.title = `${data.meaning || ''}`;
-
-    document.getElementById("task-container").classList.add("active");
-    nextBtn.disabled = true;
-    if (skipBtn) skipBtn.style.display = "block";
-
-    iframe.src = '';
-    setTimeout(() => { iframe.src = url; }, 50);
-
-    setTimeout(() => playHanziSound(hanzi), 600);
-    progressBar.style.width = `${(currentTaskIndex / totalTasks) * 100}%`;
-  }
-
-  nextBtn.addEventListener("click", () => {
-    if (currentTaskIndex === 0) {
-      nextBtn.textContent = "▶️ Следующее";
-      loadNextTask();
-      currentTaskIndex++;
-      return;
-    }
-
-    if (currentTaskIndex < totalTasks) {
-      loadNextTask();
-      currentTaskIndex++;
-      return;
-    }
-
-    iframe.style.display = "none";
-    nextBtn.disabled = true;
-    skipBtn.style.display = "none";
-    statusEl.innerHTML = `<div style="text-align: center;">
-      <h2>🎉 Поздравляем!</h2>
-      <p>Вы завершили урок ${LESSON}</p>
-    </div>`;
-    setTimeout(() => window.location.href = "../", 3000);
-  });
-
-if (skipBtn) {
-  skipBtn.addEventListener("click", async () => {
-    // ❌ Пропуск — штраф -1
-    if (db && currentUser && updateDocRef && docRef) {
-      try {
-        const userRef = docRef(db, 'users', currentUser.uid);
-        await updateDocRef(userRef, {
-          points: (currentUser.points || 0) - 1
-        });
-        if (currentUser.points === undefined) currentUser.points = 0;
-        currentUser.points -= 1;
-        console.log("[Баллы] Пропуск: -1");
-      } catch (e) {
-        console.error("❌ Не удалось применить штраф:", e);
-      }
-    }
-
-    loadNextTask();
-    currentTaskIndex++;
-    if (currentTaskIndex >= totalTasks) {
-      nextBtn.click();
-    }
-  });
-}
-
-  window.addEventListener("load", () => {
-    console.log(`📚 Урок ${LESSON}: ${lessonwords.length} иероглифов`);
-    console.log("🎲 Порядок:", shuffledLesson);
-    setScale(1.0);
-  });
-</script></body>
+        
+        // Load task
+        function loadTask() {
+            selectedLeft = null;
+            selectedRight = null;
+            matchedPairs = 0;
+            
+            // Determine available task types
+            const remainingPinyin = allLessonChars.filter(char => !charProgress[char].pinyin);
+            const remainingMeaning = allLessonChars.filter(char => !charProgress[char].meaning);
+            
+            if (remainingPinyin.length === 0 && remainingMeaning.length === 0) {
+                // All characters fully learned
+                playSound(uiSounds.complete); // Lesson completion sound
+                document.getElementById('status').textContent = 'All characters in this lesson have been mastered!';
+                document.getElementById('leftColumn').innerHTML = '';
+                document.getElementById('rightColumn').innerHTML = '';
+                document.getElementById('progressBar').style.width = '100%';
+                document.getElementById('nextBtn').disabled = true;
+                
+                // Redirect to main page after 2 seconds
+                setTimeout(() => {
+                    window.location.href = '../index.html';
+                }, 2000);
+                return;
+            }
+            
+            // RANDOMLY SELECT task type
+            const availableTypes = [];
+            if (remainingPinyin.length > 0) availableTypes.push('pinyin');
+            if (remainingMeaning.length > 0) availableTypes.push('meaning');
+            
+            // Randomly pick from available types
+            const randomTypeIndex = Math.floor(Math.random() * availableTypes.length);
+            currentTaskType = availableTypes[randomTypeIndex];
+            
+            const remainingChars = currentTaskType === 'pinyin' ? remainingPinyin : remainingMeaning;
+            
+            // Take up to 5 random from remaining
+            const count = Math.min(5, remainingChars.length);
+            currentChars = getRandomCharacters(remainingChars, count);
+            
+            createColumns(currentChars);
+            updateProgress();
+            updateStatus();
+        }
+        
+        // Get random characters
+        function getRandomCharacters(charArray, count) {
+            const selectedChars = [];
+            const tempArray = [...charArray];
+            
+            for (let i = 0; i < count; i++) {
+                const randomIndex = Math.floor(Math.random() * tempArray.length);
+                const char = tempArray[randomIndex];
+                selectedChars.push({
+                    char: char,
+                    pinyin: charData[char].pinyin,
+                    meaning: charData[char].meaning
+                });
+                tempArray.splice(randomIndex, 1);
+            }
+            
+            return selectedChars;
+        }
+        
+        // Create columns
+        function createColumns(chars) {
+            const leftColumn = document.getElementById('leftColumn');
+            const rightColumn = document.getElementById('rightColumn');
+            
+            leftColumn.innerHTML = '';
+            rightColumn.innerHTML = '';
+            
+            // Update status header based on task type
+            const statusText = currentTaskType === 'pinyin' ? 
+                'Match characters with pronunciation' : 
+                'Match characters with meanings';
+            document.getElementById('status').textContent = statusText;
+            
+            // Left column - characters
+            leftItems = [];
+            chars.forEach(charData => {
+                const item = document.createElement('div');
+                item.className = 'item';
+                item.innerHTML = `<div class="character">${charData.char}</div>`;
+                item.dataset.char = charData.char;
+                item.dataset.matched = 'false';
+                item.addEventListener('click', () => {
+                    playSound(uiSounds.click); // Click sound
+                    selectItem(item, 'left');
+                    // Play sound only on tasks involving translation
+                    if (currentTaskType === 'meaning') {
+                        playHanziSound(charData.char);
+                    }
+                });
+                // Add hover effect
+                item.addEventListener('mouseenter', () => {
+                    playSound(uiSounds.hover); // Hover sound
+                });
+                leftColumn.appendChild(item);
+                leftItems.push(item);
+            });
+            
+            // Right column - one type (pinyin or meaning)
+            rightItems = [];
+            const shuffledChars = [...chars].sort(() => Math.random() - 0.5);
+            
+            shuffledChars.forEach(charData => {
+                const item = document.createElement('div');
+                item.className = 'item';
+                
+                if (currentTaskType === 'pinyin') {
+                    item.innerHTML = `<div class="pinyin">${charData.pinyin}</div>`;
+                    item.dataset.pinyin = charData.pinyin;
+                    item.dataset.type = 'pinyin';
+                } else {
+                    item.innerHTML = `<div class="meaning">${charData.meaning}</div>`;
+                    item.dataset.meaning = charData.meaning;
+                    item.dataset.type = 'meaning';
+                }
+                
+                item.dataset.char = charData.char;
+                item.dataset.matched = 'false';
+                item.addEventListener('click', () => {
+                    playSound(uiSounds.click); // Click sound
+                    selectItem(item, 'right');
+                });
+                // Add hover effect
+                item.addEventListener('mouseenter', () => {
+                    playSound(uiSounds.hover); // Hover sound
+                });
+                rightColumn.appendChild(item);
+                rightItems.push(item);
+            });
+        }
+        
+        // Select item
+        function selectItem(item, column) {
+            if (item.dataset.matched === 'true') return;
+            
+            if (column === 'left') {
+                if (selectedLeft) {
+                    selectedLeft.classList.remove('selected');
+                }
+                selectedLeft = item;
+                item.classList.add('selected');
+                
+                if (selectedRight) {
+                    checkMatch();
+                }
+            } else {
+                if (selectedRight) {
+                    selectedRight.classList.remove('selected');
+                }
+                selectedRight = item;
+                item.classList.add('selected');
+                
+                if (selectedLeft) {
+                    checkMatch();
+                }
+            }
+        }
+        
+        // Check match
+        function checkMatch() {
+            const leftChar = selectedLeft.dataset.char;
+            let isMatch = false;
+            
+            if (currentTaskType === 'pinyin') {
+                isMatch = (charData[leftChar].pinyin === selectedRight.dataset.pinyin);
+            } else {
+                isMatch = (charData[leftChar].meaning === selectedRight.dataset.meaning);
+            }
+            
+            if (isMatch) {
+                playSound(uiSounds.success); // Success sound
+                showFeedback(true);
+                updateUserPoints(1); // +1 point for correct answer
+                
+                // Play sound only for pinyin tasks on correct answer
+                if (currentTaskType === 'pinyin') {
+                    playHanziSound(leftChar);
+                }
+                
+                selectedLeft.dataset.matched = 'true';
+                selectedRight.dataset.matched = 'true';
+                selectedLeft.classList.remove('selected');
+                selectedLeft.classList.add('matched');
+                selectedRight.classList.remove('selected');
+                selectedRight.classList.add('matched');
+                
+                matchedPairs++;
+                
+                // If all pairs matched in current task
+                if (matchedPairs === leftItems.length) {
+                    // Mark characters as completed for current task type
+                    leftItems.forEach(item => {
+                        charProgress[item.dataset.char][currentTaskType] = true;
+                    });
+                    
+                    // Update progress
+                    updateProgress();
+                    
+                    // Enable next task button
+                    document.getElementById('nextBtn').disabled = false;
+                }
+            } else {
+                playSound(uiSounds.error); // Error sound
+                showFeedback(false);
+                updateUserPoints(-1); // -1 point for mistake
+                
+                selectedLeft.classList.remove('selected');
+                selectedRight.classList.remove('selected');
+            }
+            
+            selectedLeft = null;
+            selectedRight = null;
+        }
+        
+        // Show feedback
+        function showFeedback(isCorrect) {
+            const feedbackElement = isCorrect ? 
+                document.getElementById('correctFeedback') : 
+                document.getElementById('incorrectFeedback');
+            
+            feedbackElement.style.opacity = '1';
+            
+            setTimeout(() => {
+                feedbackElement.style.opacity = '0';
+            }, 1500);
+        }
+        
+        // Update lesson progress
+        function updateProgress() {
+            // Count total completed checks (pinyin + meaning)
+            let completedChecks = 0;
+            allLessonChars.forEach(char => {
+                if (charProgress[char].pinyin) completedChecks++;
+                if (charProgress[char].meaning) completedChecks++;
+            });
+            
+            const progress = (completedChecks / totalPairs) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+        }
+        
+        // Update status
+        function updateStatus() {
+            // Disable button until task is complete
+            document.getElementById('nextBtn').disabled = true;
+        }
+    </script>
+</body>
 </html>

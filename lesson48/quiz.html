@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Квиз по сегментации текста</title>
+    <title>Text Segmentation Quiz</title>
     <script src="../dictionary.js"></script>
     <script src="segmentation.js"></script>
     <style>
@@ -244,7 +244,7 @@
             border: 1px solid #ccc;
         }
         
-        /* === КРИТИЧЕСКИ ВАЖНЫЕ ИЗМЕНЕНИЯ ДЛЯ МЕРЦАНИЯ === */
+        /* === CRITICALLY IMPORTANT CHANGES FOR BLINKING === */
         @keyframes rainbowBlink {
             0% { background-color: #ff0000; }
             20% { background-color: #ff9900; }
@@ -261,7 +261,7 @@
             border: 2px solid white !important;
         }
         
-        /* === МОДАЛЬНОЕ ОКНО ДЛЯ СПРАВКИ ПО ИЕРОГЛИФУ === */
+        /* === MODAL WINDOW FOR CHARACTER HELP === */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -325,7 +325,7 @@
             background-color: #2980b9;
         }
         
-        /* Визуальный индикатор режима справки */
+        /* Visual indicator for help mode */
         #helpBtn.help-active {
             background-color: #e67e22 !important;
             box-shadow: 0 0 0 2px #f39c12;
@@ -338,7 +338,7 @@
             100% { box-shadow: 0 0 0 0 rgba(243, 156, 18, 0); }
         }
 
-        /* Курсор в режиме справки */
+        /* Cursor in help mode */
         body.help-mode {
             cursor: help;
         }
@@ -363,23 +363,23 @@
 <body>
     <div class="container">
         <div class="instruction">
-            <h2>Задание по сегментации текста</h2>
-            <p>Закрасьте символы, чтобы выделить предложения. Каждое предложение — своим цветом.</p>
+            <h2>Text Segmentation Task</h2>
+            <p>Color the characters to highlight sentences. Each sentence with its own color.</p>
             <ul>
-                <li>Всего <span id="sentenceCount">0</span> предложений</li>
-                <li>Разные предложения — разными цветами</li>
-                <li>Все символы должны быть закрашены</li>
+                <li>Total <span id="sentenceCount">0</span> sentences</li>
+                <li>Different sentences - different colors</li>
+                <li>All characters must be colored</li>
             </ul>
         </div>
         
         <div class="color-tools">
             <div class="color-picker">
-                <label for="colorSelect">Цвет:</label>
+                <label for="colorSelect">Color:</label>
                 <input type="color" id="colorSelect" value="#a8dadc">
             </div>
-            <button class="random-color-btn" id="randomColorBtn">Любой случайный цвет</button>
+            <button class="random-color-btn" id="randomColorBtn">Random Color</button>
             <div class="color-info">
-                Текущий цвет: <span id="currentColor">#a8dadc</span>
+                Current color: <span id="currentColor">#a8dadc</span>
             </div>
             <button class="random-color-btn" id="helpBtn">?</button>
         </div>
@@ -387,8 +387,8 @@
         <table id="textTable"></table>
         
         <div class="controls">
-            <button id="checkBtn">Проверить</button>
-            <button id="resetBtn">Сбросить</button>
+            <button id="checkBtn">Check</button>
+            <button id="resetBtn">Reset</button>
         </div>
         
         <div id="result"></div>
@@ -396,19 +396,19 @@
         <div class="legend" id="colorLegend"></div>
     </div>
 
-    <!-- Модальное окно для справки -->
+    <!-- Modal window for help -->
     <div class="modal-overlay" id="helpModal">
         <div class="modal">
             <h3 id="modalChar">?</h3>
-            <p><strong>Пиньинь:</strong> <span id="modalPinyin">-</span></p>
-            <p><strong>Значение:</strong> <span id="modalMeaning">-</span></p>
-            <p><small>Урок: <span id="modalLesson">-</span></small></p>
-            <button class="modal-close" id="closeModal">Закрыть</button>
+            <p><strong>Pinyin:</strong> <span id="modalPinyin">-</span></p>
+            <p><strong>Meaning:</strong> <span id="modalMeaning">-</span></p>
+            <p><small>Lesson: <span id="modalLesson">-</span></small></p>
+            <button class="modal-close" id="closeModal">Close</button>
         </div>
     </div>
 
     <script type="module">
-      // === 🔊 СИСТЕМА ЗВУКОВ ИНТЕРФЕЙСА ===
+      // === 🔊 INTERFACE SOUND SYSTEM ===
       const uiSounds = {
         click: null,
         hover: null,
@@ -421,7 +421,7 @@
         modalClose: null
       };
 
-      // Функция для предзагрузки одного звука
+      // Function to preload one sound
       function preloadSound(path) {
         return new Promise((resolve, reject) => {
           const audio = new Audio();
@@ -432,13 +432,13 @@
         });
       }
 
-      // Функция для предзагрузки всех звуков интерфейса
+      // Function to preload all interface sounds
       async function preloadUISounds() {
         try {
-          // Относительный путь к папке Wav (такой же как в translateall.html)
+          // Relative path to Wav folder (same as in translateall.html)
           const basePath = '../Wav/';
 
-          // Предзагружаем звуки
+          // Preload sounds
           uiSounds.click = await preloadSound(basePath + 'Click_Standard_00.wav');
           uiSounds.hover = await preloadSound(basePath + 'Click_Soft_00.wav');
           uiSounds.success = await preloadSound(basePath + 'Click_Electronic/Click_Electronic_05.wav');
@@ -449,28 +449,28 @@
           uiSounds.modalOpen = await preloadSound(basePath + 'Slide_Sharp_00.wav');
           uiSounds.modalClose = await preloadSound(basePath + 'Slide_Sharp_01.wav');
 
-          console.log('Все звуки интерфейса успешно загружены');
+          console.log('All interface sounds loaded successfully');
         } catch (error) {
-          console.warn('Не удалось загрузить некоторые звуки интерфейса:', error);
+          console.warn('Failed to load some interface sounds:', error);
         }
       }
 
-      // Функция для воспроизведения звука
+      // Function to play sound
       function playSound(sound, volume = 0.3) {
         if (sound) {
-          // Создаем клон для возможности многократного воспроизведения
+          // Create clone for multiple playback
           const soundClone = sound.cloneNode();
           soundClone.volume = volume;
           soundClone.play().catch(e => {
-            console.warn('Не удалось воспроизвести звук:', e);
+            console.warn('Failed to play sound:', e);
           });
         }
       }
 
-      // === 🔥 ПОДКЛЮЧЕНИЕ К FIREBASE ===
-      import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js  ';
-      import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js  ';
-      import { getFirestore, doc, getDoc, updateDoc } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js  ';
+      // === 🔥 FIREBASE CONNECTION ===
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js    ';
+      import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js    ';
+      import { getFirestore, doc, getDoc, updateDoc } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js    ';
 
       const firebaseConfig = {
         apiKey: "AIzaSyBvyxPtx5PICYk60HUCERw5Cxh1TyCcZCY",
@@ -500,16 +500,16 @@
           const newPoints = currentPoints + points;
 
           await updateDoc(userRef, { points: newPoints });
-          console.log(`[Баллы] ${points} (${reason}) → всего: ${newPoints}`);
+          console.log(`[Points] ${points} (${reason}) → total: ${newPoints}`);
         } catch (e) {
-          console.error("❌ Ошибка обновления баллов:", e);
+          console.error("❌ Error updating points:", e);
         }
       }
 
-      // === ✅ ГЛАВНЫЙ КОД КВИЗА (ОБНОВЛЁННЫЙ) ===
+      // === ✅ MAIN QUIZ CODE (UPDATED) ===
       document.addEventListener('DOMContentLoaded', async function() { // async
-        // === 🔊 ИНИЦИАЛИЗАЦИЯ ЗВУКОВ ===
-        await preloadUISounds(); // Дожидаемся загрузки звуков
+        // === 🔊 INITIALIZE SOUNDS ===
+        await preloadUISounds(); // Wait for sounds to load
 
         document.getElementById('sentenceCount').textContent = SentenceData.sentences.length;
 
@@ -539,7 +539,7 @@
         }
 
         colorInput.addEventListener('input', function(e) {
-          playSound(uiSounds.click); // Воспроизводим звук при изменении цвета
+          playSound(uiSounds.click); // Play sound when color changes
           currentColor = e.target.value;
           updateColorDisplay();
         });
@@ -569,7 +569,7 @@
         }
 
         document.getElementById('randomColorBtn').addEventListener('click', function() {
-          playSound(uiSounds.click); // Воспроизводим звук при нажатии
+          playSound(uiSounds.click); // Play sound when clicked
           const randomHsl = getRandomPastelColor();
           const randomHex = hslToHex(randomHsl);
           colorInput.value = randomHex;
@@ -579,7 +579,7 @@
 
         updateColorDisplay();
 
-        // === 🔍 РЕЖИМ СПРАВКИ ПО ИЕРОГЛИФАМ ===
+        // === 🔍 CHARACTER HELP MODE ===
         let helpMode = false;
         const helpBtn = document.getElementById('helpBtn');
         const helpModal = document.getElementById('helpModal');
@@ -594,52 +594,52 @@
           document.body.classList.toggle('help-mode', helpMode);
           helpBtn.style.fontWeight = helpMode ? 'bold' : 'normal';
           helpBtn.title = helpMode 
-            ? 'Режим справки: ВКЛ (нажмите на иероглиф)' 
-            : 'Режим справки: ВЫКЛ';
+            ? 'Help mode: ON (click character)' 
+            : 'Help mode: OFF';
         }
 
         helpBtn.addEventListener('click', function () {
-          playSound(uiSounds.help); // Воспроизводим звук при активации справки
+          playSound(uiSounds.help); // Play sound when activating help
           helpMode = !helpMode;
           updateHelpButton();
           if (helpMode) {
             document.getElementById('result').className = 'info';
-            document.getElementById('result').textContent = '👉 Нажмите на иероглиф, чтобы увидеть значение';
+            document.getElementById('result').textContent = '👉 Click character to see meaning';
           } else {
             document.getElementById('result').textContent = '';
           }
         });
 
-        // === 🧩 ЦЕНТРАЛИЗОВАННАЯ ОБРАБОТКА КЛИКОВ ===
+        // === 🧩 CENTRALIZED CLICK HANDLING ===
         table.addEventListener('click', function(e) {
           const target = e.target;
           if (target.tagName !== 'TD') return;
 
-          // Приоритет 1: Модальное окно открыто → блокируем всё
+          // Priority 1: Modal open → block everything
           if (helpModal.classList.contains('show')) {
             e.stopPropagation();
             return;
           }
 
-          // Приоритет 2: Режим справки активен
+          // Priority 2: Help mode active
           if (helpMode) {
-            playSound(uiSounds.click); // Воспроизводим звук при клике в режиме справки
+            playSound(uiSounds.click); // Play sound when clicking in help mode
             const char = target.textContent.trim();
             if (!char || /[.,?!;:\s]/.test(char)) {
               document.getElementById('result').className = 'info';
-              document.getElementById('result').textContent = '👉 Нажмите на иероглиф';
+              document.getElementById('result').textContent = '👉 Click character';
               return;
             }
             
             const entry = charData[char];
             modalChar.textContent = char;
             modalPinyin.textContent = entry?.pinyin || '—';
-            modalMeaning.textContent = entry?.meaning || 'Нет в словаре';
+            modalMeaning.textContent = entry?.meaning || 'Not in dictionary';
             modalLesson.textContent = entry?.lesson || '—';
             
             helpModal.classList.add('show');
-            playSound(uiSounds.modalOpen); // Воспроизводим звук открытия модального окна
-            table.style.pointerEvents = 'none'; // Блокируем клики
+            playSound(uiSounds.modalOpen); // Play sound when opening modal
+            table.style.pointerEvents = 'none'; // Block clicks
             
             helpMode = false;
             updateHelpButton();
@@ -647,28 +647,28 @@
             return;
           }
 
-          // Приоритет 3: Ошибка мерцает → сначала убираем мерцание
+          // Priority 3: Error blinking → remove blinking first
           if (target.classList.contains('error-blink')) {
             target.classList.remove('error-blink');
           }
 
-          // Приоритет 4: Обычный режим закрашивания
-          playSound(uiSounds.click); // Воспроизводим звук при закрашивании ячейки
+          // Priority 4: Normal coloring mode
+          playSound(uiSounds.click); // Play sound when coloring cell
           target.style.backgroundColor = currentColor;
           target.setAttribute('data-color', currentColor);
           updateColorLegend();
         });
 
-        // Закрытие модалки
+        // Close modal
         closeModal.addEventListener('click', function() {
-          playSound(uiSounds.modalClose); // Воспроизводим звук закрытия модального окна
+          playSound(uiSounds.modalClose); // Play sound when closing modal
           helpModal.classList.remove('show');
           table.style.pointerEvents = 'auto';
         });
 
         helpModal.addEventListener('click', function(e) {
           if (e.target === helpModal) {
-            playSound(uiSounds.modalClose); // Воспроизводим звук закрытия модального окна
+            playSound(uiSounds.modalClose); // Play sound when closing modal
             helpModal.classList.remove('show');
             table.style.pointerEvents = 'auto';
           }
@@ -676,18 +676,18 @@
 
         document.addEventListener('keydown', function(e) {
           if (e.key === 'Escape' && helpModal.classList.contains('show')) {
-            playSound(uiSounds.modalClose); // Воспроизводим звук закрытия модального окна
+            playSound(uiSounds.modalClose); // Play sound when closing modal
             helpModal.classList.remove('show');
             table.style.pointerEvents = 'auto';
           }
         });
 
-        // === 🔧 Легенда: клик по цвету устанавливает его как текущий ===
+        // === 🔧 Legend: click color to set as current ===
         function makeLegendInteractive() {
           document.querySelectorAll('.legend-color').forEach(box => {
             box.style.cursor = 'pointer';
             box.addEventListener('click', function(e) {
-              playSound(uiSounds.click); // Воспроизводим звук при выборе цвета из легенды
+              playSound(uiSounds.click); // Play sound when selecting color from legend
               e.stopPropagation();
               const color = this.style.backgroundColor;
               if (!color || color === 'transparent') return;
@@ -729,7 +729,7 @@
             box.className = 'legend-color';
             box.style.backgroundColor = color;
             const label = document.createElement('span');
-            label.textContent = `Цв.${idx}`;
+            label.textContent = `Col.${idx}`;
             item.appendChild(box);
             item.appendChild(label);
             colorLegend.appendChild(item);
@@ -743,7 +743,7 @@
             box.className = 'legend-color';
             box.style.backgroundColor = currentColor;
             const label = document.createElement('span');
-            label.textContent = 'Цв.1 (выбран)';
+            label.textContent = 'Col.1 (selected)';
             item.appendChild(box);
             item.appendChild(label);
             colorLegend.appendChild(item);
@@ -752,9 +752,9 @@
           makeLegendInteractive();
         }
 
-        // === 🔧 Кнопка "Сбросить" ===
+        // === 🔧 "Reset" Button ===
         document.getElementById('resetBtn').addEventListener('click', function() {
-          playSound(uiSounds.reset); // Воспроизводим звук сброса
+          playSound(uiSounds.reset); // Play sound when resetting
           helpMode = false;
           updateHelpButton();
           document.getElementById('result').textContent = '';
@@ -768,9 +768,9 @@
           updateColorLegend();
         });
 
-        // === ✅ УЛУЧШЕННАЯ ПРОВЕРКА СЕГМЕНТАЦИИ ===
+        // === ✅ IMPROVED SEGMENTATION CHECK ===
         document.getElementById('checkBtn').addEventListener('click', function() {
-          playSound(uiSounds.check); // Воспроизводим звук проверки
+          playSound(uiSounds.check); // Play sound when checking
           helpMode = false;
           updateHelpButton();
           document.getElementById('result').textContent = '';
@@ -778,12 +778,12 @@
           const cells = Array.from(document.querySelectorAll('#textTable td'));
           const result = document.getElementById('result');
 
-          // Удаляем предыдущие ошибки
+          // Remove previous errors
           document.querySelectorAll('.error-blink').forEach(cell => {
             cell.classList.remove('error-blink');
           });
 
-          // === 1. СОБИРАЕМ ДАННЫЕ ===
+          // === 1. COLLECT DATA ===
           const unpainted = new Set();
           const painted = new Set();
           const colorGroups = {};
@@ -799,10 +799,10 @@
             }
           });
 
-          // === 2. АНАЛИЗ КОЛЛИЗИЙ (ТОЛЬКО ДЛЯ ЗАКРАШЕННЫХ) ===
+          // === 2. COLLISION ANALYSIS (ONLY FOR PAINTED) ===
           const errorCells = new Set();
 
-          // Создаем карту: позиция -> сегмент
+          // Create map: position -> segment
           const positionToSegment = new Array(cells.length).fill(null);
           SentenceData.sentences.forEach((sentence, segIndex) => {
             let pos = 0;
@@ -814,12 +814,12 @@
             }
           });
 
-          // Проверяем каждую закрашенную группу
+          // Check each painted group
           Object.values(colorGroups).forEach(group => {
             const firstIndex = group[0].index;
             const lastIndex = group[group.length - 1].index;
 
-            // Определяем, сколько сегментов затронуты
+            // Determine how many segments are affected
             const segmentsInGroup = new Set();
             for (let i = firstIndex; i <= lastIndex; i++) {
               if (i < positionToSegment.length && positionToSegment[i] !== null) {
@@ -827,7 +827,7 @@
               }
             }
 
-            // Случай 1: Группа пересекает несколько сегментов
+            // Case 1: Group crosses multiple segments
             if (segmentsInGroup.size > 1) {
               let currentSegment = null;
               for (let i = 0; i < group.length; i++) {
@@ -841,18 +841,18 @@
               }
               errorCells.add(group[group.length - 1].cell);
             } 
-            // Случай 2: Группа вне сегментов
+            // Case 2: Group outside segments
             else if (segmentsInGroup.size === 0) {
               group.forEach(g => errorCells.add(g.cell));
             }
-            // Случай 3: Группа внутри одного сегмента
+            // Case 3: Group within one segment
             else {
               const segIndex = [...segmentsInGroup][0];
               const sentence = SentenceData.sentences[segIndex];
               const expectedStart = positionToSegment.indexOf(segIndex);
               const expectedEnd = expectedStart + sentence.original.length - 1;
 
-              // Проверяем, выходит ли за границы
+              // Check if it goes beyond boundaries
               if (firstIndex < expectedStart || lastIndex > expectedEnd) {
                 group.forEach(g => {
                   const pos = g.index;
@@ -864,7 +864,7 @@
             }
           });
 
-          // Проверка уникальности цветов по сегментам
+          // Check color uniqueness by segments
           const segmentColors = new Array(SentenceData.sentences.length).fill(null);
           SentenceData.sentences.forEach((_, segIndex) => {
             const segCells = [];
@@ -896,14 +896,14 @@
             }
           });
 
-          // === 3. ФИНАЛЬНЫЙ АНАЛИЗ ===
+          // === 3. FINAL ANALYSIS ===
           if (errorCells.size > 0) {
             result.className = 'error';
-            result.innerHTML = '❌ Проверьте границы предложений.';
-            playSound(uiSounds.error); // Воспроизводим звук ошибки
-            updatePoints(-2, 'неверные границы');
+            result.innerHTML = '❌ Check sentence boundaries.';
+            playSound(uiSounds.error); // Play sound when error
+            updatePoints(-2, 'incorrect boundaries');
             
-            // Мерцание ТОЛЬКО на конфликтующих ячейках (и только если они закрашены)
+            // Blinking ONLY on conflicting cells (and only if painted)
             errorCells.forEach(cell => {
               if (cell.hasAttribute('data-color')) {
                 cell.classList.add('error-blink');
@@ -912,25 +912,25 @@
           }
           else if (unpainted.size > 0) {
             result.className = 'info';
-            result.textContent = `⚠️ Не закрашено: ${unpainted.size} символов`;
-            // НЕ вешаем error-blink, просто информируем
+            result.textContent = `⚠️ Unpainted: ${unpainted.size} characters`;
+            // DON'T add error-blink, just inform
           }
           else {
             result.className = 'success';
-            result.innerHTML = '✅ Все предложения выделены правильно!';
-            playSound(uiSounds.success); // Воспроизводим звук успеха
-            updatePoints(5, 'успешная сегментация');
+            result.innerHTML = '✅ All sentences highlighted correctly!';
+            playSound(uiSounds.success); // Play sound when success
+            updatePoints(5, 'successful segmentation');
           }
         });
 
-        // === 🔊 Добавляем hover-эффекты для кнопок ===
+        // === 🔊 Add hover effects for buttons ===
         document.querySelectorAll('button:not(#closeModal)').forEach(button => {
           button.addEventListener('mouseenter', () => {
-            playSound(uiSounds.hover); // Воспроизводим звук при наведении
+            playSound(uiSounds.hover); // Play sound when hovering
           });
         });
 
-        // Инициализация легенды
+        // Initialize legend
         updateColorLegend();
       });
     </script>
