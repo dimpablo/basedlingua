@@ -1,18 +1,23 @@
 {
-  "name": "basedlingua — Classical Chinese Course",
+  "name": "basedlingua — Curso de Chinês Clássico",
   "short_name": "basedlingua",
-  "description": "Learn Classical Chinese through interactive lessons, texts, and grammar drills.",
-  "start_url": "/",
+  "description": "Aprenda chinês clássico com aulas interativas, textos antigos e exercícios de gramática",
+  "start_url": "/pt/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#f9f9f9",
   "theme_color": "#4CAF50",
-  "scope": "/",
-  "lang": "en-US",
+  "scope": "/pt/",
+  "lang": "pt-BR",
   "icons": [
     {
       "src": "android-chrome-96x96.png",
       "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "android-chrome-144x144.png",
+      "sizes": "144x144",
       "type": "image/png"
     },
     {
@@ -25,6 +30,16 @@
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
+    },
+    {
+      "src": "android-chrome-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "android-chrome-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
     },
     {
       "src": "android-chrome-512x512.png",
@@ -43,13 +58,13 @@
       "src": "screenshot-1.jpg",
       "sizes": "1080x1920",
       "type": "image/jpeg",
-      "description": "Reading classical Chinese texts with annotations"
+      "description": "Leitura de textos clássicos com anotações e traduções"
     },
     {
       "src": "screenshot-2.jpg",
       "sizes": "1080x1920",
       "type": "image/jpeg",
-      "description": "Interactive exercises and vocabulary drills"
+      "description": "Exercícios interativos com ideogramas e gramática"
     }
   ]
 }

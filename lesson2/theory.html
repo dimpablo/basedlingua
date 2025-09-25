@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>Урок 2 — Древнекитайский язык по Крюкову</title>
+<title>Lesson 2 — Classical Chinese by Kryukov</title>
 <style>
         body {
             font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
@@ -70,7 +70,7 @@
             line-height: 1.8;
         }
 
-        /* === Интерактивные подсказки для иероглифов (совместимо с Уроком 1) === */
+        /* === Interactive character tooltips (compatible with Lesson 1) === */
         .char-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -167,9 +167,9 @@
 }
 </style>
 <script src="./../dictionary.js"></script>
-<h1>УРОК 2</h1>
+<h1>LESSON 2</h1>
 <div class="text">
-<h2>Текст урока</h2>
+<h2>Lesson Text</h2>
 <table class="oracle-table" id="oracleTable"></table>
 </div>
 <div style="text-align: center; margin: 20px 0;">
@@ -178,7 +178,7 @@
 <span class="slider"></span>
 </label>
 <span id="toggleLabel" style="margin-left: 10px; font-family: 'Segoe UI', sans-serif; color: #333;">
-    Обычный вид
+    Regular View
   </span>
 </div>
 <style>
@@ -258,7 +258,7 @@
 <script>
 
 
-// Текст урока 2 (без пунктуации, как в оригинале)
+// Lesson 2 text (without punctuation, as in the original)
 const lessonText = [
     "癸卯卜爭貞今歳商受年貞來歳不其",
     "受年癸丑卜㱿貞冓受年貞冓不其受",
@@ -272,11 +272,11 @@ const lessonText = [
     
 ];
 
-// Функция для создания таблицы
+// Function to create the table
 function createOracleTable() {
     const table = document.getElementById('oracleTable');
     
-    // Заголовок с номерами колонок
+    // Header with column numbers
     const headerRow = document.createElement('tr');
     const emptyCell = document.createElement('td');
     emptyCell.className = 'line-num';
@@ -290,7 +290,7 @@ function createOracleTable() {
     }
     table.appendChild(headerRow);
     
-    // Строки текста
+    // Text rows
     for (let i = 0; i < lessonText.length; i++) {
         const row = document.createElement('tr');
         
@@ -314,7 +314,7 @@ function createOracleTable() {
                     tooltip.innerHTML = `
                         <strong>${char}</strong> <em>${charData[char].pinyin}</em><br>
                         ${charData[char].meaning}<br>
-                        <span class="lesson-badge">Урок ${charData[char].lesson}</span>
+                        <span class="lesson-badge">Lesson ${charData[char].lesson}</span>
                     `;
                     td.appendChild(tooltip);
                 }
@@ -326,103 +326,103 @@ function createOracleTable() {
     }
 }
 
-// Инициализация
+// Initialization
 document.addEventListener('DOMContentLoaded', createOracleTable);
 </script>
-<!-- ГРАММАТИЧЕСКИЙ КОММЕНТАРИЙ -->
+<!-- GRAMMATICAL COMMENTARY -->
 <div class="grammar">
-<h2>ГРАММАТИЧЕСКИЙ КОММЕНТАРИЙ</h2>
-<h3>2.1. Прямое дополнение</h3>
+<h2>GRAMMATICAL COMMENTARY</h2>
+<h3>2.1. Direct Object</h3>
 <p class="original">
-            Прямое дополнение стоит обычно после сказуемого.
-            В приводимых текстах наличие прямого дополнения определяется по признаку а) опущения и б) замены члена предложения в постсказуемостной позиции:
+            The direct object usually comes after the predicate.
+            In the texts provided, the presence of a direct object is determined by the features a) omission and b) replacement of a sentence element in post-predicate position:
             <br/><br/>
-            a) <span class="example">受年 (shòu nián)</span> ‘получить урожай’;<br/>
-<span class="example">弗受年 (fú shòu nián)</span> ‘не получить [урожая]’;<br/>
-            б) <span class="example">來牛 (lái niú)</span> ‘прислать быков’;<br/>
-<span class="example">來犬 (lái quǎn)</span> ‘прислать собак’.
+            a) <span class="example">受年 (shòu nián)</span> ‘to receive harvest’;<br/>
+<span class="example">弗受年 (fú shòu nián)</span> ‘not to receive [harvest]’;<br/>
+            b) <span class="example">來牛 (lái niú)</span> ‘to send oxen’;<br/>
+<span class="example">來犬 (lái quǎn)</span> ‘to send dogs’.
         </p>
-<h3>2.2. Определение</h3>
+<h3>2.2. Attribute</h3>
 <p class="original">
-            Определение в архаическом, как и вообще в древнекитайском языке, всегда предшествует определяемому:
+            Attributes in archaic, as well as in general Old Chinese, always precede the modified word:
             <br/><br/>
-<span class="example">白馬 (bái mǎ)</span> ‘белая лошадь’;<br/>
-<span class="example">稻年 (dào nián)</span> ‘урожай риса’;<br/>
-<span class="example">今春 (jīn chūn)</span> ‘нынешняя весна’.
+<span class="example">白馬 (bái mǎ)</span> ‘white horse’;<br/>
+<span class="example">稻年 (dào nián)</span> ‘rice harvest’;<br/>
+<span class="example">今春 (jīn chūn)</span> ‘this spring’.
         </p>
-<h3>2.3. Личные местоимения</h3>
+<h3>2.3. Personal Pronouns</h3>
 <p class="original">
-    Личные местоимения — служебная часть речи, выступающая всегда в строго определенной грамматической функции, замещая имена. В качестве предикатива личное местоимение употребляться не может.
+    Personal pronouns are a functional part of speech, always used in a strictly defined grammatical function, replacing nouns. A personal pronoun cannot be used as a predicate.
     <br/><br/>
-    Личные местоимения обладают всеми синтаксическими свойствами имен, кроме одного: они не могут принимать определений.
+    Personal pronouns possess all the syntactic properties of nouns, except one: they cannot take attributes.
     <br/><br/>
-    Личные местоимения в древнекитайском языке различаются по лицам. Число выражено в них непоследовательно. В частности, местоимение 1-го лица <strong>我 (wǒ)</strong> может употребляться как в единственном числе («я»), так и во множественном («мы»).
+    Personal pronouns in Old Chinese are differentiated by person. Number is expressed inconsistently. For example, the first person pronoun <strong>我 (wǒ)</strong> can be used in both singular (‘I’) and plural (‘we’).
 </p>
-<h3>2.4. Наречные имена</h3>
+<h3>2.4. Adverbial Nouns</h3>
 <p class="original">
-    В древнекитайском языке существует группа наречных имен, обозначающих ту или иную точку в пространстве и времени. К ним относится, в частности, слово <strong>今 (jīn)</strong> «сейчас», «в настоящий момент». Оно может употребляться как самостоятельно, в функции обстоятельства времени, так и в качестве определения к другому имени:
+    Old Chinese has a group of adverbial nouns denoting a point in space or time. This includes the word <strong>今 (jīn)</strong> ‘now’, ‘at the present moment’. It can be used independently, functioning as an adverb of time, or as an attribute to another noun:
     <br/><br/>
-<span class="example">今雨 (jīn yǔ)</span> «Сейчас идет дождь?»<br/>
-<span class="example">今歳我受年 (jīn suì wǒ shòu nián)</span> «В нынешнем году мы получим урожай?» (<strong>今歳 (jīn suì)</strong> «нынешний год»).
+<span class="example">今雨 (jīn yǔ)</span> ‘Is it raining now?’<br/>
+<span class="example">今歳我受年 (jīn suì wǒ shòu nián)</span> ‘This year we will receive harvest?’ (<strong>今歳 (jīn suì)</strong> ‘this year’).
     <br/><br/>
-    В архаическом языке в такой функции могут употребляться и некоторые другие знаменательные слова. Так, <strong>來 (lái)</strong> «приходить», будучи употреблено как определение к имени, приобретает значение «будущий», «следующий»:
+    In archaic language, certain other content words can also be used in this function. For example, <strong>來 (lái)</strong> ‘to come’, when used as an attribute to a noun, acquires the meaning ‘future’, ‘next’:
     <br/><br/>
-<span class="example">來歳我弗受年 (lái suì wǒ fú shòu nián)</span> «В будущем году мы не получим урожай» (<strong>來歳 (lái suì)</strong> «будущий год»).
+<span class="example">來歳我弗受年 (lái suì wǒ fú shòu nián)</span> ‘Next year we will not receive harvest’ (<strong>來歳 (lái suì)</strong> ‘next year’).
     <br/><br/>
-    Однако самостоятельно, подобно <strong>今 (jīn)</strong>, слово <strong>來 (lái)</strong> в таком значении употребляться не может.
+    However, unlike <strong>今 (jīn)</strong>, the word <strong>來 (lái)</strong> cannot be used independently in this meaning.
 </p>
-<h3>2.5. Основное и каузативное значение предикатива</h3>
+<h3>2.5. Basic and Causative Meaning of Predicate</h3>
 <p class="original">
-    Знаменательное слово, выступающее в предикативной функции, может иметь в архаическом древнекитайском языке несколько значений. Одно из них — основное — присуще предикативу, который обозначает действие, осуществляемое субъектом. Но наряду с ним данное слово может иметь и другое — каузативное — значение, т. е. обозначать действие, осуществлять которое побуждает субъект.
+    A content word functioning as a predicate can have multiple meanings in archaic Old Chinese. One of them — the basic — belongs to the predicate that denotes an action carried out by the subject. Alongside it, the same word can have another — causative — meaning, i.e., to denote an action that the subject causes to be performed.
     <br/><br/>
-    Например, если знаменательное слово <strong>來 (lái)</strong> означает «приходить», «прибывать», то в другом контексте оно может означать «сделать так, чтобы кто-то прибыл (что-то прибыло)», т. е. «прислать», «доставить». 
+    For example, if the content word <strong>來 (lái)</strong> means ‘to come’, ‘to arrive’, then in another context it can mean ‘to make someone/something come’, i.e., ‘to send’, ‘to deliver’. 
     <br/><br/>
-    То же самое можно сказать и о предикативе <strong>受 (shòu)</strong> «получать», каузативное значение которого — «сделать так, чтобы кто-то получил», т. е. «дать», «даровать» и т. д.
+    The same applies to the predicate <strong>受 (shòu)</strong> ‘to receive’, whose causative meaning is ‘to make someone receive’, i.e., ‘to give’, ‘to grant’, etc.
     <br/><br/>
-    Отметим, что в более поздних памятниках древнекитайского языка различие между основным и каузативным значениями предикативов выражается графически. Слово со значением «получать» записывается знаком <strong>受 (shòu)</strong>, а «давать» — <strong>授 (shòu)</strong>:
+    Note that in later Old Chinese texts, the difference between basic and causative meanings of predicates is expressed graphically. The word meaning ‘to receive’ is written with the character <strong>受 (shòu)</strong>, while ‘to give’ is written with <strong>授 (shòu)</strong>:
     <br/><br/>
-<span class="example">男女授受不親 (nán nǚ shòu shòu bù qīn)</span> «Когда мужчина и женщина дают или берут что-нибудь, они не должны касаться друг друга».
+<span class="example">男女授受不親 (nán nǚ shòu shòu bù qīn)</span> ‘When a man and a woman give or receive something, they should not touch each other’.
 </p>
 <div style="text-align: center; margin: 20px 0;">
-<img alt="Древнее написание знака 受: передача лодки из рук в руки " class="original" src="./img/page_3_img_1.png" style="border: none; padding: 0; max-width: 100%;"/>
-<p class="footer" style="margin-top: 8px; border-top: none; padding-top: 0;">Древнее написание знака 受:<br/>передача лодки из рук в руки</p>
+<img alt="Ancient form of the character 受: passing a boat from hand to hand" class="original" src="./img/page_3_img_1.png" style="border: none; padding: 0; max-width: 100%;"/>
+<p class="footer" style="margin-top: 8px; border-top: none; padding-top: 0;">Ancient form of the character 受:<br/>passing a boat from hand to hand</p>
 </div>
-<h3>2.6. Отрицание фу</h3>
+<h3>2.6. Negation fu</h3>
 <p class="original">
-            В данном уроке мы встречаем еще одно служебное слово, относящееся к группе отрицаний, — <strong>弗 (fú)</strong>. Оно, так же как и <strong>不 (bù)</strong>, является нейтральным, т. е. означает лишь отрицание того действия, которое выражено последующим предикативом:
+            In this lesson, we encounter another functional word belonging to the group of negations — <strong>弗 (fú)</strong>. Like <strong>不 (bù)</strong>, it is neutral, i.e., it merely indicates the negation of the action expressed by the following predicate:
             <br/><br>
-<span class="example">方出 (fāng chū)</span> ‘Племя выступит’;<br/>
-<span class="example">方弗出 (fāng fú chū)</span> ‘Племя не выступит’.
+<span class="example">方出 (fāng chū)</span> ‘The tribe will go out’;<br/>
+<span class="example">方弗出 (fāng fú chū)</span> ‘The tribe will not go out’.
             <br/><br/>
-            В большинстве случаев <strong>弗 (fú)</strong> и <strong>不 (bù)</strong> взаимозаменяемы:
+            In most cases, <strong>弗 (fú)</strong> and <strong>不 (bù)</strong> are interchangeable:
             <br/><br/>
 <span class="example">不受年 (bù shòu nián)</span><br/>
 <span class="example">弗受年 (fú shòu nián)</span>
 <br/><br/>
-            Но <strong>弗 (fú)</strong> не употребляется перед безличными предикативами, а также в тех случаях, когда дополнение к сказуемому выражено местоимением (см. 5.3).
+            However, <strong>弗 (fú)</strong> is not used before impersonal predicates, nor in cases where the object of the predicate is expressed by a pronoun (see 5.3).
         </br></p>
 </div>
-<h2>СПИСОК СЛОВ УРОКА</h2>
+<h2>LESSON VOCABULARY LIST</h2>
 <div class="char-list"></div>
 <script>
-    // Укажи номер урока здесь
+    // Specify the lesson number here
     const LESSON = parseInt((window.location.pathname.match(/\/lesson(\d+)(?:\/|$)/) || [])[1] || '1');
 
-    // Находим все иероглифы этого урока из charData
+    // Find all characters from this lesson in charData
     const lessonChars = Object.entries(charData)
         .filter(([char, data]) => data.lesson === LESSON)
         .sort(([charA, dataA], [charB, dataB]) => {
-            // Сортировка по пиньиню (опционально)
+            // Sort by pinyin (optional)
             return dataA.pinyin.localeCompare(dataB.pinyin, 'zh');
         });
 
-    // Получаем контейнер
+    // Get the container
     const charList = document.querySelector('.char-list');
 
-    // Очищаем (на всякий случай)
+    // Clear (just in case)
     charList.innerHTML = '';
 
-    // Генерируем элементы
+    // Generate elements
     lessonChars.forEach(([char, data]) => {
         const item = document.createElement('div');
         item.className = 'char-item';
@@ -435,27 +435,27 @@ document.addEventListener('DOMContentLoaded', createOracleTable);
         charList.appendChild(item);
     });
 </script>
-<!-- ЛЕКСИЧЕСКИЙ КОММЕНТАРИЙ -->
+<!-- LEXICAL COMMENTARY -->
 <div class="lexicon">
-<h2>ЛЕКСИЧЕСКИЙ КОММЕНТАРИЙ</h2>
-<h3>2-1. Личные имена</h3>
+<h2>LEXICAL COMMENTARY</h2>
+<h3>2-1. Personal Names</h3>
 <p class="original">
-            Личные имена в иньских надписях отличаются от других знаменательных слов тем, что они не могут употребляться в иной функции, кроме именной (в классическом древнекитайском собственное имя могло употребляться и в предикативном значении). Интерпретируя иньский текст, следует иметь в виду, что встречающиеся в нем личные имена обнаруживают ряд особенностей:
+            Personal names in Shang inscriptions differ from other content words in that they cannot be used in any function other than a nominal one (in Classical Chinese, proper names could also be used in a predicative sense). When interpreting Shang texts, one should note that the personal names appearing in them have several features:
             <br/><br/>
-            а) лица, носящие одно и то же имя, фигурируют в надписях различных периодов;<br/>
-            б) личные имена совпадают с географическими названиями;<br/>
-            в) они служат подчас для обозначения не одного лица, а целых групп людей.
+            a) individuals bearing the same name appear in inscriptions from different periods;<br/>
+            b) personal names coincide with geographical names;<br/>
+            c) they sometimes serve to denote not just one individual but entire groups of people.
             <br/><br/>
-            Все это позволяет прийти к выводу о том, что собственные имена в иньских надписях являются наименованиями родовых коллективов, обозначая весь род в целом, каждого его члена в отдельности, а также родовую территорию.
+            All this leads to the conclusion that proper names in Shang inscriptions are names of clan groups, denoting the entire clan, each of its members individually, as well as the clan territory.
         </p>
-<h3>2-2. Год и сезоны года</h3>
+<h3>2-2. Year and Seasons</h3>
 <p class="original">
-            Основной единицей для исчисления длительных периодов времени у иньцев был <strong>歳 (suì)</strong> ‘год’, делившийся на 12 (иногда 13) месяцев (<strong>月 (yuè)</strong>). Иньский год включал не четыре, а два сезона: <strong>春 (chūn)</strong> и <strong>秋 (qiū)</strong> (отсюда происходит, между прочим, словосочетание <strong>春秋 (chūnqiū)</strong> в значении ‘смена времен года’, ‘естественное течение времени’, позднее — ‘хроника’, ‘летопись’).
+            The basic unit for measuring long periods of time among the Shang was <strong>歳 (suì)</strong> ‘year’, divided into 12 (sometimes 13) months (<strong>月 (yuè)</strong>). The Shang year included not four but two seasons: <strong>春 (chūn)</strong> and <strong>秋 (qiū)</strong> (from which, incidentally, comes the expression <strong>春秋 (chūnqiū)</strong> meaning ‘change of seasons’, ‘natural flow of time’, later ‘chronicle’, ‘annals’).
             <br/><br/>
-            Поэтому мы можем лишь условно перевести <strong>春 (chūn)</strong> как ‘весна’, а <strong>秋 (qiū)</strong> как ‘осень’. Первый из этих терминов обозначает фактически всю первую половину года, а другой — вторую.
+            Therefore, we can only conditionally translate <strong>春 (chūn)</strong> as ‘spring’ and <strong>秋 (qiū)</strong> as ‘autumn’. The first of these terms actually denotes the first half of the year, and the other the second half.
         </p>
 </div>
-<!-- ЗАДАНИЕ ДЛЯ САМОСТОЯТЕЛЬНОЙ РАБОТЫ -->
+<!-- ASSIGNMENT FOR INDEPENDENT STUDY -->
 <div class="assignment">
 <h2>ASSIGNMENT FOR INDEPENDENT STUDY</h2>
 <ol>
@@ -536,10 +536,10 @@ document.addEventListener('DOMContentLoaded', function () {
   toggle.addEventListener('change', function () {
     if (toggle.checked) {
       styleSheet.textContent = oracleCSS;
-      label.textContent = 'Оракульный вид';
+      label.textContent = 'Oracle View';
     } else {
       styleSheet.textContent = normalCSS;
-      label.textContent = 'Обычный вид';
+      label.textContent = 'Regular View';
     }
   });
 });
