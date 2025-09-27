@@ -1093,28 +1093,36 @@ async function loadFriendsForSelection() {
                 resultMessage.textContent = 'Assemble the translation. Click on a character to hear it.';
             }
             // ========== CHANGED CHECK LOGIC ==========
-            async function checkAnswer() {
-                const task = tasks[currentTaskIndex];
-                const currentText = currentAnswer.join(' ').trim();
-                if (task.type === 'toTranslation') {
-                    if (currentText === task.correctAnswer) {
-                        playSound(uiSounds.success); // Play success sound
-                        await updateUserPoints(5); // Award 5 points
-                        showSuccess();
-                    }
-                } else {
-                    const currentTextOriginal = currentAnswer.join(''); // For Chinese, join without spaces
-                    if (currentTextOriginal === task.correctAnswer) {
-                        playSound(uiSounds.success); // Play success sound
-                        await updateUserPoints(5); // Award 5 points
-                        showSuccess();
-                    }
-                    // Similarly for English to Chinese translation
-                    // else if (currentAnswer.length >= task.correctAnswer.length) {
-                    //    // Tolerant - No reaction
-                    // }
-                }
-            }
+async function checkAnswer() {
+    const task = tasks[currentTaskIndex];
+    const currentText = currentAnswer.join(' ').trim();
+
+    // Функция нормализации: убирает знаки препинания, приводит к нижнему регистру, схлопывает пробелы
+    const normalize = (str) => {
+        return str
+            .toLowerCase()
+            .replace(/[^\w\sа-яё]/g, ' ')   // удаляем всё, кроме букв, цифр, пробелов и кириллицы
+            .replace(/\s+/g, ' ')            // заменяем множественные пробелы на один
+            .trim();
+    };
+
+    if (task.type === 'toTranslation') {
+        // Сравниваем НОРМАЛИЗОВАННЫЕ версии
+        if (normalize(currentText) === normalize(task.correctAnswer)) {
+            playSound(uiSounds.success);
+            await updateUserPoints(5);
+            showSuccess();
+        }
+    } else {
+        // Для китайского — по-прежнему склеиваем без пробелов (но можно тоже нормализовать, если нужно)
+        const currentTextOriginal = currentAnswer.join('');
+        if (currentTextOriginal === task.correctAnswer) {
+            playSound(uiSounds.success);
+            await updateUserPoints(5);
+            showSuccess();
+        }
+    }
+}
             function showSuccess() {
                 resultMessage.className = 'success';
                 resultMessage.textContent = '✅ Correct! +5 points. Next task...';
