@@ -132,8 +132,8 @@
     </style>
 <style>
         @font-face {
-            font-family: 'Jiaguwen';
-            src: url('../jiaguwen.ttf') format('truetype');
+            font-family: 'jinwen';
+            src: url('../jinwen.ttf') format('truetype');
             font-style: normal;
             font-weight: normal;
             font-display: swap;
@@ -519,7 +519,7 @@ All characters are from the texts of Lessons 1–17, or from cyclic characters (
             .oracle-table {
                 border-collapse: collapse;
                 margin: 20px auto;
-                font-family: 'Jiaguwen', 'Noto Serif CJK SC', 'KaiTi', serif;
+                font-family: 'jinwen', 'Noto Serif CJK SC', 'KaiTi', serif;
                 font-size: 1.3em;
                 table-layout: fixed;
                 width: 95%;
@@ -548,10 +548,10 @@ All characters are from the texts of Lessons 1–17, or from cyclic characters (
         toggle.addEventListener('change', function () {
             if (toggle.checked) {
                 styleSheet.textContent = oracleCSS;
-                label.textContent = 'Оракульный вид';
+                label.textContent = 'Bronze vessel view';
             } else {
                 styleSheet.textContent = normalCSS;
-                label.textContent = 'Обычный вид';
+                label.textContent = 'Usual view';
             }
         });
     });
