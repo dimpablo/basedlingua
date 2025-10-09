@@ -1,14 +1,14 @@
 {
-  "name": "basedlingua — Curso de Chinês Clássico",
+  "name": "basedlingua — Classical Chinese Course",
   "short_name": "basedlingua",
-  "description": "Aprenda chinês clássico com aulas interativas, textos antigos e exercícios de gramática",
-  "start_url": "/pt/",
+  "description": "Learn classical Chinese with interactive lessons, ancient texts, and grammar exercises",
+  "start_url": "/basedlingua/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#f9f9f9",
   "theme_color": "#4CAF50",
-  "scope": "/pt/",
-  "lang": "pt-BR",
+  "scope": "/en/",
+  "lang": "en-US",
   "icons": [
     {
       "src": "android-chrome-96x96.png",
@@ -58,13 +58,13 @@
       "src": "screenshot-1.jpg",
       "sizes": "1080x1920",
       "type": "image/jpeg",
-      "description": "Leitura de textos clássicos com anotações e traduções"
+      "description": "Reading classical texts with annotations and translations"
     },
     {
       "src": "screenshot-2.jpg",
       "sizes": "1080x1920",
       "type": "image/jpeg",
-      "description": "Exercícios interativos com ideogramas e gramática"
+      "description": "Interactive exercises with ideograms and grammar"
     }
   ]
 }
